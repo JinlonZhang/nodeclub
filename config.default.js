@@ -6,11 +6,11 @@ var path = require('path');
 
 var config = {
   // debug 为 true 时，用于本地调试
-  debug: true,
+  debug: false,
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
-  name: 'Nodeclub', // 社区名字
+  name: 'Caicloud', // 社区名字
   description: 'CNode：Node.js专业中文社区', // 社区的描述
   keywords: 'nodejs, node, express, connect, socket.io',
 
@@ -46,28 +46,38 @@ var config = {
   auth_cookie_name: 'node_club',
 
   // 程序运行的端口
-  port: 3000,
+  port: 8000,
 
   // 话题列表显示的话题数量
   list_topic_count: 20,
 
   // RSS配置
   rss: {
-    title: 'CNode：Node.js专业中文社区',
+    title: 'Caicloud专业中文社区',
     link: 'http://cnodejs.org',
     language: 'zh-cn',
-    description: 'CNode：Node.js专业中文社区',
+    description: 'Caicloud专业中文社区',
     //最多获取的RSS Item数量
     max_rss_items: 50
   },
 
   // 邮箱配置
-  mail_opts: {
-    host: 'smtp.126.com',
-    port: 465,
+  // mail_opts: {
+  //   host: 'smtp.126.com',
+  //   port: 465,
+  //   auth: {
+  //     user: 'club@126.com',
+  //     pass: 'club'
+  //   }
+  // },
+
+  mail_opts : {
+    host : 'smtphz.qiye.163.com',
+    transport: "SMTP",
+    port:25,
     auth: {
-      user: 'club@126.com',
-      pass: 'club'
+      user: 'noreply@caicloud.io',
+      pass: 'caicloud2015AB'
     }
   },
 
@@ -76,7 +86,7 @@ var config = {
   weibo_id: 'your_weibo_id',
 
   // admin 可删除话题，编辑标签。把 user_login_name 换成你的登录名
-  admins: { user_login_name: true },
+  admins: { zxydaisy: true },
 
   // github 登陆的配置
   GITHUB_OAUTH: {

@@ -11,9 +11,7 @@ install:
 	@npm install $(NPM_REGISTRY)
 
 pretest:
-	@if ! test -f config.js; then \
-		cp config.default.js config.js; \
-	fi
+	@cp config.default.js config.js
 	@if ! test -d public/upload; then \
 		mkdir public/upload; \
 	fi
@@ -41,6 +39,7 @@ build:
 	@./node_modules/loader-builder/bin/builder views .
 
 run:
+	@cp config.default.js config.js
 	@node app.js
 
 start: install build

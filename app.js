@@ -169,10 +169,10 @@ if (config.debug) {
 }
 
 if (!module.parent) {
-  app.listen(config.port, function () {
-    logger.info('NodeClub listening on port', config.port);
+  app.listen('8000', function () {
+    logger.info('NodeClub listening on port', '8000');
     logger.info('God bless love....');
-    logger.info('You can debug your app with http://' + config.hostname + ':' + config.port);
+    logger.info('You can debug your app with http://' + config.hostname + ':' + '8000');
     logger.info('');
   });
 }
