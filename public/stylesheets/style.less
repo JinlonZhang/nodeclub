@@ -2,6 +2,7 @@
 @gray2: #f6f6f6;
 @node_green: #80bd01;
 @node_black: #444444;
+@kube_blue: #4c9be0;
 
 /* base */
 body {
@@ -185,7 +186,7 @@ a.light:hover {
 }
 
 .breadcrumb a {
-  color: @node_green;
+  color: @kube_blue;
 }
 
 .panel .header {
@@ -784,7 +785,7 @@ textarea#title {
   z-index: 9;
   width: 100%;
   position: relative;
-  background: @node_black;
+  background: @kube_blue;
   font-size: 13px;
 }
 
@@ -819,7 +820,7 @@ textarea#title {
 .navbar .search-query {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  background: #888 url('../images/search.png') no-repeat 4px 4px;
+  background: #fff url('../images/search.png') no-repeat 4px 4px;
   padding: 3px 5px 3px 22px;
   color: #666;
   border: 0px;
@@ -842,9 +843,9 @@ textarea#title {
 
 .navbar .nav > li > a {
   text-shadow: none;
-  color: #cccccc;
+  color: #fff;
   &:hover {
-    color: #fff;
+    color: #cccccc;
   }
 }
 
@@ -1121,9 +1122,9 @@ textarea.editor {
 
 .topic-tab {
   margin: 0 10px;
-  color: @node_green;
+  color: @kube_blue;
   &.current-tab {
-    background-color: @node_green;
+    background-color: @kube_blue;
     color: white;
     padding: 3px 4px;
     border-radius: 3px;

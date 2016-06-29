@@ -90,12 +90,15 @@
             </a>
         </li>
         <% } %>
-        <li><a href='/getstart'>新手入门</a></li>
-        <li><a href='/api'>API</a></li>
+        <!--<li><a href='/getstart'>新手入门</a></li>-->
+        <!--<li><a href='/api'>API</a></li>-->
+        <li><a href='/talk'>话题</a></li>
+        <li><a href='/blog'>博客</a></li>
         <%
         var site_navs = config.site_navs || [];
         for (var i = 0, l = site_navs.length; i < l; i++) {
         var nav = site_navs[i];
+        console.log(nav);
         %>
         <li><a href="<%- nav[0] %>" target="<%- nav[2] %>"><%- nav[1] %></a></li>
         <% } %>

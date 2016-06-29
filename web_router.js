@@ -24,6 +24,7 @@ var search = require('./controllers/search');
 var passport = require('passport');
 var configMiddleware = require('./middlewares/conf');
 var config = require('./config');
+var blog = require('./controllers/blog');
 
 var router = express.Router();
 
@@ -99,9 +100,12 @@ router.post('/upload', auth.userRequired, topic.upload); //上传图片
 // static
 router.get('/about', staticController.about);
 router.get('/faq', staticController.faq);
-router.get('/getstart', staticController.getstart);
+//router.get('/getstart', staticController.getstart);
 router.get('/robots.txt', staticController.robots);
 router.get('/api', staticController.api);
+
+// blog
+router.get('/blog', staticController.blog);
 
 //rss
 router.get('/rss', rss.index);

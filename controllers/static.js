@@ -7,6 +7,13 @@ exports.about = function (req, res, next) {
   });
 };
 
+// blog
+exports.blog = function (req, res, next) {
+  res.render('blog/index', {
+    pageTitle: 'boke'
+  });
+};
+
 // FAQ
 exports.faq = function (req, res, next) {
   res.render('static/faq');

@@ -10,15 +10,16 @@ var config = {
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
-  name: 'Caicloud', // 社区名字
-  description: 'CNode：Node.js专业中文社区', // 社区的描述
+  name: 'Kubecon', // 社区名字
+  description: 'Kubecon：Kubecon专业中文社区', // 社区的描述
+
   keywords: 'nodejs, node, express, connect, socket.io',
 
   // 添加到 html head 中的信息
   site_headers: [
     '<meta name="author" content="EDP@TAOBAO" />'
   ],
-  site_logo: '/public/images/cnodejs_light.svg', // default is `name`
+  site_logo: '/public/images/kube-log.svg', // default is `name` cnodejs_light.svg
   site_icon: '/public/images/cnode_icon_32.png', // 默认没有 favicon, 这里填写网址
   // 右上角的导航区
   site_navs: [
