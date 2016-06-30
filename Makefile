@@ -38,8 +38,7 @@ test-cov cov: install pretest
 build:
 	@./node_modules/loader-builder/bin/builder views .
 
-run:
-	@cp config.default.js config.js
+run: pretest build
 	@node app.js
 
 start: install build
