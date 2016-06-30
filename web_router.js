@@ -20,6 +20,7 @@ var passport = require('passport');
 var configMiddleware = require('./middlewares/conf');
 var config = require('./config');
 var blog = require('./controllers/blog');
+var active = require('./controllers/active');
 
 var router = express.Router();
 
@@ -105,6 +106,18 @@ router.get('/api', staticController.api);
 
 // blog
 router.get('/blog', staticController.blog);
+
+// talk
+router.get('/talk', site.talk);
+
+// active
+router.get('/active', active.index);
+
+// active create
+router.get('/active/create',auth.userRequired, active.create);
+router.post('/active/create', auth.userRequired, active.put);
+//router.post('/active/create', auth.userRequired, active.put);
+//router.post('/active/create', auth.userRequired, limit.peruserperday('create_topic', config.create_post_per_day, false), active.put);
 
 //rss
 router.get('/rss', rss.index);

@@ -1,0 +1,145 @@
+
+
+<div id='content'>
+    <div class='panel'>
+        <div class='header'>
+            <ol class='breadcrumb'>
+                <li><a href='/'>活动</a><span class='divider'>/</span></li>
+                <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
+                <li class='active'>编辑活动</li>
+                <% }else{ %>
+                <li class='active'>发布活动</li>
+                <% } %>
+            </ol>
+        </div>
+
+
+        <div class="inner post">
+            <form action="/active/create" method="post">
+                <h4>活动信息</h4>
+                <div class="group">
+                    <div>活动名称<strong>*</strong></div>
+                    <div class="cover">
+                        <img src="/public/images/cover_init.jpg" alt="">
+                    </div>
+                    <div>
+                        <input type="file" />
+                        <button>系统图库</button>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div>活动名称<strong>*</strong></div>
+                    <input type="text" name="title" />
+                </div>
+                <div class="group">
+                    <div>开始时间<strong>*</strong></div>
+                    <input type="text" name="start_time" />
+                </div>
+                <div class="group">
+                    <div>结束时间<strong>*</strong></div>
+                    <input type="text" name="end_time" />
+                </div>
+                <div class="group">
+                    <div>活动地址<strong>*</strong></div>
+                    <select name="province" id="province">
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="浙江">浙江</option>
+                        <option value="安徽">安徽</option>
+                    </select>
+
+                    <select name="city" id="city">
+                        <option value="杭州">杭州</option>
+                        <option value="温州">温州</option>
+                        <option value="宁波">宁波</option>
+                        <option value="台州">台州</option>
+                    </select>
+
+                    <input type="text" name="adress">
+                </div>
+
+                <div class="group">
+                    <div>主办方<strong>*</strong></div>
+                    <select name="sponsor" id="sponsor">
+                        <option value="才云">才云</option>
+                        <option value="vm">vm</option>
+                        <option value="kubecon">Kubecon</option>
+                        <option value="北京">北京</option>
+                    </select>
+                    <button>添加主办方</button>
+                </div>
+
+                <div class="group">
+                    <div>活动详情<strong>*</strong></div>
+                     <textarea class='editor' name='active_detail' rows='20'
+                               placeholder='文章支持 Markdown 语法, 请注意标记代码'
+                     ><%= typeof(content) !== 'undefined' && content || '' %></textarea>
+                </div>
+
+
+                <h4>售票设置</h4>
+                <div class="group">
+                    <div>活动人数<strong>*</strong></div>
+                    <input type="text" name="people_num">
+                </div>
+                <div class="group">
+                    <div>活动收费<strong>*</strong></div>
+                    <select name="fees" id="fees">
+                        <option value="false">免费</option>
+                        <option value="true">收费</option>
+                    </select>
+                </div>
+
+                <div class="group">
+                    <div>是否审核<strong>*</strong></div>
+                    <select name="verify" id="verify">
+                        <option value="false">不审核</option>
+                        <option value="true">审核</option>
+                    </select>
+                </div>
+
+                <!--<h4>报名表单设置</h4>-->
+                <button type="submit">提交</button>
+                <input type='hidden' name='_csrf' value='<%= csrf %>'>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<%- partial('../includes/editor') %>
+
+<!-- markdown editor -->
+<script>
+    (function () {
+        var editor = new Editor();
+        editor.render($('.editor')[0]);
+
+        // 版块选择的检查，必须选择
+        $('#create_topic_form').on('submit', function (e) {
+            var tabValue = $('#tab-value').val();
+            if (!tabValue) {
+                alert('必须选择一个版块！');
+                $('.submit_btn').button('reset');
+                $('.tab-selector').css('color', 'red');
+                return false;
+            }
+        });
+        // END 版块选择的检查，必须选择
+
+        // 选择招聘版块时，给出提示
+        $('#tab-value').on('change', function () {
+            var $this = $(this);
+            var value = $this.val();
+            var warnMsg = '';
+            if (value === 'job') {
+                warnMsg = '<strong>为避免被管理员删帖，发帖时请好好阅读<a href="http://cnodejs.org/topic/541ed2d05e28155f24676a12" target="_blank">《招聘帖规范》</a></strong>';
+            } else if (value === 'ask') {
+                warnMsg = '<strong>提问时，请遵循 <a href="http://doc.zengrong.net/smart-questions/cn.html" target="_blank">《提问的智慧》</a>中提及的要点，以便您更接收到高质量回复。</strong>'
+            }
+            $('#topic_create_warn').html(warnMsg);
+        });
+        // END 选择招聘版块时，给出提示
+    })();
+</script>
