@@ -22,9 +22,11 @@ exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
   page = page > 0 ? page : 1;
   var tab = req.query.tab || 'all';
+  console.log('tab=' + tab);
 
   var proxy = new eventproxy();
   proxy.fail(next);
+  console.log(proxy);
 
   // 取主题
   var query = {};

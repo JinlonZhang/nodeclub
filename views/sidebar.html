@@ -9,20 +9,12 @@
       <%- partial('user/card',{ object: typeof(user) === 'undefined' ? current_user : user, as: 'user' }) %>
     </div>
     <% } else { %>
-    <div class='inner'>
-      <p><%= config.description %></p>
-
-      <div>
-        您可以
-        <a href='/signin'>登录</a>
-        或
-        <a href='/signup'>注册</a>
-        , 也可以
-        <a href="/auth/github">
-          <span class="span-info">
-            通过 GitHub 登录
-          </span>
-        </a>
+    <div class='panel'>
+      <div class='header'>
+        <span class='col_fade'>Kubernetes技术周刊</span>
+      </div>
+      <div class='inner'>
+        <p><%= config.description %></p>
       </div>
     </div>
     <% } %>
@@ -45,7 +37,8 @@
   <% if (typeof(no_reply_topics) !== 'undefined') { %>
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>无人回复的话题</span>
+      <!--<span class='col_fade'>无人回复的话题</span>-->
+      <span class='col_fade'>热门话题</span>
     </div>
     <div class='inner'>
       <% if (no_reply_topics.length > 0) { %>
@@ -106,12 +99,15 @@
   </div>
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>客户端二维码</span>
+      <span class='col_fade'>联系我们</span>
     </div>
     <div class='inner cnode-app-download'>
       <img width='200' src="//dn-cnode.qbox.me/FtG0YVgQ6iginiLpf9W4_ShjiLfU">
       <br />
-      <a href="https://github.com/soliury/noder-react-native" target="_blank">客户端源码地址</a>
+      <!--<a href="https://github.com/soliury/noder-react-native" target="_blank">客户端源码地址</a>-->
+      <h4>Kubecon技术社区</h4>
+      <p>欢迎投稿或推荐文章</p>
+      <p>Email:info@kubecon.com.cn</p>
     </div>
   </div>
 
