@@ -11,11 +11,12 @@ var ObjectId  = Schema.ObjectId;
  * at: xx ＠了你
  */
 
-var FriendshipCommunitySchema = new Schema({
+var PartnerSchema = new Schema({
   type: { type: String },
-  url: { type: String}
+  url: { type: String },
+  img_url : { type : String }
 });
-FriendshipCommunitySchema.plugin(BaseModel);
-FriendshipCommunitySchema.index({master_id: 1, has_read: -1, create_at: -1});
 
-mongoose.model('FriendshipCommunity', FriendshipCommunitySchema);
+PartnerSchema.plugin(BaseModel);
+
+mongoose.model('Partner', PartnerSchema);

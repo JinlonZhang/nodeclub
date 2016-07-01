@@ -1,9 +1,3 @@
-/*!
- * nodeclub - route.js
- * Copyright(c) 2012 fengmk2 <fengmk2@gmail.com>
- * MIT Licensed
- */
-
 /**
  * Module dependencies.
  */
@@ -16,6 +10,7 @@ var message = require('./controllers/message');
 var topic = require('./controllers/topic');
 var reply = require('./controllers/reply');
 var rss = require('./controllers/rss');
+var partner = require('./controllers/partner');
 var staticController = require('./controllers/static');
 var auth = require('./middlewares/auth');
 var limit = require('./middlewares/limit');
@@ -96,6 +91,10 @@ router.post('/reply/:reply_id/edit', auth.userRequired, reply.update); // 修改
 router.post('/reply/:reply_id/delete', auth.userRequired, reply.delete); // 删除某评论
 router.post('/reply/:reply_id/up', auth.userRequired, reply.up); // 为评论点赞
 router.post('/upload', auth.userRequired, topic.upload); //上传图片
+
+
+//获取合作伙伴
+router.get('/partner', partner.index);
 
 // static
 router.get('/about', staticController.about);
