@@ -1,0 +1,22 @@
+<% if (typeof( partners ) !== 'undefined') { %>
+<div class='panel'>
+  <div class='header'>
+    <span class='col_fade'>友情社区</span>
+  </div>
+  <div class='inner'>
+    <% if (partners.length > 0) { %>
+    <ol class="friendship-community">
+      <% partners.forEach(function(partner){  %>
+        <li>
+          <a href='<%= partner.url %>' target="_blank">
+            <img src="<%- staticFile(partner.img_url) %>">
+          </a>
+        </li>
+      <% }) %>
+    </ol>
+    <% } else { %>
+    <p>无</p>
+    <% } %>
+  </div>
+</div>
+<% } %>

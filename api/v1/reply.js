@@ -25,7 +25,7 @@ var create = function (req, res, next) {
     res.status(400);
     return res.send({success: false, error_msg: '不是有效的话题id'});
   }
-  
+
   Topic.getTopic(topic_id, ep.done(function (topic) {
     if (!topic) {
       res.status(404);
@@ -39,6 +39,7 @@ var create = function (req, res, next) {
   }));
 
   ep.all('topic', function (topic) {
+    console.log('topc', topic);
     User.getUserById(topic.author_id, ep.done('topic_author'));
   });
 
@@ -85,7 +86,7 @@ var ups = function (req, res, next) {
     res.status(400);
     return res.send({success: false, error_msg: '不是有效的评论id'});
   }
-  
+
   Reply.getReplyById(replyId, function (err, reply) {
     if (err) {
       return next(err);

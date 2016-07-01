@@ -12,6 +12,7 @@ var at           = require('../common/at');
 var User         = require('../proxy').User;
 var Topic        = require('../proxy').Topic;
 var TopicCollect = require('../proxy').TopicCollect;
+var Partner   = require('../proxy').Partner;
 var EventProxy   = require('eventproxy');
 var tools        = require('../common/tools');
 var store        = require('../common/store');
@@ -41,15 +42,17 @@ exports.index = function (req, res, next) {
   if (topic_id.length !== 24) {
     return res.render404('此话题不存在或已被删除。');
   }
-  var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect'];
+  var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect', 'partners'];
   var ep = EventProxy.create(events,
-    function (topic, other_topics, no_reply_topics, is_collect) {
+    function (topic, other_topics, no_reply_topics, is_collect, partners) {
+      console.log('partners', partners && partners.length);
     res.render('topic/index', {
       topic: topic,
       author_other_topics: other_topics,
       no_reply_topics: no_reply_topics,
       is_uped: isUped,
       is_collect: is_collect,
+      partners : partners
     });
   });
 
@@ -102,6 +105,9 @@ exports.index = function (req, res, next) {
           }));
       }
     }));
+
+    //get_partners
+    Partner.getFullPartner(ep.done('partners'));
   }));
 
   if (!currentUser) {

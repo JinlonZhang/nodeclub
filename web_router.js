@@ -95,7 +95,7 @@ router.post('/upload', auth.userRequired, topic.upload); //上传图片
 
 //获取合作伙伴
 router.get('/partner', partner.index);
-
+router.post('/partner', partner.put);
 // static
 router.get('/about', staticController.about);
 router.get('/faq', staticController.faq);

@@ -71,22 +71,7 @@
   </div>
   <% } %>
 
-  <% if (typeof( partner ) !== 'undefined') { %>
-  <div class='panel'>
-    <div class='header'>
-      <span class='col_fade'>友情社区</span>
-    </div>
-    <div class='inner'>
-      <% if (partners.length > 0) { %>
-      <ol class="friendship-community">
-        <%- partial('partner', { collection: partners, as: 'partner' }) %>
-      </ol>
-      <% } else { %>
-      <p>无</p>
-      <% } %>
-    </div>
-  </div>
-  <% } %>
+  <%- partial('partner') %>
 
   <div class='panel'>
     <div class='header'>
