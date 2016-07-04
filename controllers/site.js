@@ -22,11 +22,9 @@ exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
   page = page > 0 ? page : 1;
   var tab = req.query.tab || 'all';
-  console.log('tab=' + tab);
 
   var proxy = new eventproxy();
   proxy.fail(next);
-  console.log(proxy);
 
   // 取主题
   var query = {};
@@ -96,6 +94,7 @@ exports.index = function (req, res, next) {
   var tabName = renderHelper.tabName(tab);
   proxy.all('topics', 'tops', 'no_reply_topics', 'pages',
     function (topics, tops, no_reply_topics, pages) {
+      console.log(topics);
       res.render('index', {
         topics: topics,
         current_page: page,
@@ -132,6 +131,7 @@ exports.sitemap = function (req, res, next) {
           return next(err);
         }
         topics.forEach(function (topic) {
+          //TODO need to change url
           urlset.ele('url').ele('loc', 'http://cnodejs.org/topic/' + topic._id);
         });
 
@@ -145,5 +145,6 @@ exports.sitemap = function (req, res, next) {
 };
 
 exports.appDownload = function (req, res, next) {
+  //TODO need to change
   res.redirect('https://github.com/soliury/noder-react-native/blob/master/README.md')
 };

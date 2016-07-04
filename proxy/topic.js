@@ -125,6 +125,7 @@ exports.getLimit5w = function (callback) {
  * @param {Function} callback 回调函数
  */
 exports.getFullTopic = function (id, callback) {
+  console.log(id);
   var proxy = new EventProxy();
   var events = ['topic', 'author', 'replies'];
   proxy

@@ -17,11 +17,11 @@ require('./topic');
 require('./reply');
 require('./topic_collect');
 require('./message');
-require('./friendship-community');
+require('./partner');
 
 exports.User         = mongoose.model('User');
 exports.Topic        = mongoose.model('Topic');
 exports.Reply        = mongoose.model('Reply');
 exports.TopicCollect = mongoose.model('TopicCollect');
 exports.Message      = mongoose.model('Message');
-exports.FriendshipCommunity = mongoose.model('FriendshipCommunity');
+exports.Partner = mongoose.model('Partner');
