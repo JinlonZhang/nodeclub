@@ -45,7 +45,6 @@ exports.index = function (req, res, next) {
   var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect', 'partners'];
   var ep = EventProxy.create(events,
     function (topic, other_topics, no_reply_topics, is_collect, partners) {
-      console.log('partners', partners && partners.length);
     res.render('topic/index', {
       topic: topic,
       author_other_topics: other_topics,

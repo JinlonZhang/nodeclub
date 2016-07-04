@@ -39,7 +39,6 @@ var create = function (req, res, next) {
   }));
 
   ep.all('topic', function (topic) {
-    console.log('topc', topic);
     User.getUserById(topic.author_id, ep.done('topic_author'));
   });
 
