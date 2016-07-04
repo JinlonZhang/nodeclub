@@ -15,95 +15,134 @@
 
 
         <div class="inner post">
-            <form action="/active/create" method="post">
-                <h4>活动信息</h4>
-                <div class="group">
-                    <div>活动名称<strong>*</strong></div>
-                    <div class="cover">
-                        <img src="/public/images/cover_init.jpg" alt="">
-                    </div>
-                    <div>
-                        <input type="file" />
-                        <button>系统图库</button>
-                    </div>
-                </div>
+            <form id="addActive" action="/active/create" method="post">
+              <h4>活动信息</h4>
+              <div class="group">
+                  <div class="m-label">活动封面<strong>*</strong></div>
+                  <div class="m-inp">
+                      <div class="cover">
+                          <img src="/public/images/cover_init.jpg" alt="">
+                      </div>
+                      <div class="m-up">
+                          <p>
+                            温馨提示：
+                            <br>
+                            此图片将作为此活动的封面，一张漂亮的封面图片可以提高浏览者视觉体验，同时可以宣传活动内容。
+                            如果您并没有合适的图片，可以在系统图库中选择一张图片。
+                            <br>
+                            建议上传尺寸 1080px*640px 的.png、.jpg、.gif图片，图片小于1M
+                          </p>
+                          <a>
+                            上传图片
+                            <input type="file" />
+                          </a>
+                          <a>
+                            系统图库
+                          </a>
+                      </div>
+                  </div>
+              </div>
 
-                <div class="group">
-                    <div>活动名称<strong>*</strong></div>
-                    <input type="text" name="title" />
-                </div>
-                <div class="group">
-                    <div>开始时间<strong>*</strong></div>
-                    <input type="text" name="start_time" />
-                </div>
-                <div class="group">
-                    <div>结束时间<strong>*</strong></div>
-                    <input type="text" name="end_time" />
-                </div>
-                <div class="group">
-                    <div>活动地址<strong>*</strong></div>
-                    <select name="province" id="province">
+              <div class="group">
+                  <div class="m-label">活动名称<strong>*</strong></div>
+                  <div class="m-inp">
+                    <input class="m-inp100" type="text" name="title" />
+                  </div>
+              </div>
+
+              <div class="group">
+                  <div class="m-label">活动时间<strong>*</strong></div>
+                  <div class="m-inp">
+                    <input class="m-start" type="text" name="start_time" placeholder="开始时间" />
+                    <input class="m-end" type="text" name="end_time" placeholder="结束时间" />
+                  </div>
+              </div>
+
+              <div class="group">
+                  <div class="m-label">活动地址<strong>*</strong></div>
+                  <div class="m-inp">
+                    <select class="m-prov" name="province" id="province">
                         <option value="北京">北京</option>
                         <option value="上海">上海</option>
                         <option value="浙江">浙江</option>
                         <option value="安徽">安徽</option>
                     </select>
 
-                    <select name="city" id="city">
+                    <select class="m-city" name="city" id="city">
                         <option value="杭州">杭州</option>
                         <option value="温州">温州</option>
                         <option value="宁波">宁波</option>
                         <option value="台州">台州</option>
                     </select>
 
-                    <input type="text" name="adress">
-                </div>
+                    <input class="m-inp100" type="text" name="adress">
+                  </div>
+              </div>
 
-                <div class="group">
-                    <div>主办方<strong>*</strong></div>
-                    <select name="sponsor" id="sponsor">
+              <div class="group">
+                  <div class="m-label">主办方<strong>*</strong></div>
+                  <div class="m-inp">
+                    <input class="m-inp100" id="sponsor" type="text" name="sponsor" value="">
+                    <!-- <select name="sponsor" id="sponsor">
                         <option value="才云">才云</option>
                         <option value="vm">vm</option>
                         <option value="kubecon">Kubecon</option>
                         <option value="北京">北京</option>
                     </select>
-                    <button>添加主办方</button>
-                </div>
+                    <button>添加主办方</button> -->
+                  </div>
+              </div>
 
-                <div class="group">
-                    <div>活动详情<strong>*</strong></div>
-                     <textarea class='editor' name='active_detail' rows='20'
-                               placeholder='文章支持 Markdown 语法, 请注意标记代码'
-                     ><%= typeof(content) !== 'undefined' && content || '' %></textarea>
-                </div>
+              <div class="group">
+                  <div class="m-label">活动详情<strong>*</strong></div>
+                  <div class="m-inp">
+                    <textarea class='editor' name='active_detail' rows='20'
+                              placeholder='文章支持 Markdown 语法, 请注意标记代码'
+                    ></textarea>
+                  </div>
+              </div>
 
 
-                <h4>售票设置</h4>
-                <div class="group">
-                    <div>活动人数<strong>*</strong></div>
-                    <input type="text" name="people_num">
-                </div>
-                <div class="group">
-                    <div>活动收费<strong>*</strong></div>
-                    <select name="fees" id="fees">
-                        <option value="false">免费</option>
-                        <option value="true">收费</option>
-                    </select>
-                </div>
+              <h4>售票设置</h4>
+              <div class="group01">
+                <dl>
+                    <dt>活动人数<strong>*</strong></dt>
+                    <dd>
+                      <input type="text" name="people_num">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>活动收费<strong>*</strong></dt>
+                    <dd>
+                      <select name="fees" id="fees">
+                          <option value="false">免费</option>
+                          <option value="true">收费</option>
+                      </select>
+                    </dd>
+                </dl>
 
-                <div class="group">
-                    <div>是否审核<strong>*</strong></div>
-                    <select name="verify" id="verify">
-                        <option value="false">不审核</option>
-                        <option value="true">审核</option>
-                    </select>
-                </div>
+                <dl>
+                    <dt>费用<strong>*</strong></dt>
+                    <dd>
+                      <input type="text" name="cost">
+                    </dd>
+                </dl>
 
-                <!--<h4>报名表单设置</h4>-->
-                <button type="submit">提交</button>
-                <input type='hidden' name='_csrf' value='<%= csrf %>'>
+                <dl>
+                    <dt>是否审核<strong>*</strong></dt>
+                    <dd>
+                      <select name="verify" id="verify">
+                          <option value="false">不审核</option>
+                          <option value="true">审核</option>
+                      </select>
+                    </dd>
+                </dl>
+              </div>
+
+              <!--<h4>报名表单设置</h4>-->
+              <button class="m-act-btn" type="submit">提交</button>
+              <input type='hidden' name='_csrf' value='<%= csrf %>'>
             </form>
-
         </div>
     </div>
 </div>

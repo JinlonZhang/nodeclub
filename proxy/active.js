@@ -18,7 +18,8 @@ var o = {
     active_detail: 'active_detail',
     people_num: 'people',
     fees: 'fees',
-    verify: 'verify'
+    verify: 'verify',
+    cost: 'cost'
 }
 exports.newAndSave = function (o, authorId, callback) {
     var active       = new Active();
@@ -34,6 +35,7 @@ exports.newAndSave = function (o, authorId, callback) {
     active.fees = o.fees;
     active.verify = o.verify;
     active.author_id = authorId;
+    active.cost = o.cost;
 
     active.save(callback);
 };

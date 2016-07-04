@@ -17,8 +17,8 @@ var ActiveSchema = new Schema({
     active_detail: {type: String},   //活动详情
     people_num: {type: Number, default: 0 },   //活动人数
     fees: {type: Boolean, default: false},  //是否收费
-    verify: {type: Boolean, default: false}  //是否审核
+    verify: {type: Boolean, default: false},  //是否审核
+    cost: {type: Number, default: 0 }   //费用
 });
-
 
 mongoose.model('Active', ActiveSchema);
