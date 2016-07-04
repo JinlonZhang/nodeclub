@@ -80,19 +80,13 @@
       </form>
       <ul class='nav pull-right'>
         <% if (typeof(language) !== 'undefined') { %>
-        <li><a href='/'> <%=language.getMessage('index')%> </a></li>
+        <li><a href='/'> <%=language.getMessage('events')%> </a></li>
         <li><a href='/active'> <%=language.getMessage('events')%> </a></li>
+        <li><a href='/talk'><%=language.getMessage('topic')%></a></li>
+        <li><a href="/about"><%=language.getMessage('about')%></a></li>
         <% } %>
         <!--<li><a href='/getstart'>新手入门</a></li>-->
         <!--<li><a href='/api'>API</a></li>-->
-        <li><a href='/talk'><%=language.getMessage('topic')%></a></li>
-        <%
-        var site_navs = config.site_navs || [];
-        for (var i = 0, l = site_navs.length; i < l; i++) {
-        var nav = site_navs[i];
-        %>
-        <li><a href="<%- nav[0] %>" target="<%- nav[2] %>"><%- nav[1] %></a></li>
-        <% } %>
         <% if (current_user) { %>
         <li><a href='/setting'><%=language.getMessage('setting')%></a></li>
         <li>
@@ -102,10 +96,10 @@
         <li><a href='/signup'><%=language.getMessage('sign_up')%></a></li>
         <li><a href='/signin'><%=language.getMessage('sign_in')%></a></li>
         <% } %>
-        <% if (config.language == 'en-US') {%>
-        <li><a href='/zh-CN'>Chinese</a></li>
+        <% if (config.language == 'zh-CN') {%>
+          <li><a href='/en-US'>英文</a></li>
       <% } else { %>
-        <li><a href='/en-US'>英文</a></li>
+        <li><a href='/zh-CN'>Chinese</a></li>
       <% } %>
       </ul>
       <a class="btn btn-navbar" id="responsive-sidebar-trigger">
@@ -119,7 +113,7 @@
 <div id='main'>
   <%- body %>
 </div>
-<div id='backtotop'>回到顶部</div>
+<div id='backtotop'><%=language.getMessage('backtotop')%></div>
 <div id='footer'>
 <div id="sidebar-mask"></div>
 <% if (config.google_tracker_id) { %>

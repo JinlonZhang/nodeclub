@@ -7,7 +7,11 @@
 
     <div class='board clearfix'>
       <div class='floor'>
-        <span class='big'>积分: <%= user.score %> </span>
+        <% if (typeof(language) !== 'undefined') { %>
+        <span class='big'>
+          <%=language.getMessage('score')%>:
+        <% } %>
+          <%= user.score %> </span>
       </div>
     </div>
     <div class="space clearfix"></div>

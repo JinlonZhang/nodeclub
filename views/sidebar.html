@@ -3,7 +3,9 @@
   <div class='panel'>
     <% if (typeof(user) !== 'undefined' || current_user) { %>
     <div class='header'>
-      <span class='col_fade'>个人信息</span>
+        <% if (typeof(language) !== 'undefined') { %>
+      <span class='col_fade'><%=language.getMessage('profile')%> </span>
+      <% } %>
     </div>
     <div class='inner'>
       <%- partial('user/card',{ object: typeof(user) === 'undefined' ? current_user : user, as: 'user' }) %>
@@ -38,7 +40,9 @@
   <div class='panel'>
     <div class='header'>
       <!--<span class='col_fade'>无人回复的话题</span>-->
-      <span class='col_fade'>热门话题</span>
+        <% if (typeof(language) !== 'undefined') { %>
+      <span class='col_fade'><%=language.getMessage('hot_topic')%></span>
+        <% } %>
     </div>
     <div class='inner'>
       <% if (no_reply_topics.length > 0) { %>
@@ -55,7 +59,9 @@
   <% if (typeof(tops) !== 'undefined') { %>
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>积分榜</span>
+      <% if (typeof(language) !== 'undefined') { %>
+      <span class='col_fade'><%=language.getMessage('rank')%></span>
+        <% } %>
       &nbsp;
       <a class='dark' href='/users/top100'>TOP 100 &gt;&gt;</a>
     </div>
@@ -75,7 +81,9 @@
 
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>联系我们</span>
+        <% if (typeof(language) !== 'undefined') { %>
+      <span class='col_fade'><%=language.getMessage('contact_us')%></span>
+      <% } %>
     </div>
     <div class='inner cnode-app-download'>
       <img width='200' src="//dn-cnode.qbox.me/FtG0YVgQ6iginiLpf9W4_ShjiLfU">

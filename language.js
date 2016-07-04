@@ -46,6 +46,10 @@ var global_messages = {
 				"en-US": "Topic",
 				"zh-CN": "话题"
 			},
+			"about" : {
+ 				"en-US": "About",
+ 				"zh-CN": "关于"
+ 			},
 		 "setting" : {
 			 "en-US": "Setting",
 			 "zh-CN": "设置"
@@ -65,7 +69,43 @@ var global_messages = {
 			 "sign_up" : {
  				 "en-US": "Sign Up",
  				 "zh-CN": "注册"
- 			 }
+ 			 },
+			 backtotop : {
+				 "en-US": "Top",
+ 				 "zh-CN": "回到顶部"
+			 },
+			 profile : {
+				 "en-US": "Profile",
+ 				 "zh-CN": "个人信息"
+			 },
+			 hot_topic: {
+				 "en-US": "Hot Topic",
+ 				 "zh-CN": "热门话题"
+			 },
+			 contact_us : {
+				 "en-US": "Contact Us",
+ 				 "zh-CN": "联系我们"
+			 },
+			 rank : {
+				 "en-US": "Rank",
+ 				 "zh-CN": "积分榜"
+			 },
+			 score : {
+				 "en-US": "Score",
+ 				 "zh-CN": "积分"
+			 },
+			 publish : {
+				 "en-US": "Publish",
+ 				 "zh-CN": "发布话题"
+			 },
+			 submit : {
+				 "en-US": "Submit",
+ 				 "zh-CN": "提交"
+			 },
+			 submiting : {
+				"en-US": "Submiting",
+					"zh-CN": "提交中"
+			}
 }
 
 var language = new I18n(global_messages);

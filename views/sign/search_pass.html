@@ -30,7 +30,10 @@
           <input type='hidden' name='_csrf' value='<%= csrf %>'/>
         </div>
         <div class='form-actions'>
-          <input type='submit' class='span-primary' value='提交'/>
+          <% if (typeof(language) !== 'undefined') { %>
+            <input type='submit' class='span-primary' value="<%=language.getMessage('submit')%>"/>
+            <% } %>
+
         </div>
       </form>
     </div>
