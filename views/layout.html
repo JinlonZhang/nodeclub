@@ -80,24 +80,12 @@
       </form>
       <ul class='nav pull-right'>
         <% if (typeof(language) !== 'undefined') { %>
-        <li><a href='/'>首页</a></li>
-        <li><a href='/'> <%=language.getMessage('events')%> </a></li>
-        <% } %>
-        <% if (current_user){ %>
-        <li>
-            <a href='/my/messages'>
-              <% if (current_user.messages_count) { %>
-                <span class='big messages_count'><%= current_user.messages_count %></span>
-              <% } %>
-              未读消息
-            </a>
-        </li>
+        <li><a href='/'> <%=language.getMessage('index')%> </a></li>
+        <li><a href='/active'> <%=language.getMessage('events')%> </a></li>
         <% } %>
         <!--<li><a href='/getstart'>新手入门</a></li>-->
         <!--<li><a href='/api'>API</a></li>-->
         <li><a href='/talk'><%=language.getMessage('topic')%></a></li>
-        <li><a href='/blog'>博客</a></li>
-        <li><a href='/active'>活动</a></li>
         <%
         var site_navs = config.site_navs || [];
         for (var i = 0, l = site_navs.length; i < l; i++) {
@@ -115,9 +103,9 @@
         <li><a href='/signin'><%=language.getMessage('sign_in')%></a></li>
         <% } %>
         <% if (config.language == 'en-US') {%>
-        <li><a href='/zh-CN'>中文</a></li>
+        <li><a href='/zh-CN'>Chinese</a></li>
       <% } else { %>
-        <li><a href='/en-US'>English</a></li>
+        <li><a href='/en-US'>英文</a></li>
       <% } %>
       </ul>
       <a class="btn btn-navbar" id="responsive-sidebar-trigger">

@@ -34,36 +34,36 @@ I18n.prototype.getMessage = function(key){
 };
 
 var global_messages = {
-  	"sign_in" : {
-			 "en-US": "Sign In",
-			 "zh-CN": "登录"
+  	"index" : {
+			 "en-US": "Index",
+			 "zh-CN": "首页"
 		 },
 		 "events" : {
 			 "en-US": "Events",
 			 "zh-CN": "活动"
 		 },
 		 "topic" : {
-				"en-US": "topic",
+				"en-US": "Topic",
 				"zh-CN": "话题"
 			},
 		 "setting" : {
-			 "en-US": "setting",
+			 "en-US": "Setting",
 			 "zh-CN": "设置"
 		 },
 		 "topic" : {
-				"en-US": "topic",
+				"en-US": "Topic",
 				"zh-CN": "话题"
 			},
 			"log_out" : {
-				 "en-US": "log_out",
+				 "en-US": "Log Out",
 				 "zh-CN": "退出"
 			 },
 			 "sign_in" : {
- 				 "en-US": "sign_in",
+ 				 "en-US": "Sign In",
  				 "zh-CN": "登录"
  			 },
 			 "sign_up" : {
- 				 "en-US": "sign_up",
+ 				 "en-US": "Sign Up",
  				 "zh-CN": "注册"
  			 }
 }
