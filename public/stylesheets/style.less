@@ -1286,3 +1286,168 @@ textarea.editor {
   width: 250px;
   height: 60px;
 }
+
+/*
+|active
+*/
+#active_list {
+  padding: 10px;
+  overflow: hidden;
+
+  .td {
+    width: 30%;
+    border: 1px solid red;
+    float: left;
+    margin: 0px 1.5% 30px 1.5%;
+
+    dd {
+      h4 {
+        height: 60px;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .td:hover {
+    background: #f5f5f5;
+  }
+}
+
+/*
+|添加活动样式
+*/
+#addActive {
+  h4 {
+    color: #4c9be0;
+  }
+
+  .group {
+    overflow: hidden;
+    margin-bottom: 20px;
+    .m-label {
+      float: left;
+
+      strong {
+        color: red;
+        margin-left: 5px;
+      }
+    }
+
+    .m-inp {
+      padding-left: 120px;
+
+      .cover {
+        width: 320px;
+        height: 240px;
+        float: left;
+        img {
+          width: 100%;
+        }
+      }
+
+      .m-up {
+        padding-left: 340px;
+        p {
+          line-height: 1.5;
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+        a {
+          background-color: @kube_blue;
+          display: inline-block;
+          border-radius: 4px;
+          position: relative;
+          width: 48%;
+          color: #fff;
+          line-height: 42px;
+          text-align: center;
+          font-size: 16px;
+          cursor: pointer;
+
+          input {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+          }
+        }
+      }
+
+      input {
+        height: 42px;
+        border-radius: 4px;
+        line-height: 42px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      select {
+        height: 52px;
+        border-radius: 4px;
+      }
+      .m-inp100 {
+        width: 100%;
+      }
+
+      .m-start,.m-prov {
+        width: 48%;
+        float: left;
+      }
+
+      .m-end,.m-city {
+        width: 48%;
+        float: right;
+      }
+    }
+
+  }
+
+  .group01 {
+    dl {
+      display: inline-block;
+      width: 21.7%;
+      margin-right: 4%;
+      dt {
+        margin-bottom: 10px;
+        font-weight:normal;
+        strong {
+          margin-left: 5px;
+          color: red;
+        }
+      }
+      dd {
+        input,select {
+          height: 42px;
+          box-sizing: border-box;
+          width: 100%;
+          margin-left: -10px;
+        }
+      }
+    }
+
+    dl:last-child {
+      margin-right: 0;
+    }
+  }
+  .m-act-btn {
+    margin: 30px auto;
+    width: 120px;
+    height: 42px;
+    border: normal;
+    background-color: @kube_blue;
+    color: #fff;
+    font-size: 16px;
+    display: block;
+  }
+}
+
+/*
+|注册成功样式
+*/
+.alert-Success {
+  color: #4c9be0;
+  background-color: #ecf2f7;
+  border-color: #b2c9dc;
+}
