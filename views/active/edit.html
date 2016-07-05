@@ -140,7 +140,11 @@
               </div>
 
               <!--<h4>报名表单设置</h4>-->
-              <button class="m-act-btn" type="submit">提交</button>
+              <button class="m-act-btn" type="submit">
+                  <% if (typeof(language) !== 'undefined') { %>
+                    <%=language.getMessage('submit')%>
+                    <% } %>
+              </button>
               <input type='hidden' name='_csrf' value='<%= csrf %>'>
             </form>
         </div>

@@ -99,7 +99,6 @@ exports.index = function (req, res, next) {
   var tabName = renderHelper.tabName(tab);
   proxy.all('topics', 'tops', 'no_reply_topics', 'pages',
     function (topics, tops, no_reply_topics, pages) {
-      console.log(topics);
       res.render('index', {
         topics: topics,
         current_page: page,

@@ -41,7 +41,7 @@ var renderMiddleware = require('./middlewares/render');
 var logger = require('./common/logger');
 var helmet = require('helmet');
 var bytes = require('bytes')
-
+var language = require('./language');
 
 // 静态文件目录
 var staticDir = path.join(__dirname, 'public');
@@ -138,7 +138,8 @@ if (!config.debug) {
 _.extend(app.locals, {
   config: config,
   Loader: Loader,
-  assets: assets
+  assets: assets,
+  language : language
 });
 
 app.use(errorPageMiddleware.errorPage);
@@ -169,10 +170,10 @@ if (config.debug) {
 }
 
 if (!module.parent) {
-  app.listen('8000', function () {
-    logger.info('NodeClub listening on port', '8000');
+  app.listen(config.port, function () {
+    logger.info('NodeClub listening on port', config.port);
     logger.info('God bless love....');
-    logger.info('You can debug your app with http://' + config.hostname + ':' + '8000');
+    logger.info('You can debug your app with http://' + config.hostname + ':' + config.port);
     logger.info('');
   });
 }

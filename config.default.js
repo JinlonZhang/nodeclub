@@ -24,7 +24,7 @@ var config = {
   // 右上角的导航区
   site_navs: [
     // 格式 [ path, title, [target=''] ]
-    [ '/about', '关于' ]
+    [ '/about', 'about' ]
   ],
   // cdn host，如 http://cnodejs.qiniudn.com
   site_static_host: '', // 静态文件存储域名
@@ -140,6 +140,8 @@ var config = {
   create_post_per_day: 1000, // 每个用户一天可以发的主题数
   create_reply_per_day: 1000, // 每个用户一天可以发的评论数
   visit_per_day: 1000, // 每个 ip 每天能访问的次数
+
+  language : 'zh-CN'
 };
 
 if (process.env.NODE_ENV === 'test') {

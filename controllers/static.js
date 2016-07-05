@@ -1,4 +1,5 @@
 var multiline = require('multiline');
+var config       = require('../config');
 // static page
 // About
 exports.about = function (req, res, next) {
@@ -42,3 +43,9 @@ exports.robots = function (req, res, next) {
 exports.api = function (req, res, next) {
   res.render('static/api');
 };
+
+
+exports.language = function (req, res, next) {
+  config.language = req.params.type;
+  res.redirect('/');
+}

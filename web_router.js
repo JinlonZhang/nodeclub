@@ -97,6 +97,7 @@ router.post('/upload', auth.userRequired, topic.upload); //上传图片
 //获取合作伙伴
 router.get('/partner', partner.index);
 router.post('/partner', partner.put);
+
 // static
 router.get('/about', staticController.about);
 router.get('/faq', staticController.faq);
@@ -132,11 +133,16 @@ router.post('/auth/github/create', github.create);
 
 router.get('/search', search.index);
 
+
+//网站语言切换
+router.get('/:type', staticController.language);
+
 if (!config.debug) { // 这个兼容破坏了不少测试
 	router.get('/:name', function (req, res) {
 	  res.redirect('/user/' + req.params.name)
 	})
 }
+
 
 
 module.exports = router;

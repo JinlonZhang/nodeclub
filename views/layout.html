@@ -79,38 +79,28 @@
         <input type='text' id='q' name='q' class='search-query span3' value=''/>
       </form>
       <ul class='nav pull-right'>
-        <li><a href='/'>首页</a></li>
-        <% if (current_user){ %>
-        <li>
-            <a href='/my/messages'>
-              <% if (current_user.messages_count) { %>
-                <span class='big messages_count'><%= current_user.messages_count %></span>
-              <% } %>
-              未读消息
-            </a>
-        </li>
+        <% if (typeof(language) !== 'undefined') { %>
+        <li><a href='/'> <%=language.getMessage('events')%> </a></li>
+        <li><a href='/active'> <%=language.getMessage('events')%> </a></li>
+        <li><a href='/talk'><%=language.getMessage('topic')%></a></li>
+        <li><a href="/about"><%=language.getMessage('about')%></a></li>
         <% } %>
         <!--<li><a href='/getstart'>新手入门</a></li>-->
         <!--<li><a href='/api'>API</a></li>-->
-        <li><a href='/talk'>话题</a></li>
-        <li><a href='/blog'>博客</a></li>
-        <li><a href='/active'>活动</a></li>
-        <%
-        var site_navs = config.site_navs || [];
-        for (var i = 0, l = site_navs.length; i < l; i++) {
-        var nav = site_navs[i];
-        %>
-        <li><a href="<%- nav[0] %>" target="<%- nav[2] %>"><%- nav[1] %></a></li>
-        <% } %>
         <% if (current_user) { %>
-        <li><a href='/setting'>设置</a></li>
+        <li><a href='/setting'><%=language.getMessage('setting')%></a></li>
         <li>
-          <a href='/signout' data-method="post" rel="nofollow">退出</a>
+          <a href='/signout' data-method="post" rel="nofollow"><%=language.getMessage('log_out')%></a>
         </li>
         <% } else { %>
-        <li><a href='/signup'>注册</a></li>
-        <li><a href='/signin'>登录</a></li>
+        <li><a href='/signup'><%=language.getMessage('sign_up')%></a></li>
+        <li><a href='/signin'><%=language.getMessage('sign_in')%></a></li>
         <% } %>
+        <% if (config.language == 'zh-CN') {%>
+          <li><a href='/en-US'>英文</a></li>
+      <% } else { %>
+        <li><a href='/zh-CN'>Chinese</a></li>
+      <% } %>
       </ul>
       <a class="btn btn-navbar" id="responsive-sidebar-trigger">
         <span class="icon-bar"></span>
@@ -123,10 +113,9 @@
 <div id='main'>
   <%- body %>
 </div>
-<div id='backtotop'>回到顶部</div>
+<div id='backtotop'><%=language.getMessage('backtotop')%></div>
 <div id='footer'>
 <div id="sidebar-mask"></div>
-
 <% if (config.google_tracker_id) { %>
 <script>
   // google analytics
