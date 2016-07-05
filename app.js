@@ -42,6 +42,7 @@ var logger = require('./common/logger');
 var helmet = require('helmet');
 var bytes = require('bytes')
 var language = require('./language');
+var moment = require('moment');
 
 // 静态文件目录
 var staticDir = path.join(__dirname, 'public');
@@ -139,7 +140,8 @@ _.extend(app.locals, {
   config: config,
   Loader: Loader,
   assets: assets,
-  language : language
+  language : language,
+  moment: moment
 });
 
 app.use(errorPageMiddleware.errorPage);
