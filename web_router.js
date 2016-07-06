@@ -105,17 +105,14 @@ router.get('/faq', staticController.faq);
 router.get('/robots.txt', staticController.robots);
 router.get('/api', staticController.api);
 
-// blog
-router.get('/blog', staticController.blog);
+// talk
+router.get('/talk', site.talk);
 
 // active
 router.get('/active', active.index);
-
-// active create
 router.get('/active/create',auth.userRequired, active.create);
 router.post('/active/create', auth.userRequired, active.put);
-//router.post('/active/create', auth.userRequired, active.put);
-//router.post('/active/create', auth.userRequired, limit.peruserperday('create_topic', config.create_post_per_day, false), active.put);
+router.get('/active/:aid', active.detail);  // 显示某个活动
 
 //rss
 router.get('/rss', rss.index);

@@ -53,3 +53,7 @@ exports.newAndSave = function (o, authorId, callback) {
 exports.getActiveByQuery = function (query, opt, callback) {
   Active.find(query, opt, callback);
 };
+
+exports.getActiveById = function (id, callback) {
+  Active.find(id, callback);
+};

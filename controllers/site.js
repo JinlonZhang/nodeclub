@@ -39,7 +39,7 @@ exports.index = function (req, res, next) {
   }
 
   var limit = config.list_topic_count;
-  var limit = 2;
+  // var limit = 2;
   var options = { skip: (page - 1) * limit, limit: limit, sort: '-top -last_reply_at'};
 
   Topic.getTopicsByQuery(query, options, proxy.done('topics', function (topics) {
@@ -48,7 +48,6 @@ exports.index = function (req, res, next) {
 
   // 取排行榜上的用户
   cache.get('tops', proxy.done(function (tops) {
-    console.log('tops=' + tops);
     if (tops) {
       proxy.emit('tops', tops);
     } else {
@@ -57,7 +56,6 @@ exports.index = function (req, res, next) {
         { limit: 10, sort: '-score'},
         proxy.done('tops', function (tops) {
           cache.set('tops', tops, 60 * 1);
-          console.log('returntops=' + tops);
           return tops;
         })
       );

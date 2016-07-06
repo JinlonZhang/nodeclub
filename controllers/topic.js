@@ -10,6 +10,7 @@ var validator = require('validator');
 
 var at           = require('../common/at');
 var User         = require('../proxy').User;
+var Language         = require('../language');
 var Topic        = require('../proxy').Topic;
 var TopicCollect = require('../proxy').TopicCollect;
 var Partner   = require('../proxy').Partner;
@@ -117,8 +118,15 @@ exports.index = function (req, res, next) {
 };
 
 exports.create = function (req, res, next) {
+  var tabs = null;
+  if (config.language == 'zh-CN') {
+    tabs = config.tabs
+  } else if (config.language == 'en-US') {
+    tabs = config.en_tabs
+  }
+  console.log('tabs====' + tabs);
   res.render('topic/edit', {
-    tabs: config.tabs
+    tabs: tabs
   });
 };
 

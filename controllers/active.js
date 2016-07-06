@@ -149,25 +149,45 @@ exports.put = function (req, res, next) {
     //});
     //
     // 验证
+    console.log('start_time===' + start_time);
     var editError;
     if (title === '') {
        editError = '标题不能是空的。';
+    } else if (title.length < 5 || title.length > 100) {
+       editError = '标题字数在5~100';
+    } else if (start_time === '') {
+      editError = '时间必填'
+    } else if (end_time === '') {
+       editError = '结束时间必填';
+    } else if (adress === '') {
+      editError = '详细地址必填';
+    } else if (sponsor === '') {
+      editError = '主办方必填';
+    } else if (active_detail === '') {
+      editError = '活动详情必填';
+    } else if (people_num === '') {
+      editError = '活动人数必填';
+    } else if (fees === 'true') {
+      if (cost === '') {
+        editError = '费用必填';
+      }
     }
     console.log('editError', editError);
-    // } else if (title.length < 5 || title.length > 100) {
-    //    editError = '标题字数太多或太少。';
-    // } else if (!tab || allTabs.indexOf(tab) === -1) {
-    //    editError = '必须选择一个版块。';
-    // } else if (content === '') {
-    //    editError = '内容不可为空';
-    // }
     //// END 验证
     //
     if (editError) {
        res.status(422);
        return res.render('active/edit', {
            edit_error: editError,
-           title: title
+           title: title,
+           start_time: start_time,
+           end_time: end_time,
+           adress: adress,
+           sponsor: sponsor,
+           active_detail: active_detail,
+           people_num: people_num,
+           fees: fees,
+           cost: cost
        });
     }
     var o = {
@@ -207,4 +227,27 @@ exports.put = function (req, res, next) {
         //发送at消息
         //at.sendMessageToMentionUsers(content, topic._id, req.session.user._id);
     });
+};
+
+/*
+*活动详情页
+*
+*/
+exports.detail = function (req, res, next) {
+  var proxy = new EventProxy();
+  console.log('req.iddddd=' + req.params.aid);
+  var id = {_id: req.params.aid}
+  Active.getActiveById(id, proxy.done('detail', function (detail) {
+      console.log('detail=======================================' + detail);
+      return detail;
+  }));
+
+  proxy.all('detail', function (detail) {
+    console.log('get detail');
+      res.render('active/detail', {
+        detail: detail
+      });
+      //res.redirect('/topic/' + topic._id);
+  });
+
 };

@@ -20,9 +20,9 @@
           </div>
           <% } %>
             <form id="addActive" action="/active/create" method="post">
-              <h4>活动信息</h4>
+              <h4><%=language.getMessage('activity_information')%></h4>
               <div class="group">
-                  <div class="m-label">活动封面<strong>*</strong></div>
+                  <div class="m-label"><%=language.getMessage('activity_covers')%><strong>*</strong></div>
                   <div class="m-inp">
                       <div class="cover">
                           <img src="/public/images/cover_init.jpg" alt="">
@@ -34,10 +34,10 @@
                             此图片将作为此活动的封面，一张漂亮的封面图片可以提高浏览者视觉体验，同时可以宣传活动内容。
                             如果您并没有合适的图片，可以在系统图库中选择一张图片。
                             <br>
-                            建议上传尺寸 1080px*640px 的.png、.jpg、.gif图片，图片小于1M
+                            建议上传尺寸 400px*300px 的.png、.jpg、.gif图片，图片小于1M
                           </p>
                           <a>
-                            上传图片
+                            <%=language.getMessage('upload_pics')%>
                             <input type="file" />
                           </a>
                           <a>
@@ -48,22 +48,22 @@
               </div>
 
               <div class="group">
-                  <div class="m-label">活动名称<strong>*</strong></div>
+                  <div class="m-label"><%=language.getMessage('name_of_activity')%><strong>*</strong></div>
                   <div class="m-inp">
-                    <input class="m-inp100" type="text" name="title" />
+                    <input class="m-inp100" type="text" name="title" value="<%= typeof(title) !== 'undefined' && title || '' %>" />
                   </div>
               </div>
 
               <div class="group">
-                  <div class="m-label">活动时间<strong>*</strong></div>
+                  <div class="m-label"><%=language.getMessage('time_duration')%><strong>*</strong></div>
                   <div class="m-inp">
-                    <input class="m-start" type="text" name="start_time" placeholder="开始时间" />
-                    <input class="m-end" type="text" name="end_time" placeholder="结束时间" />
+                    <input class="m-start" type="text" name="start_time" placeholder="开始时间" value="<%= typeof(start_time) !== 'undefined' && start_time || '' %>"/>
+                    <input class="m-end" type="text" name="end_time" placeholder="结束时间" value="<%= typeof(end_time) !== 'undefined' && end_time || '' %>"/>
                   </div>
               </div>
 
               <div class="group">
-                  <div class="m-label">活动地址<strong>*</strong></div>
+                  <div class="m-label"><%=language.getMessage('activity_address')%><strong>*</strong></div>
                   <div class="m-inp">
                     <select class="m-prov" name="province" id="province">
                         <option value="北京">北京</option>
@@ -79,14 +79,14 @@
                         <option value="台州">台州</option>
                     </select>
 
-                    <input class="m-inp100" type="text" name="adress" placeholder="详细地址">
+                    <input class="m-inp100" type="text" name="adress" placeholder="详细地址" value="<%= typeof(adress) !== 'undefined' && adress || '' %>">
                   </div>
               </div>
 
               <div class="group">
-                  <div class="m-label">主办方<strong>*</strong></div>
+                  <div class="m-label"><%=language.getMessage('sponsor')%><strong>*</strong></div>
                   <div class="m-inp">
-                    <input class="m-inp100" id="sponsor" type="text" name="sponsor" value="">
+                    <input class="m-inp100" id="sponsor" type="text" name="sponsor" value="<%= typeof(sponsor) !== 'undefined' && sponsor || '' %>">
                     <!-- <select name="sponsor" id="sponsor">
                         <option value="才云">才云</option>
                         <option value="vm">vm</option>
@@ -98,11 +98,11 @@
               </div>
 
               <div class="group">
-                  <div class="m-label">活动详情<strong>*</strong></div>
+                  <div class="m-label"><%=language.getMessage('content')%><strong>*</strong></div>
                   <div class="m-inp">
                     <textarea class='editor' name='active_detail' rows='20'
                               placeholder='文章支持 Markdown 语法, 请注意标记代码'
-                    ></textarea>
+                    ><%= typeof(active_detail) !== 'undefined' && active_detail || '' %></textarea>
                   </div>
               </div>
 
@@ -110,34 +110,34 @@
               <h4>售票设置</h4>
               <div class="group01">
                 <dl>
-                    <dt>活动人数<strong>*</strong></dt>
+                    <dt><%=language.getMessage('participants')%><strong>*</strong></dt>
                     <dd>
                       <input type="text" name="people_num">
                     </dd>
                 </dl>
                 <dl>
-                    <dt>活动收费<strong>*</strong></dt>
+                    <dt><%=language.getMessage('charge_of_Actiivity')%><strong>*</strong></dt>
                     <dd>
                       <select name="fees" id="fees">
-                          <option value="false">免费</option>
-                          <option value="true">收费</option>
+                          <option value="false"><%=language.getMessage('free')%></option>
+                          <option value="true"><%=language.getMessage('charge')%></option>
                       </select>
                     </dd>
                 </dl>
 
-                <dl>
-                    <dt>费用<strong>*</strong></dt>
+                <dl id="cost">
+                    <dt><%=language.getMessage('price')%><strong>*</strong></dt>
                     <dd>
                       <input type="text" name="cost">
                     </dd>
                 </dl>
 
                 <dl>
-                    <dt>是否审核<strong>*</strong></dt>
+                    <dt><%=language.getMessage('audit_or_not')%><strong>*</strong></dt>
                     <dd>
                       <select name="verify" id="verify">
-                          <option value="false">不审核</option>
-                          <option value="true">审核</option>
+                          <option value="false"><%=language.getMessage('not_audit')%></option>
+                          <option value="true"><%=language.getMessage('audit')%></option>
                       </select>
                     </dd>
                 </dl>
@@ -188,5 +188,17 @@
             $('#topic_create_warn').html(warnMsg);
         });
         // END 选择招聘版块时，给出提示
+
+        //
+        $('#fees').change(function() {
+          if(this.value == 'true') {
+            // $('#cost').show();
+            $('#cost').css({"display":"inline-block"});
+          } else if ( this.value == 'false') {
+            // $('#cost').hide();
+            $('#cost').css({"display":"none"});
+          }
+        });
+
     })();
 </script>
