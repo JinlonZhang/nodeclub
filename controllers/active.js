@@ -45,7 +45,6 @@ exports.index = function(req, res, next) {
 
     var proxy = new EventProxy();
     proxy.fail(next);
-    console.log(proxy);
 
     // 取主题
     var query = {};
