@@ -1,5 +1,3 @@
-
-
 <div id='content'>
     <div class='panel'>
         <div class='header'>
@@ -15,6 +13,12 @@
 
 
         <div class="inner post">
+          <% if(typeof(edit_error) !== 'undefined' && edit_error){ %>
+          <div class="alert alert-error">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <strong><%= edit_error %></strong>
+          </div>
+          <% } %>
             <form id="addActive" action="/active/create" method="post">
               <h4>活动信息</h4>
               <div class="group">
@@ -75,7 +79,7 @@
                         <option value="台州">台州</option>
                     </select>
 
-                    <input class="m-inp100" type="text" name="adress">
+                    <input class="m-inp100" type="text" name="adress" placeholder="详细地址">
                   </div>
               </div>
 

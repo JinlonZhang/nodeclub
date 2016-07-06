@@ -9,6 +9,7 @@
         <div class="inner no-padding">
             <%- partial('./list', {
             topics: topics,
+            active: active,
             pages: pages,
             current_page: current_page,
             base: '/'
@@ -21,3 +22,7 @@
         <% } %>
     </div>
 </div>
+<%
+console.log('testindex');
+console.log(active);
+ %>

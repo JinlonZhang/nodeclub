@@ -9,18 +9,6 @@
  * Module dependencies.
  */
 
-//var validator = require('validator');
-//
-//var User         = require('../proxy').User;
-//var Topic        = require('../proxy').Topic;
-//var Active       = require('../proxy').Active;
-//var config       = require('../config');
-//var eventproxy   = require('eventproxy');
-//var cache        = require('../common/cache');
-//var xmlbuilder   = require('xmlbuilder');
-//var renderHelper = require('../common/render_helper');
-//var _            = require('lodash');
-
 var validator = require('validator');
 
 var at           = require('../common/at');
@@ -41,11 +29,9 @@ exports.index = function(req, res, next) {
     var page = parseInt(req.query.page, 10) || 1;
     page = page > 0 ? page : 1;
     var tab = req.query.tab || 'all';
-    console.log('tab=' + tab);
 
     var proxy = new EventProxy();
     proxy.fail(next);
-    console.log(proxy);
 
     // 取主题
     var query = {};
@@ -112,9 +98,13 @@ exports.index = function(req, res, next) {
     }));
     // END 取分页数据
 
+    Active.getActiveByQuery({}, {}, proxy.done('active', function (active) {
+        return active;
+    }));
+
     var tabName = renderHelper.tabName(tab);
-    proxy.all('topics', 'tops', 'no_reply_topics', 'pages',
-        function (topics, tops, no_reply_topics, pages) {
+    proxy.all('topics', 'tops', 'no_reply_topics', 'pages','active',
+        function (topics, tops, no_reply_topics, pages, active) {
             res.render('active/index', {
                 topics: topics,
                 current_page: page,
@@ -125,6 +115,7 @@ exports.index = function(req, res, next) {
                 tabs: config.tabs,
                 tab: tab,
                 pageTitle: tabName && (tabName + '版块'),
+                active: active,
             });
         });
 
@@ -138,60 +129,47 @@ exports.create = function (req, res, next) {
 
 
 exports.put = function (req, res, next) {
-    console.log('req', req);
-    console.log('test0');
+    // console.log('req', req);
     var title          = validator.trim(req.body.title);
-    console.log('test1');
     var start_time     = validator.trim(req.body.start_time);
-    console.log('test2');
     var end_time       = validator.trim(req.body.end_time);
-    console.log('test3');
     var province       = validator.trim(req.body.province);
-    console.log('test4');
     var city           = validator.trim(req.body.city);
-    console.log('test5');
     var adress         = validator.trim(req.body.adress);
-    console.log('test6');
     var sponsor        = validator.trim(req.body.sponsor);
-    console.log('test7');
     var active_detail  = validator.trim(req.body.active_detail);
-    console.log('test8');
     var people_num     = validator.trim(req.body.people_num);
-    console.log('test9');
     var fees           = validator.trim(req.body.fees);
-    console.log('test12');
     var verify         = validator.trim(req.body.verify);
-    console.log('test66666666666666666');
     var cost           = validator.trim(req.body.cost);
-    cosole.log('cost', cost);
 
     //// 得到所有的 tab, e.g. ['ask', 'share', ..]
     //var allTabs = config.tabs.map(function (tPair) {
     //    return tPair[0];
     //});
     //
-    //// 验证
-    //var editError;
-    //if (title === '') {
-    //    editError = '标题不能是空的。';
-    //} else if (title.length < 5 || title.length > 100) {
+    // 验证
+    var editError;
+    if (title === '') {
+       editError = '标题不能是空的。';
+    }
+    console.log('editError', editError);
+    // } else if (title.length < 5 || title.length > 100) {
     //    editError = '标题字数太多或太少。';
-    //} else if (!tab || allTabs.indexOf(tab) === -1) {
+    // } else if (!tab || allTabs.indexOf(tab) === -1) {
     //    editError = '必须选择一个版块。';
-    //} else if (content === '') {
+    // } else if (content === '') {
     //    editError = '内容不可为空';
-    //}
+    // }
     //// END 验证
     //
-    //if (editError) {
-    //    res.status(422);
-    //    return res.render('topic/edit', {
-    //        edit_error: editError,
-    //        title: title,
-    //        content: content,
-    //        tabs: config.tabs
-    //    });
-    //}
+    if (editError) {
+       res.status(422);
+       return res.render('active/edit', {
+           edit_error: editError,
+           title: title
+       });
+    }
     var o = {
         title: title,
         start_time: start_time,
@@ -206,9 +184,6 @@ exports.put = function (req, res, next) {
         verify: verify,
         cost: cost
     }
-    console.log('active001');
-    console.log('fees=' + o.fees);
-    console.log('au=' + req.session.user._id);
 
     Active.newAndSave(o, req.session.user._id, function (err, topic) {
         if (err) {

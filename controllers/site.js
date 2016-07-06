@@ -28,8 +28,6 @@ exports.index = function (req, res, next) {
   var proxy = new eventproxy();
   proxy.fail(next);
 
-  console.log('proxy=' + proxy);
-
   // 取主题
   var query = {};
   if (tab && tab !== 'all') {
@@ -41,6 +39,7 @@ exports.index = function (req, res, next) {
   }
 
   var limit = config.list_topic_count;
+  var limit = 2;
   var options = { skip: (page - 1) * limit, limit: limit, sort: '-top -last_reply_at'};
 
   Topic.getTopicsByQuery(query, options, proxy.done('topics', function (topics) {
@@ -58,6 +57,7 @@ exports.index = function (req, res, next) {
         { limit: 10, sort: '-score'},
         proxy.done('tops', function (tops) {
           cache.set('tops', tops, 60 * 1);
+          console.log('returntops=' + tops);
           return tops;
         })
       );

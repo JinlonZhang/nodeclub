@@ -39,3 +39,17 @@ exports.newAndSave = function (o, authorId, callback) {
 
     active.save(callback);
 };
+
+/**
+ * 根据关键词，获取主题列表
+ * Callback:
+ * - err, 数据库错误
+ * - count, 主题列表
+ * @param {String} query 搜索关键词
+ * @param {Object} opt 搜索选项
+ * @param {Function} callback 回调函数
+ */
+
+exports.getActiveByQuery = function (query, opt, callback) {
+  Active.find(query, opt, callback);
+};
