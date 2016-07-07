@@ -110,8 +110,8 @@ router.get('/talk', site.talk);
 
 // active
 router.get('/active', active.index);
-router.get('/active/create',auth.userRequired, active.create);
-router.post('/active/create', auth.userRequired, active.put);
+router.get('/active/create',auth.adminRequired, active.create);
+router.post('/active/create', auth.adminRequired, active.put);
 router.get('/active/:aid', active.detail);  // 显示某个活动
 
 //rss

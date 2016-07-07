@@ -4,13 +4,12 @@
             <ol class='breadcrumb'>
                 <li><a href='/'>活动</a><span class='divider'>/</span></li>
                 <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
-                <li class='active'>编辑活动</li>
+                <li class='active'><%=language.getMessage('edit_activity')%></li>
                 <% }else{ %>
-                <li class='active'>发布活动</li>
+                <li class='active'><%=language.getMessage('post_activity')%></li>
                 <% } %>
             </ol>
         </div>
-
 
         <div class="inner post">
           <% if(typeof(edit_error) !== 'undefined' && edit_error){ %>
@@ -32,16 +31,12 @@
                             温馨提示：
                             <br>
                             此图片将作为此活动的封面，一张漂亮的封面图片可以提高浏览者视觉体验，同时可以宣传活动内容。
-                            如果您并没有合适的图片，可以在系统图库中选择一张图片。
                             <br>
                             建议上传尺寸 400px*300px 的.png、.jpg、.gif图片，图片小于1M
                           </p>
                           <a>
                             <%=language.getMessage('upload_pics')%>
-                            <input type="file" />
-                          </a>
-                          <a>
-                            系统图库
+                            <input type="file" name="cover_url" />
                           </a>
                       </div>
                   </div>
@@ -57,8 +52,8 @@
               <div class="group">
                   <div class="m-label"><%=language.getMessage('time_duration')%><strong>*</strong></div>
                   <div class="m-inp">
-                    <input class="m-start" id="startTime" type="text" name="start_time" placeholder="开始时间" value="<%= typeof(start_time) !== 'undefined' && start_time || '' %>"/>
-                    <input class="m-end" id="endTime" type="text" name="end_time" placeholder="结束时间" value="<%= typeof(end_time) !== 'undefined' && end_time || '' %>"/>
+                    <input class="m-start" id="startTime" type="text" name="start_time" placeholder="<%=language.getMessage('start_time')%>" value="<%= typeof(start_time) !== 'undefined' && start_time || '' %>"/>
+                    <input class="m-end" id="endTime" type="text" name="end_time" placeholder="<%=language.getMessage('end_time')%>" value="<%= typeof(end_time) !== 'undefined' && end_time || '' %>"/>
                   </div>
               </div>
 
@@ -176,6 +171,15 @@
                     <% } %>
               </button>
               <input type='hidden' name='_csrf' value='<%= csrf %>'>
+            </form>
+            <form class="" action="/upload" method="post">
+              <input type="file" name="file" value="">
+              <input type='hidden' name='_csrf' value='<%= csrf %>'>
+              <button class="m-act-btn" type="submit">
+                  <% if (typeof(language) !== 'undefined') { %>
+                    <%=language.getMessage('submit')%>
+                    <% } %>
+              </button>
             </form>
         </div>
     </div>
