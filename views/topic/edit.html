@@ -4,11 +4,11 @@
   <div class='panel'>
     <div class='header'>
       <ol class='breadcrumb'>
-        <li><a href='/'>主页</a><span class='divider'>/</span></li>
+        <li><a href='/'><%=language.getMessage('index')%></a><span class='divider'>/</span></li>
         <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
-        <li class='active'>编辑话题</li>
+        <li class='active'><%=language.getMessage('edit_topic')%></li>
         <% }else{ %>
-        <li class='active'>发布话题</li>
+        <li class='active'><%=language.getMessage('post_topic')%></li>
         <% } %>
       </ol>
     </div>
@@ -30,9 +30,9 @@
         <form id='create_topic_form' action='/topic/create' method='post'>
           <% } %>
           <fieldset>
-            <span class="tab-selector">选择版块：</span>
+            <span class="tab-selector"><%=language.getMessage('choose')%>：</span>
             <select name="tab" id="tab-value">
-              <option value="">请选择</option>
+              <option value=""><%=language.getMessage('select')%></option>
               <%
               var tabValue = '';
               if (typeof(tab) !== 'undefined') {

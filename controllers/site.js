@@ -20,8 +20,6 @@ var _            = require('lodash');
 
 exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
-  console.log('req.=' + req.query.page);
-  console.log('page=' + page);
   page = page > 0 ? page : 1;
   var tab = req.query.tab || 'all';
 
@@ -39,7 +37,7 @@ exports.index = function (req, res, next) {
   }
 
   var limit = config.list_topic_count;
-  var limit = 2;
+  // var limit = 2;
   var options = { skip: (page - 1) * limit, limit: limit, sort: '-top -last_reply_at'};
 
   Topic.getTopicsByQuery(query, options, proxy.done('topics', function (topics) {
@@ -48,7 +46,6 @@ exports.index = function (req, res, next) {
 
   // 取排行榜上的用户
   cache.get('tops', proxy.done(function (tops) {
-    console.log('tops=' + tops);
     if (tops) {
       proxy.emit('tops', tops);
     } else {
@@ -57,7 +54,6 @@ exports.index = function (req, res, next) {
         { limit: 10, sort: '-score'},
         proxy.done('tops', function (tops) {
           cache.set('tops', tops, 60 * 1);
-          console.log('returntops=' + tops);
           return tops;
         })
       );
@@ -117,11 +113,9 @@ exports.talk = function(req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
   page = page > 0 ? page : 1;
   var tab = req.query.tab || 'all';
-  console.log('tab=' + tab);
 
   var proxy = new eventproxy();
   proxy.fail(next);
-  console.log(proxy);
 
   // 取主题
   var query = {};

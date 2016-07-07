@@ -62,6 +62,7 @@ exports.signup = function (req, res, next) {
     tools.bhash(pass, ep.done(function (passhash) {
       // create gravatar
       var avatarUrl = User.makeGravatar(email);
+      console.log('con-sign-avatarUrl================' + avatarUrl);
       User.newAndSave(loginname, loginname, passhash, email, avatarUrl, false, function (err) {
         if (err) {
           return next(err);
@@ -288,4 +289,3 @@ exports.updatePass = function (req, res, next) {
     }));
   }));
 };
-

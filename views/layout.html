@@ -33,6 +33,7 @@
   .css('/public/libs/webuploader/webuploader.css')
   .css('/public/libs/code-prettify/prettify.css')
   .css('/public/libs/font-awesome/css/font-awesome.css')
+  .css('/public/libs/DateTimePicker/jquery.datetimepicker.css')
   .done(assets, config.site_static_host, config.mini_assets)
   %>
 
@@ -50,6 +51,7 @@
   .js('/public/libs/qrcode.js')
   .js('/public/javascripts/main.js')
   .js('/public/javascripts/responsive.js')
+  .js('/public/libs/DateTimePicker/jquery.datetimepicker.js')
   .done(assets, config.site_static_host, config.mini_assets)
   %>
 
@@ -86,8 +88,6 @@
         <li><a href='/active'> <%=language.getMessage('events')%> </a></li>
         <!-- <li><a href="/about"><%=language.getMessage('about')%></a></li> -->
         <% } %>
-        <!--<li><a href='/getstart'>新手入门</a></li>-->
-        <!--<li><a href='/api'>API</a></li>-->
         <% if (current_user) { %>
         <li><a href='/setting'><%=language.getMessage('setting')%></a></li>
         <li>

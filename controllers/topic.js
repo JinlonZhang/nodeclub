@@ -10,6 +10,7 @@ var validator = require('validator');
 
 var at           = require('../common/at');
 var User         = require('../proxy').User;
+var Language         = require('../language');
 var Topic        = require('../proxy').Topic;
 var TopicCollect = require('../proxy').TopicCollect;
 var Partner   = require('../proxy').Partner;
@@ -117,11 +118,16 @@ exports.index = function (req, res, next) {
 };
 
 exports.create = function (req, res, next) {
+  var tabs = null;
+  if (config.language == 'zh-CN') {
+    tabs = config.tabs
+  } else if (config.language == 'en-US') {
+    tabs = config.en_tabs
+  }
   res.render('topic/edit', {
-    tabs: config.tabs
+    tabs: tabs
   });
 };
-
 
 exports.put = function (req, res, next) {
   var title   = validator.trim(req.body.title);
@@ -449,8 +455,11 @@ exports.de_collect = function (req, res, next) {
 };
 
 exports.upload = function (req, res, next) {
+  console.log('con-top-upload');
   var isFileLimit = false;
+  console.log('con-top-upload01');
   req.busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
+    console.log('con-top-upload02');
       file.on('limit', function () {
         isFileLimit = true;
 

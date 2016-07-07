@@ -87,7 +87,7 @@ var config = {
   weibo_id: 'your_weibo_id',
 
   // admin 可删除话题，编辑标签。把 user_login_name 换成你的登录名
-  admins: { zxydaisy: true },
+  admins: { zxydaisy: true, zjl606: true},
 
   // github 登陆的配置
   GITHUB_OAUTH: {

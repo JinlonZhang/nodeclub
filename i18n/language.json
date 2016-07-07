@@ -1,5 +1,5 @@
 {
-  	"index" : {
+		"index" : {
 			 "en-US": "Index",
 			 "zh-CN": "首页"
 		 },
@@ -12,15 +12,55 @@
 				"zh-CN": "话题"
 			},
 			"about" : {
- 				"en-US": "About",
- 				"zh-CN": "关于"
- 			},
+				"en-US": "About",
+				"zh-CN": "关于"
+			},
 		 "setting" : {
 			 "en-US": "Setting",
 			 "zh-CN": "设置"
 		 },
+		 "login_name" : {
+			 "en-US": "Login Name",
+			 "zh-CN": "用户名"
+		 },
+		 "email" : {
+			 "en-US": "E-mail",
+			 "zh-CN": "电子邮件"
+		 },
+		 "microblog" : {
+			 "en-US": "Microblog",
+			 "zh-CN": "微博"
+		 },
+		 "personal_website" : {
+			 "en-US": "Personal Website",
+			 "zh-CN": "个人网站"
+		 },
+		 "location" : {
+			 "en-US": "Location",
+			 "zh-CN": "所在地点"
+		 },
+		 "personalized_signature" : {
+			 "en-US": "Personalized Signature",
+			 "zh-CN": "个性签名"
+		 },
+		 "save_settings" : {
+			 "en-US": "Save Settings",
+			 "zh-CN": "保存设置"
+		 },
+		 "change_password" : {
+			 "en-US": "Change Password",
+			 "zh-CN": "更改密码"
+		 },
+		 "current_password" : {
+			 "en-US": "Current Password",
+			 "zh-CN": "当前密码"
+		 },
+		 "new_password" : {
+			 "en-US": "New Password",
+			 "zh-CN": "新密码"
+		 },
 		 "topic" : {
-				"en-US": "Topic",
+				"en-US": "Topics",
 				"zh-CN": "话题"
 			},
 			"log_out" : {
@@ -28,51 +68,147 @@
 				 "zh-CN": "退出"
 			 },
 			 "sign_in" : {
- 				 "en-US": "Sign In",
- 				 "zh-CN": "登录"
- 			 },
+				 "en-US": "Sign In",
+				 "zh-CN": "登录"
+			 },
 			 "sign_up" : {
- 				 "en-US": "Sign Up",
- 				 "zh-CN": "注册"
- 			 },
+				 "en-US": "Sign Up",
+				 "zh-CN": "注册"
+			 },
 			 "backtotop" : {
 				 "en-US": "Top",
- 				 "zh-CN": "回到顶部"
+				 "zh-CN": "回到顶部"
 			 },
 			 "profile" : {
 				 "en-US": "Profile",
- 				 "zh-CN": "个人信息"
+				 "zh-CN": "个人信息"
 			 },
 			 "hot_topic": {
 				 "en-US": "Hot Topic",
- 				 "zh-CN": "热门话题"
+				 "zh-CN": "热门话题"
 			 },
 			 "contact_us" : {
 				 "en-US": "Contact Us",
- 				 "zh-CN": "联系我们"
+				 "zh-CN": "联系我们"
 			 },
 			 "rank" : {
 				 "en-US": "Rank",
- 				 "zh-CN": "积分榜"
+				 "zh-CN": "积分榜"
 			 },
 			 "score" : {
 				 "en-US": "Score",
- 				 "zh-CN": "积分"
+				 "zh-CN": "积分"
 			 },
 			 "publish" : {
 				 "en-US": "Publish",
- 				 "zh-CN": "发布话题"
+				 "zh-CN": "发布话题"
 			 },
 			 "submit" : {
 				 "en-US": "Submit",
- 				 "zh-CN": "提交"
+				 "zh-CN": "提交"
 			 },
 			 "submiting" : {
 				"en-US": "Submiting",
-					"zh-CN": "提交中"
+				"zh-CN": "提交中"
 			},
-			"upload_img" : {
-			 "en-US": "Upload Images",
-			 "zh-CN": "上传图片"
-		 }
+			"activity_information": {
+				"en-US": "Activity Information",
+				"zh-CN": "活动信息"
+			},
+			"activity_covers": {
+				"en-US": "Activity Covers",
+				"zh-CN": "活动封面"
+			},
+			"name_of_activity": {
+				"en-US": "Name Of Activity",
+				"zh-CN": "活动名称"
+			},
+			"time_duration": {
+				"en-US": "Time Duration",
+				"zh-CN": "活动时间"
+			},
+			"activity_address": {
+				"en-US": "Activity Address",
+				"zh-CN": "活动地址"
+			},
+			"participants": {
+				"en-US": "Particiants",
+				"zh-CN": "活动人数"
+			},
+			"charge_of_Actiivity": {
+				"en-US": "Charge Of Activity",
+				"zh-CN": "活动收费"
+			},
+			"audit_or_not": {
+				"en-US": "Audit Or Not",
+				"zh-CN": "是否审核"
+			},
+			"content": {
+				"en-US": "Content",
+				"zh-CN": "活动详情"
+			},
+			"sponsor": {
+				"en-US": "Sponsor",
+				"zh-CN": "主办方"
+			},
+			"upload_pics": {
+				"en-US": "Upload Pics",
+				"zh-CN": "上传图片"
+			},
+			"select": {
+				"en-US": "Select",
+				"zh-CN": "请选择"
+			},
+			"choose": {
+				"en-US": "Choose",
+				"zh-CN": "选择板块"
+			},
+			"price": {
+				"en-US": "Price",
+				"zh-CN": "票价"
+			},
+			"share": {
+				"en-US": "Share",
+				"zh-CN": "分享"
+			},
+			"post_topic": {
+				"en-US": "Post Topic",
+				"zh-CN": "发布话题"
+			},
+			"post_activity": {
+				"en-US": "Post Activity",
+				"zh-CN": "发布活动"
+			},
+			"edit_topic": {
+				"en-US": "Edit Topic",
+				"zh-CN": "编辑话题"
+			},
+			"edit_activity": {
+				"en-US": "Edit Activity",
+				"zh-CN": "编辑活动"
+			},
+			"free": {
+				"en-US": "Free",
+				"zh-CN": "免费"
+			},
+			"charge": {
+				"en-US": "Charge",
+				"zh-CN": "收费"
+			},
+			"audit": {
+				"en-US": "Audit",
+				"zh-CN": "审核"
+			},
+			"not_audit": {
+				"en-US": "Not Audit",
+				"zh-CN": "不审核"
+			},
+			"start_time": {
+				"en-US": "start time",
+				"zh-CN": "开始时间"
+			},
+			"end_time": {
+				"en-US": "end time",
+				"zh-CN": "结束时间"
+			}
 }

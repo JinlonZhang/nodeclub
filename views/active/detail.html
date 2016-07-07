@@ -1,0 +1,19 @@
+<div id="content">
+    <div class="panel">
+        <div class="header">
+            活动详情
+        </div>
+        <% if (typeof(detail) !== 'undefined') { %>
+        <div class="inner no-padding">
+            <article class="m-act-art">
+              <h2><%= detail[0].title %></h2>
+              <%= detail[0].active_detail %>
+            </article>
+        </div>
+        <% } else { %>
+        <div class="inner">
+            <p>暂无此活动</p>
+        </div>
+        <% } %>
+    </div>
+</div>
