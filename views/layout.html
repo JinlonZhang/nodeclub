@@ -117,6 +117,9 @@
 <div id='backtotop'><%=language.getMessage('backtotop')%></div>
 <div id='footer'>
 <div id="sidebar-mask"></div>
+<script>
+  window.i18n = <%- JSON.stringify(i18n) %>;
+</script>
 <% if (config.google_tracker_id) { %>
 <script>
   // google analytics

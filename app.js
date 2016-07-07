@@ -43,7 +43,7 @@ var helmet = require('helmet');
 var bytes = require('bytes')
 var language = require('./language');
 var moment = require('moment');
-
+var i18n = require('./i18n/language.json');
 // 静态文件目录
 var staticDir = path.join(__dirname, 'public');
 // assets
@@ -141,7 +141,8 @@ _.extend(app.locals, {
   Loader: Loader,
   assets: assets,
   language : language,
-  moment: moment
+  moment: moment,
+  i18n : i18n
 });
 
 app.use(errorPageMiddleware.errorPage);
