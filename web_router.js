@@ -108,9 +108,6 @@ router.get('/api', staticController.api);
 // blog
 router.get('/blog', staticController.blog);
 
-// talk
-router.get('/talk', site.talk);
-
 // active
 router.get('/active', active.index);
 
