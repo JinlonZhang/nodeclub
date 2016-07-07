@@ -1,3 +1,4 @@
+(function(global) {
 var SUPPORT_LANGUAGES = {
 	"en-US": "English",
 	"zh-CN": "Chinese",
@@ -9,7 +10,7 @@ var SUPPORT_LANGUAGES = {
 var DEFAULT_LANGUAGE = "en-US";
 
 function Language(messages) {
-	this.messages = i18n;
+	this.messages = global.i18n;
 };
 
 Language.prototype.isSupportLanguage = function(lang){
@@ -28,3 +29,7 @@ Language.prototype.getLocale = function(){
 Language.prototype.getMessage = function(key){
 	return this.messages[key] && this.messages[key][this.getLocale()];
 };
+
+global.Language = Language;
+
+})(this);
