@@ -124,12 +124,10 @@ exports.create = function (req, res, next) {
   } else if (config.language == 'en-US') {
     tabs = config.en_tabs
   }
-  console.log('tabs====' + tabs);
   res.render('topic/edit', {
     tabs: tabs
   });
 };
-
 
 exports.put = function (req, res, next) {
   var title   = validator.trim(req.body.title);

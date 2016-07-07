@@ -20,8 +20,6 @@ var _            = require('lodash');
 
 exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
-  console.log('req.=' + req.query.page);
-  console.log('page=' + page);
   page = page > 0 ? page : 1;
   var tab = req.query.tab || 'all';
 
@@ -115,11 +113,9 @@ exports.talk = function(req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
   page = page > 0 ? page : 1;
   var tab = req.query.tab || 'all';
-  console.log('tab=' + tab);
 
   var proxy = new eventproxy();
   proxy.fail(next);
-  console.log(proxy);
 
   // 取主题
   var query = {};

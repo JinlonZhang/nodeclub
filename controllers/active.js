@@ -143,13 +143,7 @@ exports.put = function (req, res, next) {
     var verify         = validator.trim(req.body.verify);
     var cost           = validator.trim(req.body.cost);
 
-    //// 得到所有的 tab, e.g. ['ask', 'share', ..]
-    //var allTabs = config.tabs.map(function (tPair) {
-    //    return tPair[0];
-    //});
-    //
     // 验证
-    console.log('start_time===' + start_time);
     var editError;
     if (title === '') {
        editError = '标题不能是空的。';
@@ -172,7 +166,6 @@ exports.put = function (req, res, next) {
         editError = '费用必填';
       }
     }
-    console.log('editError', editError);
     //// END 验证
     //
     if (editError) {
@@ -224,8 +217,6 @@ exports.put = function (req, res, next) {
             proxy.emit('score_saved');
         }));
 
-        //发送at消息
-        //at.sendMessageToMentionUsers(content, topic._id, req.session.user._id);
     });
 };
 
@@ -235,19 +226,15 @@ exports.put = function (req, res, next) {
 */
 exports.detail = function (req, res, next) {
   var proxy = new EventProxy();
-  console.log('req.iddddd=' + req.params.aid);
   var id = {_id: req.params.aid}
   Active.getActiveById(id, proxy.done('detail', function (detail) {
-      console.log('detail=======================================' + detail);
       return detail;
   }));
 
   proxy.all('detail', function (detail) {
-    console.log('get detail');
       res.render('active/detail', {
         detail: detail
       });
-      //res.redirect('/topic/' + topic._id);
   });
 
 };
