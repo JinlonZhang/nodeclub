@@ -45,6 +45,7 @@
   .js('/public/libs/jquery.caret.js')
   .js('/public/libs/jquery.atwho.js')
   .js('/public/libs/markdownit.js')
+  .js('/public/libs/language.js')
   .js('/public/libs/code-prettify/prettify.js')
   .js('/public/libs/qrcode.js')
   .js('/public/javascripts/main.js')
@@ -63,6 +64,7 @@
   <meta content="<%= csrf %>" name="csrf-token">
 </head>
 <body>
+  <input type="hidden" id="currentLanguage" value="<%- config.language %>"/>
 <!-- navbar -->
 <div class='navbar'>
   <div class='navbar-inner'>
@@ -115,6 +117,9 @@
 <div id='backtotop'><%=language.getMessage('backtotop')%></div>
 <div id='footer'>
 <div id="sidebar-mask"></div>
+<script>
+  window.i18n = <%- JSON.stringify(i18n) %>;
+</script>
 <% if (config.google_tracker_id) { %>
 <script>
   // google analytics

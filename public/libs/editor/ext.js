@@ -1,6 +1,7 @@
-(function(Editor, markdownit, WebUploader){
+(function(Editor, markdownit, WebUploader, Language){
     // Set default options
     var md = new markdownit();
+    var language = new Language();
 
     md.set({
       html:         false,        // Enable HTML tags in source
@@ -79,6 +80,8 @@
         this.editor = editor;
         this.$win.modal('show');
     };
+
+    console.log(language.getMessage('upload_img'));
 
     //图片上传工具
     var ToolImage = function(){
@@ -243,4 +246,4 @@
         var line = cm.lastLine();
         cm.setLine(line, cm.getLine(line) + txt);
     };
-})(window.Editor, window.markdownit, window.WebUploader);
+})(window.Editor, window.markdownit, window.WebUploader, window.Language);
