@@ -122,6 +122,7 @@ exports.index = function(req, res, next) {
 };
 
 exports.create = function (req, res, next) {
+
     res.render('active/edit', {
         tabs: config.tabs
     });
@@ -129,7 +130,6 @@ exports.create = function (req, res, next) {
 
 
 exports.put = function (req, res, next) {
-    // console.log('req', req);
     var title          = validator.trim(req.body.title);
     var start_time     = validator.trim(req.body.start_time);
     var end_time       = validator.trim(req.body.end_time);
@@ -194,7 +194,6 @@ exports.put = function (req, res, next) {
 
         proxy.all('score_saved', function () {
             res.redirect('/active');
-            //res.redirect('/topic/' + topic._id);
         });
         proxy.fail(next);
         User.getUserById(req.session.user._id, proxy.done(function (user) {
