@@ -23,8 +23,9 @@
               <div class="group">
                   <div class="m-label"><%=language.getMessage('activity_covers')%><strong>*</strong></div>
                   <div class="m-inp">
-                      <div class="cover">
-                          <img src="/public/images/cover_init.jpg" alt="">
+                      <div class="cover" id="activeTitleBox">
+                          <img src="/public/images/cover_init.jpg" id='activeTitle' alt="">
+                          <input type="hidden" id='activeTitleValue' name="cover_url" />
                       </div>
                       <div class="m-up">
                           <p>
@@ -34,10 +35,6 @@
                             <br>
                             建议上传尺寸 400px*300px 的.png、.jpg、.gif图片，图片小于1M
                           </p>
-                          <a>
-                            <%=language.getMessage('upload_pics')%>
-                            <input type="file" name="cover_url" />
-                          </a>
                       </div>
                   </div>
               </div>
@@ -192,6 +189,14 @@
     (function () {
         var editor = new Editor();
         editor.render($('.editor')[0]);
+
+
+        var uploadImage = new UploadImage($('#activeTitle'), $('#activeTitleValue'));
+        $('#activeTitle').on('click', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          uploadImage.show();
+        })
 
         // 版块选择的检查，必须选择
         $('#create_topic_form').on('submit', function (e) {
