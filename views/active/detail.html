@@ -1,8 +1,6 @@
 <div id="content">
     <div class="panel">
-        <div class="header">
-            活动详情
-        </div>
+        <div class="header"><%=language.getMessage('content')%></div>
         <% if (typeof(detail) !== 'undefined') { %>
         <div class="inner no-padding">
             <article class="m-act-art">
@@ -12,7 +10,7 @@
         </div>
         <% } else { %>
         <div class="inner">
-            <p>暂无此活动</p>
+            <p><%=language.getMessage('no_this_activity')%></p>
         </div>
         <% } %>
     </div>

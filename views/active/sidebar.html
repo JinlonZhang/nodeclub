@@ -38,7 +38,7 @@
     <div class='panel'>
         <div class='header'>
             <!--<span class='col_fade'>无人回复的话题</span>-->
-            <span class='col_fade'>热门活动</span>
+            <span class='col_fade'><%=language.getMessage('hot_activity')%></span>
         </div>
         <div class='inner'>
             <% if (no_reply_topics.length > 0) { %>
@@ -55,7 +55,7 @@
     <% if (typeof(tops) !== 'undefined') { %>
     <div class='panel'>
         <div class='header'>
-            <span class='col_fade'>往期活动回顾</span>
+            <span class='col_fade'><%=language.getMessage('to_review_activities')%></span>
             &nbsp;
             <a class='dark' href='/users/top100'>TOP 100 &gt;&gt;</a>
         </div>
@@ -78,20 +78,20 @@
         <div class='inner'>
             <ol class="friendship-community">
                 <li>
-                    <a href="https://ruby-china.org/" target="_blank">
-                        <img src="<%- staticFile('/public/images/ruby-china-20150529.png') %>">
+                    <a href="https://caicloud.io/" target="_blank">
+                        <img src="<%- staticFile('/public/images/caicloud.png') %>">
                     </a>
                 </li>
                 <div class="sep10"></div>
                 <li>
-                    <a href="http://golangtc.com/" target="_blank">
-                        <img src="<%- staticFile('/public/images/golangtc-logo.png') %>">
+                    <a href="http://www.vmware.com/cn" target="_blank">
+                        <img src="<%- staticFile('/public/images/vm.png') %>">
                     </a>
                 </li>
                 <div class="sep10"></div>
                 <li>
-                    <a href="http://phphub.org/" target="_blank">
-                        <img src="<%- staticFile('/public/images/phphub-logo.png') %>">
+                    <a href="http://www.dockone.io/" target="_blank">
+                        <img src="<%- staticFile('/public/images/dockerone.png') %>">
                     </a>
                 </li>
             </ol>
@@ -99,14 +99,14 @@
     </div>
     <div class='panel'>
         <div class='header'>
-            <span class='col_fade'>联系我们</span>
+            <span class='col_fade'><%=language.getMessage('contact_us')%></span>
         </div>
         <div class='inner cnode-app-download'>
             <img width='200' src="//dn-cnode.qbox.me/FtG0YVgQ6iginiLpf9W4_ShjiLfU">
             <br />
             <!--<a href="https://github.com/soliury/noder-react-native" target="_blank">客户端源码地址</a>-->
-            <h4>Kubecon技术社区</h4>
-            <p>欢迎投稿或推荐文章</p>
+            <h4><%=language.getMessage('kubecon_technology_community')%></h4>
+            <p><%=language.getMessage('welcome_to_submit_or_recommend_articles')%></p>
             <p>Email:info@kubecon.com.cn</p>
         </div>
     </div>

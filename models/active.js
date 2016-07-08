@@ -18,7 +18,8 @@ var ActiveSchema = new Schema({
     people_num: {type: Number, default: 0 },   //活动人数
     fees: {type: Boolean, default: false},  //是否收费
     verify: {type: Boolean, default: false},  //是否审核
-    cost: {type: Number, default: 0 }   //费用
+    cost: {type: Number, default: 0 },   //费用
+    cover_url: {type: String} //封面图片
 });
 
 mongoose.model('Active', ActiveSchema);
