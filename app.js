@@ -49,11 +49,11 @@ var staticDir = path.join(__dirname, 'public');
 // assets
 var assets = {};
 var global = {};
-var env = process.env.ENV;
+var env = process.env.NODE_ENV;
 console.log(env);
 
 //根据环境变量切换
-if (!env){
+if (env){
   console.log('env', env);
   global = require('./config.json');
 }
