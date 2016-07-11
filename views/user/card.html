@@ -22,7 +22,7 @@
         <% if (user.signature) {%>
             <%-escapeSignature(user.signature)%>
         <%} else {%>
-            这家伙很懒，什么个性签名都没有留下。
+            <%=language.getMessage('signature_information')%>
         <%}%>
         ”
     </span>

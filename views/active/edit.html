@@ -29,11 +29,11 @@
                       </div>
                       <div class="m-up">
                           <p>
-                            温馨提示：
-                            <br/>
-                            此图片将作为此活动的封面，一张漂亮的封面图片可以提高浏览者视觉体验，同时可以宣传活动内容。
-                            <br/>
-                            建议上传尺寸 400px*300px 的.png、.jpg、.gif图片，图片小于1M
+                            <%= language.getMessage('reminder')%>
+                            <br>
+                            <%= language.getMessage('reminder_info_1')%>
+                            <br>
+                            <%= language.getMessage('reminder_info_2')%>
                           </p>
                       </div>
                   </div>
@@ -59,6 +59,7 @@
                   <div class="m-inp">
                     <select class="m-prov" name="province" id="province" size="1" onchange="getCity()">
                       <%
+                        console.log('config.language====' + config.language)
                         if(config.language == 'zh-CN') {
                       %>
                       <option value= 0 >安徽</option>
@@ -155,7 +156,7 @@
               </div>
 
               <div class="group">
-                  <div class="m-label"><%=language.getMessage('content')%><strong>*</strong></div>
+                  <div class="m-label"><%=language.getMessage('active_detail')%><strong>*</strong></div>
                   <div class="m-inp">
                     <textarea class='editor' name='active_detail' rows='20'
                               placeholder='文章支持 Markdown 语法, 请注意标记代码'

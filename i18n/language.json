@@ -143,8 +143,8 @@
 				"en-US": "Audit Or Not",
 				"zh-CN": "是否审核"
 			},
-			"content": {
-				"en-US": "Content",
+			"active_detail": {
+				"en-US": "Active Detail",
 				"zh-CN": "活动详情"
 			},
 			"sponsor": {
@@ -238,5 +238,137 @@
 			"to_review_activities": {
 				"en-US": "To review activities",
 				"zh-CN": "往期活动回顾"
+			},
+			"signature_information": {
+				"en-US": "This guy is too lazy, do not leave what personal signature",
+				"zh-CN": "这家伙很懒，什么个性签名都没有留下。"
+			},
+			"no_topic": {
+				"en-US": "No Topic",
+				"zh-CN": "暂无话题"
+			},
+			"friendship_link": {
+				"en-US": "Friendship link",
+				"zh-CN": "友情链接"
+			},
+			"upload_image": {
+				"en-US": "Upload Image",
+				"zh-CN": "上传图像"
+			},
+			"please_log_in_by": {
+				"en-US": "Please log in by Kubecon to modify the GitHub",
+				"zh-CN": "请通过 GitHub 登陆 Kubecon 来修改"
+			},
+			"reminder": {
+			"en-US": "Reminder：",
+			"zh-CN": "温馨提示："
+			},
+			"reminder_info_1": {
+				"en-US": "This picture will be used as the cover of this activity, a beautiful picture of the cover can improve the visual experience, and can promote the content of activities.",
+				"zh-CN": "此图片将作为此活动的封面，一张漂亮的封面图片可以提高浏览者视觉体验，同时可以宣传活动内容。"
+			},
+			"reminder_info_2": {
+				"en-US": "Recommended upload size.Png 400px*300px,.Jpg,.Gif pictures, picture is less than 1M",
+				"zh-CN": "建议上传尺寸 400px*300px 的.png、.jpg、.gif图片，图片小于1M"
+			},
+			"title_words_more_than_10_words": {
+				"en-US": "Title words more than 10 words",
+				"zh-CN": "标题字数 10 字以上"
+			},
+			"author": {
+				"en-US": "Author ",
+				"zh-CN": "作者"
+			},
+			"come_from": {
+				"en-US": "Come from",
+				"zh-CN": "来自"
+			},
+			"times_browse": {
+				"en-US": "times browse",
+				"zh-CN": "次浏览"
+			},
+			"published_in": {
+			"en-US": "Published in",
+			"zh-CN": "发布于"
+			},
+			"the_last_time_the_editor_was": {
+				"en-US": "The last time the editor was",
+				"zh-CN": "最后一次编辑是"
+			},
+			"add_reply": {
+				"en-US": "Add Reply",
+				"zh-CN": "添加回复"
+			},
+			"reply": {
+				"en-US": "Reply",
+				"zh-CN": "回复"
+			},
+			"other_topics_of_the_author": {
+				"en-US": "Other topics of the author",
+				"zh-CN": "作者其它话题"
+			},
+			"no_one_replies_to_the_topic": {
+				"en-US": "No one replies to the topic",
+				"zh-CN": "无人回复的话题"
+			},
+			"markdown_grammar_reference": {
+				"en-US": "Markdown Grammar reference",
+				"zh-CN": "Markdown 语法参考"
+			},
+			"topic_guide": {
+				"en-US": "Topic Guide",
+				"zh-CN": "话题发布指南"
+			},
+			"makedown_tip01": {
+				"en-US": "Try to concentrate the points of the topic into the title.",
+				"zh-CN": "尽量把话题要点浓缩到标题里"
+			},
+			"makedown_tip02": {
+				"en-US": "Code meaning and error can be asked on the SegmentFault",
+				"zh-CN": "代码含义和报错可在SegmentFault提问"
+			},
+			"single_title": {
+				"en-US": "Single title",
+				"zh-CN": "单行的标题"
+			},
+			"bold": {
+				"en-US": "bold",
+				"zh-CN": "粗体"
+			},
+			"inline_code": {
+				"en-US": "Inline code",
+				"zh-CN": "行内代码"
+			},
+			"mark_code_block": {
+				"en-US": "mark code block",
+				"zh-CN": "标记代码块"
+			},
+			"content": {
+				"en-US": "content",
+				"zh-CN": "内容"
+			},
+			"link": {
+				"en-US": "link",
+				"zh-CN": "链接"
+			},
+			"text_description": {
+				"en-US": "Text description",
+				"zh-CN": "文字说明"
+			},
+			"pictures_linking": {
+				"en-US": "pictures linking",
+				"zh-CN": "图片链接"
+			},
+			"markdown_document": {
+				"en-US": "markdown document",
+				"zh-CN": "markdown 文档"
+			},
+			"string": {
+				"en-US": "String",
+				"zh-CN": "字符串"
+			},
+			"QR_code": {
+				"en-US": "QR code",
+				"zh-CN": "二维码"
 			}
 }
