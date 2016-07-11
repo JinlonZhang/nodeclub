@@ -7,6 +7,7 @@ var path = require('path');
 var config = {
   // debug 为 true 时，用于本地调试
   debug: false,
+  site_qn_host : "https://dn-caicloudui.qbox.me/",
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
@@ -51,6 +52,9 @@ var config = {
 
   // 话题列表显示的话题数量
   list_topic_count: 20,
+
+  // 活动列表显示的话题数量
+  list_active_count: 20,
 
   // RSS配置
   rss: {

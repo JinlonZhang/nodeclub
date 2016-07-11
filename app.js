@@ -48,6 +48,15 @@ var i18n = require('./i18n/language.json');
 var staticDir = path.join(__dirname, 'public');
 // assets
 var assets = {};
+var global = {};
+var env = process.env.ENV;
+console.log(env);
+
+//根据环境变量切换
+if (!env){
+  console.log('env', env);
+  global = require('./config.json');
+}
 
 if (config.mini_assets) {
   try {
@@ -142,7 +151,8 @@ _.extend(app.locals, {
   assets: assets,
   language : language,
   moment: moment,
-  i18n : i18n
+  i18n : i18n,
+  global : global
 });
 
 app.use(errorPageMiddleware.errorPage);
