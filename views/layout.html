@@ -34,7 +34,7 @@
   .css('/public/libs/code-prettify/prettify.css')
   .css('/public/libs/font-awesome/css/font-awesome.css')
   .css('/public/libs/DateTimePicker/jquery.datetimepicker.css')
-  .done(assets, config.site_static_host, config.mini_assets)
+  .done(assets, global.site_static_host, config.mini_assets)
   %>
 
   <!-- scripts -->
@@ -53,7 +53,7 @@
   .js('/public/javascripts/main.js')
   .js('/public/javascripts/responsive.js')
   .js('/public/libs/DateTimePicker/jquery.datetimepicker.js')
-  .done(assets, config.site_static_host, config.mini_assets)
+  .done(assets, global.site_static_host, config.mini_assets)
   %>
 
   <% if (typeof(topic) !== 'undefined') { %>

@@ -1,26 +1,15 @@
 <div id='sidebar'>
 
-    <div class='panel'>
-        <% if (typeof(user) !== 'undefined' || current_user) { %>
-        <div class='header'>
-            <span class='col_fade'><%=language.getMessage('profile')%></span>
-        </div>
-        <div class='inner'>
-            <%- partial('user/card',{ object: typeof(user) === 'undefined' ? current_user : user, as: 'user' }) %>
-        </div>
-        <% } else { %>
-        <div class='panel'>
-            <div class='header'>
-                <span class='col_fade'>Kubernetes技术周刊</span>
-            </div>
-            <div class='inner'>
-                <p><%= config.description %></p>
-            </div>
-        </div>
-        <% } %>
-    </div>
+  <div class='panel'>
+      <div class='header'>
+          <span class='col_fade'>Kubernetes技术周刊</span>
+      </div>
+      <div class='inner'>
+          <p><%= config.description %></p>
+      </div>
+  </div>
 
-    <% if (current_user.is_admin) { %>
+    <% if (!current_user || !current_user.is_admin) { %>
     <div class="panel">
         <div class='inner'>
             <a href='/active/create' id='create_topic_btn'>

@@ -455,11 +455,10 @@ exports.de_collect = function (req, res, next) {
 };
 
 exports.upload = function (req, res, next) {
-  console.log('con-top-upload');
+
   var isFileLimit = false;
-  console.log('con-top-upload01');
+  
   req.busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
-    console.log('con-top-upload02');
       file.on('limit', function () {
         isFileLimit = true;
 

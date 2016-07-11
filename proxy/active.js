@@ -56,6 +56,18 @@ exports.getActiveByQuery = function (query, opt, callback) {
   Active.find(query, opt, callback);
 };
 
+/**
+ * 获取关键词能搜索到的主题数量
+ * Callback:
+ * - err, 数据库错误
+ * - count, 主题数量
+ * @param {String} query 搜索关键词
+ * @param {Function} callback 回调函数
+ */
+exports.getCountByQuery = function (query, callback) {
+  Active.count(query, callback);
+};
+
 exports.getActiveById = function (id, callback) {
   Active.find(id, callback);
 };
