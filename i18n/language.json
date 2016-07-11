@@ -210,5 +210,33 @@
 			"end_time": {
 				"en-US": "end time",
 				"zh-CN": "结束时间"
+			},
+			"detail_address": {
+				"en-US": "detail address",
+				"zh-CN": "详细地址"
+			},
+			"ticket_setup": {
+				"en-US": "Ticket Setup",
+				"zh-CN": "售票设置"
+			},
+			"no_this_activity": {
+				"en-US": "No this activity",
+				"zh-CN": "暂无此活动"
+			},
+			"welcome_to_submit_or_recommend_articles": {
+				"en-US": "Welcome to submit or recommend articles",
+				"zh-CN": "欢迎投稿或推荐文章"
+			},
+			"kubecon_technology_community": {
+				"en-US": "Kubecon technology community",
+				"zh-CN": "Kubecon 技术社区"
+			},
+			"hot_activity": {
+				"en-US": "Hot Activity",
+				"zh-CN": "热门活动"
+			},
+			"to_review_activities": {
+				"en-US": "To review activities",
+				"zh-CN": "往期活动回顾"
 			}
 }

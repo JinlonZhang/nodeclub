@@ -19,7 +19,8 @@ var o = {
     people_num: 'people',
     fees: 'fees',
     verify: 'verify',
-    cost: 'cost'
+    cost: 'cost',
+    cover_url: 'cover_url'
 }
 exports.newAndSave = function (o, authorId, callback) {
     var active       = new Active();
@@ -36,6 +37,7 @@ exports.newAndSave = function (o, authorId, callback) {
     active.verify = o.verify;
     active.author_id = authorId;
     active.cost = o.cost;
+    active.cover_url = o.cover_url;
 
     active.save(callback);
 };

@@ -61,8 +61,8 @@ exports.signup = function (req, res, next) {
 
     tools.bhash(pass, ep.done(function (passhash) {
       // create gravatar
-      var avatarUrl = User.makeGravatar(email);
-      console.log('con-sign-avatarUrl================' + avatarUrl);
+      var avatarUrl = 'https://dn-caicloudui.qbox.me/kubcon/user/img/user_img.png';
+      // var avatarUrl = User.makeGravatar(email);
       User.newAndSave(loginname, loginname, passhash, email, avatarUrl, false, function (err) {
         if (err) {
           return next(err);

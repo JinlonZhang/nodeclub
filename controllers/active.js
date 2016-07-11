@@ -142,6 +142,7 @@ exports.put = function (req, res, next) {
     var fees           = validator.trim(req.body.fees);
     var verify         = validator.trim(req.body.verify);
     var cost           = validator.trim(req.body.cost);
+    var cover_url      = validator.trim(req.body.cover_url);
 
     // 验证
     var editError;
@@ -195,7 +196,8 @@ exports.put = function (req, res, next) {
         people_num: people_num,
         fees: fees,
         verify: verify,
-        cost: cost
+        cost: cost,
+        cover_url: cover_url
     }
 
     Active.newAndSave(o, req.session.user._id, function (err, topic) {

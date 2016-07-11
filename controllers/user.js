@@ -110,7 +110,9 @@ exports.setting = function (req, res, next) {
       signature: data.signature,
       weibo: data.weibo,
       accessToken: data.accessToken,
+      avatar: data.avatar,
     };
+    console.log('con-user-setting======' + data2.avatar);
     if (isSuccess) {
       data2.success = msg;
     } else {
