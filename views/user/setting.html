@@ -1,5 +1,5 @@
 <%- partial('../sidebar') %>
-<%- partial('../includes/uploader') %>
+<%- partial('../includes/editor') %>
 
 <div id='content'>
   <div class='panel'>
@@ -156,10 +156,10 @@
   });
   // END qrcode generate
 
-  var uploadImage = new UploadImage($('#user_img'), $('#up_user_value'));
+  var uploadHead = new UploadImage($('#user_img'), $('#up_user_value'));
   $('#user_img').on('click', function(e){
     e.preventDefault();
     e.stopPropagation();
-    uploadImage.show();
+    uploadHead.show();
   })
 </script>
