@@ -35,8 +35,8 @@
               <option value=""><%=language.getMessage('select')%></option>
               <%
               var tabValue = '';
-              if (typeof(tab) !== 'undefined') {
-                tabValue = tab;
+              if (typeof(tabs) !== 'undefined') {
+                tabValue = tabs;
 
               tabs.forEach(function (pair) {
                 var value = pair[0];
@@ -45,7 +45,7 @@
                 <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
               <%});
             }%>
-            
+
             </select>
             <span id="topic_create_warn"></span>
             <textarea autofocus class='span9' id='title' name='title' rows='1'

@@ -69,5 +69,6 @@ exports.getCountByQuery = function (query, callback) {
 };
 
 exports.getActiveById = function (id, callback) {
+  console.log('proxy=====id====' + id)
   Active.find(id, callback);
 };

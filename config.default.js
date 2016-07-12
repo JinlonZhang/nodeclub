@@ -130,8 +130,14 @@ var config = {
   // 版块
   tabs: [
     ['share', '分享'],
-    ['ask', '问答'],
+    ['Q&A', '问答'],
     ['job', '招聘'],
+  ],
+
+  en_tabs: [
+    ['share', 'share'],
+    ['Q&A', 'Q&A'],
+    ['job', 'job'],
   ],
 
   // 极光推送
