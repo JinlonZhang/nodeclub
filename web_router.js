@@ -113,6 +113,7 @@ router.get('/active', active.index);
 router.get('/active/create',auth.adminRequired, active.create);
 router.post('/active/create', auth.adminRequired, active.put);
 router.get('/active/:aid', active.detail);  // 显示某个活动
+router.get('/active/:did/edit', auth.adminRequired, active.showEdit);  // 编辑某活动
 
 //rss
 router.get('/rss', rss.index);

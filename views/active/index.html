@@ -5,10 +5,9 @@
         <div class="header">
             <%=language.getMessage('events')%>
         </div>
-        <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
+        <% if (typeof(active) !== 'undefined') { %>
         <div class="inner no-padding">
             <%- partial('./list', {
-            topics: topics,
             active: active,
             pages: pages,
             current_page: current_page,

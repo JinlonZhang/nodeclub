@@ -3,8 +3,24 @@
         <div class="header"><%=language.getMessage('active_detail')%></div>
         <% if (typeof(detail) !== 'undefined') { %>
         <div class="inner no-padding">
-            <article class="m-act-art">
+            <div class="m-art-head">
               <h2><%= detail[0].title %></h2>
+              <div class="m-change">
+                发布与<%= detail[0].start_time%>
+              </div>
+              <%
+              console.log('current_user=====' + current_user);
+              console.log('detail[0]============' + detail[0]);
+              %>
+              <% if (current_user && current_user.is_admin) { %>
+                <div class="m-edit">
+                  <a href='/active/<%= detail[0]._id%>/edit'>
+                    <i class="fa fa-lg fa-pencil-square-o" title='编辑'></i></a>
+                </div>
+              <% } %>
+
+            </div>
+            <article class="m-act-art">
               <%- markdown(detail[0].active_detail) %>
             </article>
         </div>

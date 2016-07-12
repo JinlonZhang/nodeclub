@@ -61,6 +61,8 @@ exports.index = function(req, res, next) {
         function (pages, active) {
             res.render('active/index', {
                 active: active,
+                pages: pages,
+                current_page : page
             });
         });
 
@@ -181,6 +183,39 @@ exports.detail = function (req, res, next) {
   proxy.all('detail', function (detail) {
       res.render('active/detail', {
         detail: detail
+      });
+  });
+
+};
+
+/*
+编辑活动
+*/
+exports.showEdit = function (req, res, next) {
+  var proxy = new EventProxy();
+  var active_id = req.params.did;
+
+  Active.getActiveById(active_id, proxy.done('active', function (active) {
+      return active;
+  }));
+
+  proxy.all('active', function (active) {
+      var active = active[0];
+      res.render('active/edit', {
+        active: active,
+        title: active.title,
+        start_time: active.start_time,
+        end_time: active.end_time,
+        province: active.province,
+        city: active.city,
+        adress: active.adress,
+        sponsor: active.sponsor,
+        active_detail: active.active_detail,
+        people_num: active.people_num,
+        fees: active.fees,
+        verify: active.verify,
+        cost: active.cost,
+        cover_url: active.cover_url
       });
   });
 

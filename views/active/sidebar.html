@@ -9,7 +9,7 @@
       </div>
   </div>
 
-    <% if (!current_user || !current_user.is_admin) { %>
+    <% if (current_user && current_user.is_admin) { %>
     <div class="panel">
         <div class='inner'>
             <a href='/active/create' id='create_topic_btn'>
@@ -18,7 +18,6 @@
         </div>
     </div>
     <% } %>
-
     <% if (!current_user || !current_user.isAdvanced) { %>
     <%- partial('./_ads') %>
     <% } %>
