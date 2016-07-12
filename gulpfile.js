@@ -11,9 +11,12 @@ var fs = require('fs');
  */
 
 var mod = {
+  isProd: function(){
+    return process.env.NODE_ENV === 'production';
+  },
   setConfig : function() {
     var o = {};
-    o.timeStamp = moment().format("YYMMDDHHmmss");;
+    o.timeStamp = moment().format("YYMMDDHHmmss");
     fs.writeFileSync('./' + this.getFile(), JSON.stringify(o));
   },
   getFile: function(){
@@ -42,6 +45,10 @@ var mod = {
  * build image
  * push image
  */
+
+ gulp.task('config', function(){
+   mod.setConfig();
+ })
  /**
   * 拷贝静态资源至版本文件夹
   */
@@ -70,5 +77,5 @@ gulp.task('update', ['upload'], function() {
 
 //构建开发环境
 gulp.task('build', function() {
-    gulp.run(['copy', 'upload', 'update']);
+    gulp.run(['config', 'copy', 'upload', 'update']);
 });

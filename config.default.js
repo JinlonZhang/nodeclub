@@ -151,5 +151,9 @@ var config = {
 if (process.env.NODE_ENV === 'test') {
   config.db = 'mongodb://127.0.0.1/node_club_test';
 }
+//生产环境链接生产环境的redis
+if (process.env.NODE_ENV === 'production') {
+  config.redis_host = 'kubecon-redis';
+}
 
 module.exports = config;
