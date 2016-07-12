@@ -1,5 +1,5 @@
 
-var config = require('./config');
+var config = require('../config');
 
 exports.index = function (req, res, next) {
   var q = req.query.q;
