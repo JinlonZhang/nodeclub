@@ -24,6 +24,7 @@ var _            = require('lodash');
 var cache        = require('../common/cache');
 var logger = require('../common/logger')
 var renderHelper = require('../common/render_helper');
+var moment = require('moment');
 
 exports.index = function(req, res, next) {
 
