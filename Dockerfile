@@ -12,4 +12,4 @@ RUN npm install --production
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
-CMD ["node", "app.js"]
+CMD ["npm", "run", "start"]

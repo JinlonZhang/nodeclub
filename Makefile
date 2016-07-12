@@ -43,7 +43,6 @@ run: pretest build
 
 publish: pretest build
 	@NODE_ENV=production gulp build
-	@NODE_ENV=production node app.js
 
 start: install build
 	@NODE_ENV=production ./node_modules/.bin/pm2 start app.js -i 0 --name "cnode" --max-memory-restart 400M

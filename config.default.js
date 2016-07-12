@@ -154,6 +154,7 @@ if (process.env.NODE_ENV === 'test') {
 //生产环境链接生产环境的redis
 if (process.env.NODE_ENV === 'production') {
   config.redis_host = 'kubecon-redis';
+  config.db = 'mongodb://kubecon-mongo/node_club_dev';
 }
 
 module.exports = config;
