@@ -194,6 +194,7 @@ exports.detail = function (req, res, next) {
 exports.showEdit = function (req, res, next) {
   var proxy = new EventProxy();
   var active_id = req.params.did;
+  console.log('con-top-active_id=============' + active_id);
 
   Active.getActiveById(active_id, proxy.done('active', function (active) {
       return active;
@@ -201,7 +202,9 @@ exports.showEdit = function (req, res, next) {
 
   proxy.all('active', function (active) {
       var active = active[0];
+      console.log('active===++==' + active);
       res.render('active/edit', {
+        action: 'edit',
         active: active,
         title: active.title,
         start_time: active.start_time,
