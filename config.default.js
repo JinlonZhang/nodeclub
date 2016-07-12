@@ -157,4 +157,12 @@ if (process.env.NODE_ENV === 'production') {
   config.db = 'mongodb://kubecon-mongo/node_club_dev';
 }
 
+if (process.env.BASE_PATH === 'production') {
+  config.host = 'www.kubecon.cn';
+}
+
+if (process.env.BASE_PATH === 'canary')  {
+  config.host = 'www.canary.kubecon.cn';
+}
+
 module.exports = config;
