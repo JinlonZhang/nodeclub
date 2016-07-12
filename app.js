@@ -72,13 +72,14 @@ config.hostname = urlinfo.hostname || config.host;
 
 var app = express();
 
+app.use(require('express-domain-middleware'));
+
 // configuration in all env
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs-mate'));
 app.locals._layoutFile = 'layout.html';
 app.enable('trust proxy');
-
 // Request logger。请求时间
 app.use(requestLog);
 
@@ -138,6 +139,7 @@ if (!config.debug) {
   });
   app.set('view cache', true);
 }
+
 
 // for debug
 // app.get('/err', function (req, res, next) {
