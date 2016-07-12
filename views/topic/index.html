@@ -1,7 +1,7 @@
 <div id='sidebar'>
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>作者</span>
+      <span class='col_fade'><%=language.getMessage('author')%></span>
     </div>
     <div class='inner'>
       <%- partial('../user/card', { object: topic.author, as: 'user' }) %>
@@ -14,7 +14,7 @@
 
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>作者其它话题</span>
+      <span class='col_fade'><%=language.getMessage('other_topics_of_the_author')%></span>
     </div>
     <div class='inner'>
       <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
@@ -29,7 +29,7 @@
 
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>无人回复的话题</span>
+      <span class='col_fade'><%=language.getMessage('no_one_replies_to_the_topic')%></span>
     </div>
     <div class='inner'>
       <% if (typeof(no_reply_topics) !== 'undefined' && no_reply_topics.length > 0) { %>
@@ -54,21 +54,21 @@
       </span>
       <div class="changes">
         <span>
-          发布于 <%= topic.create_at_ago() %>
+          <%= language.getMessage('published_in')%> <%= topic.create_at_ago() %>
         </span>
         <span>
-          作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
+          <%=language.getMessage('author')%><a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
         </span>
         <span>
-          <%= topic.visit_count %> 次浏览
+          <%= topic.visit_count %> <%=language.getMessage('times_browse')%>
         </span>
         <% if (topic.create_at_ago() != topic.update_at_ago()) { %>
           <span>
-            最后一次编辑是 <%= topic.update_at_ago() %>
+            <%= language.getMessage('the_last_time_the_editor_was')%><%= topic.update_at_ago() %>
           </span>
         <% } %>
         <% if (topic.tab) { %>
-          <span> 来自 <%= topic.tabName %></span>
+          <span> <%=language.getMessage('come_from')%> <%= topic.tabName %></span>
         <%}%>
 
         <% if (current_user) { %>
@@ -86,7 +86,6 @@
               <i class="fa fa-lg fa-star" title='置顶'/></i>
             <% } %>
           </a>
-
 
           <a href='/topic/<%= topic._id %>/good' data-method="post">
             <% if (topic.good) { %>
@@ -136,7 +135,7 @@
   <% if (topic.replies && topic.replies.length > 0) { %>
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'><%= topic.replies.length %> 回复</span>
+      <span class='col_fade'><%= topic.replies.length %> <%=language.getMessage('reply')%></span>
     </div>
     <%- partial('../reply/reply', topic.replies) %>
   </div>
@@ -144,7 +143,7 @@
   <% if (current_user && typeof(topic) !== 'undefined') { %>
   <div class='panel'>
     <div class='header'>
-      <span class='col_fade'>添加回复</span>
+      <span class='col_fade'><%=language.getMessage('add_reply')%></span>
     </div>
     <div class='inner reply'>
       <form id='reply_form' action='/<%= topic._id %>/reply' method='post'>
@@ -154,7 +153,7 @@
             <textarea class='editor' name='r_content' rows='8'></textarea>
 
             <div class='editor_buttons'>
-              <input class='span-primary submit_btn' type="submit" data-loading-text="回复中.." value="回复<%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
+              <input class='span-primary submit_btn' type="submit" data-loading-text="回复中.." value="<%=language.getMessage('reply')%><%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
             </div>
           </div>
 

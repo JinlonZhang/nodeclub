@@ -37,13 +37,13 @@
             <input class='input-xlarge readonly' id='email' name='email' size='30' type='text'
                    readonly='true' value="<%= email %>"/>
 
-            <p>同时决定了 Gravatar 头像</p>
+            <!-- <p>同时决定了 Gravatar 头像</p> -->
           </div>
         </div>
 
         <div class='control-group'>
-          <label class='control-label' for=''>上传头像</label>
-          <div class="" >
+          <label class='control-label' for=''><%=language.getMessage('upload_image')%></label>
+          <div class="m-set-imgurl" >
               <!-- <img id="user_img" src="https://dn-caicloudui.qbox.me/kubcon/user/img/user_img.png" alt=""> -->
               <img id="user_img" src="<%= avatar %>" alt="">
               <input type="hidden" id='up_user_value' name="avatar_url" />
@@ -80,7 +80,7 @@
           <div class='controls'>
             <input class='input-xlarge' id='github' name='github' size='30' type='text'
                    value="<%= typeof(githubUsername) !== 'undefined' ? '@' + githubUsername : '' %>" placeholder="@username" readonly="readonly" />
-            <p>请通过 GitHub 登陆 Kubecon 来修改此处</p>
+            <p><%=language.getMessage('please_log_in_by')%></p>
           </div>
         </div>
         <div class='control-group'>
@@ -136,11 +136,11 @@
     </div>
     <div class='inner'>
       <div>
-        <span>字符串：</span>
+        <span><%=language.getMessage('string')%>：</span>
         <%- accessToken %>
       </div>
       <div>
-        <span>二维码：</span>
+        <span><%=language.getMessage('QR_code')%>：</span>
         <span id="access-token-qrcode"></span>
       </div>
     </div>

@@ -43,12 +43,13 @@
                 var text = pair[1];
                 %>
                 <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
-
-              <%});}%>
+              <%});
+            }%>
+            
             </select>
             <span id="topic_create_warn"></span>
             <textarea autofocus class='span9' id='title' name='title' rows='1'
-                      placeholder="标题字数 10 字以上"
+                      placeholder="<%=language.getMessage('title_words_more_than_10_words')%>"
                     ><%= typeof(title) !== 'undefined' && title || '' %></textarea>
 
             <div class='markdown_editor in_editor'>
