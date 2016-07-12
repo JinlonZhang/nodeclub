@@ -370,5 +370,9 @@
 			"QR_code": {
 				"en-US": "QR code",
 				"zh-CN": "二维码"
+			},
+			"empty": {
+				"en-US": "no",
+				"zh-CN": "无"
 			}
 }
