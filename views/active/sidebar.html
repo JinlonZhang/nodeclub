@@ -53,7 +53,7 @@
                 <%- partial('user/top', { collection: tops, as: 'user' }) %>
             </ol>
             <% } else { %>
-            <p>无</p>
+            <p><%=language.getMessage('empty')%></p>
             <% } %>
         </div>
     </div>
