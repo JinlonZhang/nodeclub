@@ -24,7 +24,6 @@ function qnUpload(callback) {
 
     if (file.isBuffer()) {
         var pathname = file.relative.replace(/\\/g, '/');
-        pathname = 'public/' + pathname;
 
         store.upload(fs.createReadStream(pathname), {key: pathname},  function(err, result){
             if(err){

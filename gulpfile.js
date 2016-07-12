@@ -11,13 +11,18 @@ var fs = require('fs');
  */
 
 var mod = {
+  setConfig : function() {
+    var o = {};
+    o.timeStamp = moment().format("YYMMDDHHmmss");;
+    fs.writeFileSync('./' + this.getFile(), JSON.stringify(o));
+  },
   getFile: function(){
     return 'config.json';
   },
   setUrl : function() {
     //更新配置内容
-    var o = {};
-    o.site_static_host = config.site_qn_host;
+    var o = mod.getConfig();
+    o.site_static_host = config.site_qn_host +'kb' + o.timeStamp;
     fs.writeFileSync('./' + this.getFile(), JSON.stringify(o));
   },
   getConfig: function(){
@@ -37,12 +42,24 @@ var mod = {
  * build image
  * push image
  */
-
+ /**
+  * 拷贝静态资源至版本文件夹
+  */
+ gulp.task('copy', function(){
+   mod.setConfig();
+   var config = mod.getConfig();
+   var arr = [
+     './public/**/*'
+   ];
+   return gulp.src(arr)
+     .pipe(gulp.dest('./kb' + config.timeStamp+'/public'));
+ });
 /**
  * 静态资源上传至七牛云空间。
  */
-gulp.task('upload', function(){
-  return gulp.src('./public/**/*')
+gulp.task('upload', ['copy'],function(){
+  var config = mod.getConfig();
+  return gulp.src('./@(kb'+ config.timeStamp +')/public/**/*')
     .pipe( qnUpload() );
 });
 
@@ -53,5 +70,5 @@ gulp.task('update', ['upload'], function() {
 
 //构建开发环境
 gulp.task('build', function() {
-    gulp.run(['upload', 'update']);
+    gulp.run(['copy', 'upload', 'update']);
 });
