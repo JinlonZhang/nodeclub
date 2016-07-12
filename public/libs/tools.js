@@ -42,7 +42,7 @@ function UploadImage($target, $value){
         swf: '/public/libs/webuploader/Uploader.swf',
         server: '/upload?_csrf=' + _csrf,
         pick: this.$uploadBtn[0],
-        dnd: this.$upload[0],
+        //dnd: this.$upload[0],
         auto: true,
         fileSingleSizeLimit: 2 * 1024 * 1024,
         //sendAsBinary: true,
