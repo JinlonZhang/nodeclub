@@ -24,6 +24,7 @@ var ActiveSchema = new Schema({
     Recommend: {type: Boolean, default: false}, //推荐活动
     create_at: { type: Date, default: Date.now },  //
     update_at: { type: Date, default: Date.now }
+    deleted: {type: Boolean, default: false},
 });
 
 mongoose.model('Active', ActiveSchema);

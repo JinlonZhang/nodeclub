@@ -13,6 +13,11 @@
                 <div class="m-edit">
                   <a href='/active/<%= detail._id%>/edit'>
                     <i class="fa fa-lg fa-pencil-square-o" title='编辑'></i></a>
+
+                    <a href='javascript:;'
+                       data-id="<%= detail._id %>"
+                       class='delete_active_btn'>
+                       <i class="fa fa-lg fa-trash" title='删除'></i></a>
                 </div>
               <% } %>
 
@@ -28,3 +33,20 @@
         <% } %>
     </div>
 </div>
+
+<script>
+// 删除话题
+$('.delete_active_btn').click(function () {
+  var activeId = $(this).data('id');
+  if (activeId && confirm('确定要删除此活动吗？')) {
+    $.post('/active/' + activeId + '/delete', { _csrf: $('#_csrf').val() }, function (result) {
+      if (!result.success) {
+        alert(result.message);
+      } else {
+        location.href = '/active';
+      }
+    });
+  }
+  return false;
+});
+</script>
