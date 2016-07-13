@@ -65,7 +65,8 @@ exports.index = function(req, res, next) {
             res.render('active/index', {
                 active: active,
                 pages: pages,
-                current_page : page
+                current_page : page,
+                base : '/active'
             });
         });
 
@@ -127,12 +128,15 @@ exports.put = function (req, res, next) {
            title: title,
            start_time: start_time,
            end_time: end_time,
+           province: province,
+           city: city,
            adress: adress,
            sponsor: sponsor,
            active_detail: active_detail,
            people_num: people_num,
            fees: fees,
-           cost: cost
+           cost: cost,
+           cover_url: cover_url
        });
     }
     var o = {
