@@ -25,6 +25,8 @@ var cache        = require('../common/cache');
 var logger = require('../common/logger')
 var renderHelper = require('../common/render_helper');
 var moment = require('moment');
+var config = require('../config');
+
 
 exports.index = function(req, res, next) {
 
@@ -54,7 +56,7 @@ exports.index = function(req, res, next) {
     }));
     // END 取分页数据
 
-    Active.getActiveByQuery({}, {}, proxy.done('active', function (active) {
+    Active.getActiveByQuery({language_type: config.language}, {}, proxy.done('active', function (active) {
         return active;
     }));
 
@@ -91,6 +93,7 @@ exports.put = function (req, res, next) {
     var verify         = validator.trim(req.body.verify);
     var cost           = validator.trim(req.body.cost);
     var cover_url      = validator.trim(req.body.cover_url);
+    var language_type  = validator.trim(req.body.language_type);
 
     // 验证
     var editError;
@@ -145,7 +148,8 @@ exports.put = function (req, res, next) {
         fees: fees,
         verify: verify,
         cost: cost,
-        cover_url: cover_url
+        cover_url: cover_url,
+        language_type: language_type
     }
 
     Active.newAndSave(o, req.session.user._id, function (err, topic) {
@@ -196,14 +200,12 @@ exports.detail = function (req, res, next) {
 exports.showEdit = function (req, res, next) {
   var proxy = new EventProxy();
   var active_id = req.params.did;
-  console.log('con-top-active_id=============' + active_id);
 
   Active.getActiveById(active_id, proxy.done('active', function (active) {
       return active;
   }));
 
   proxy.all('active', function (active) {
-      console.log('active===++==' + active);
       res.render('active/edit', {
         action: 'edit',
         active: active,
@@ -219,14 +221,14 @@ exports.showEdit = function (req, res, next) {
         fees: active.fees,
         verify: active.verify,
         cost: active.cost,
-        cover_url: active.cover_url
+        cover_url: active.cover_url,
+        language_type: active.language_type
       });
   });
 
 };
 
 exports.update = function (req, res, next) {
-  var proxy = new EventProxy();
 
   var active_id = req.params.did;
   var title = req.body.title;
@@ -242,6 +244,9 @@ exports.update = function (req, res, next) {
   var verify = req.body.verify;
   var cost = req.body.cost;
   var cover_url = req.body.cover_url;
+  var language_type = req.body.language_type;
+  var update_at = Date();
+  console.log('date===' + Date());
 
   // 验证
   var editError;
@@ -299,6 +304,9 @@ exports.update = function (req, res, next) {
       active.verify = verify;
       active.cost = cost;
       active.cover_url = cover_url;
+      active.language_type = language_type;
+      active.updata_at = update_at;
+console.log('updat======' + update_at);
       active.save(function (err2, d) {
         res.redirect('/active/' + active._id);
       });

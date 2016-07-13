@@ -374,5 +374,9 @@
 			"empty": {
 				"en-US": "no",
 				"zh-CN": "无"
+			},
+			"select_language": {
+				"en-US": "Select Language",
+				"zh-CN": "选择语言"
 			}
 }
