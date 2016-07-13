@@ -20,7 +20,7 @@ var store        = require('../common/store');
 var config       = require('../config');
 var _            = require('lodash');
 var cache        = require('../common/cache');
-var logger = require('../common/logger')
+var logger = require('../common/logger');
 
 /**
  * Topic page
@@ -39,6 +39,7 @@ exports.index = function (req, res, next) {
 
   var topic_id = req.params.tid;
   var currentUser = req.session.user;
+  var collection = language.getMessage('collection');
 
   if (topic_id.length !== 24) {
     return res.render404('此话题不存在或已被删除。');

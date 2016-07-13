@@ -7,7 +7,8 @@
 /* base */
 body {
   background-color: @gray1;
-  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+  // font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+  font-family: "Helvitica Neue", Helvetica, Arial, "Microsoft YaHei", "Hiragino Sans GB", sans-serif !important;
 }
 
 #main {
@@ -1316,14 +1317,30 @@ textarea.editor {
         font-size: 16px;
         line-height: 1.5;
         padding: 0 10px;
+        color: #232323;
+        a {
+          color: inherit;
+        }
       }
       time {
         margin-left: 10px;
+        display: inline-block;
+        background-image: url('/public/images/time.svg');
       }
 
       address {
         float: right;
         margin-right: 10px;
+        background-image: url('/public/images/adress.svg');
+      }
+
+      time,address {
+        line-height: 30px;
+        padding-left: 30px;
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        color: #808080;
+        font-size: 14px;
       }
     }
 
@@ -1360,7 +1377,7 @@ textarea.editor {
 
       .cover {
         width: 320px;
-        height: 240px;
+        height: 220px;
         float: left;
         img {
           width: 100%;
@@ -1405,7 +1422,7 @@ textarea.editor {
       }
 
       select {
-        height: 52px;
+        height: 42px;
         border-radius: 4px;
       }
       .m-inp100 {
