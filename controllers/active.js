@@ -178,6 +178,7 @@ exports.detail = function (req, res, next) {
   var proxy = new EventProxy();
   var id = {_id: req.params.aid}
   Active.getActiveById(id, proxy.done('detail', function (detail) {
+      console.log('detail===' + detail);
       return detail;
   }));
 
@@ -202,7 +203,6 @@ exports.showEdit = function (req, res, next) {
   }));
 
   proxy.all('active', function (active) {
-      var active = active[0];
       console.log('active===++==' + active);
       res.render('active/edit', {
         action: 'edit',
@@ -223,4 +223,85 @@ exports.showEdit = function (req, res, next) {
       });
   });
 
+};
+
+exports.update = function (req, res, next) {
+  var proxy = new EventProxy();
+
+  var active_id = req.params.did;
+  var title = req.body.title;
+  var start_time = req.body.start_time;
+  var end_time = req.body.end_time;
+  var province = req.body.province;
+  var city = req.body.city;
+  var adress = req.body.adress;
+  var sponsor = req.body.sponsor;
+  var active_detail = req.body.active_detail;
+  var people_num = req.body.people_num;
+  var fees = req.body.fees;
+  var verify = req.body.verify;
+  var cost = req.body.cost;
+  var cover_url = req.body.cover_url;
+
+  // 验证
+  var editError;
+  if (title === '') {
+     editError = '标题不能是空的。';
+  } else if (title.length < 5 || title.length > 100) {
+     editError = '标题字数在5~100';
+  } else if (start_time === '') {
+    editError = '时间必填'
+  } else if (end_time === '') {
+     editError = '结束时间必填';
+  } else if (adress === '') {
+    editError = '详细地址必填';
+  } else if (sponsor === '') {
+    editError = '主办方必填';
+  } else if (active_detail === '') {
+    editError = '活动详情必填';
+  } else if (people_num === '') {
+    editError = '活动人数必填';
+  } else if (fees === 'true') {
+    if (cost === '') {
+      editError = '费用必填';
+    }
+  }
+  //// END 验证
+  //
+  if (editError) {
+     res.status(422);
+     return res.render('active/edit', {
+         edit_error: editError,
+         title: title,
+         start_time: start_time,
+         end_time: end_time,
+         adress: adress,
+         sponsor: sponsor,
+         active_detail: active_detail,
+         people_num: people_num,
+         fees: fees,
+         cost: cost
+     });
+  }
+
+  Active.getActiveById(active_id, function (err, active) {
+      console.log('==active==' + active);
+      active.title = title;
+      active.start_time = start_time;
+      active.end_time = end_time;
+      active.province = province;
+      active.city = city;
+      active.adress = adress;
+      active.sponsor = sponsor;
+      active.active_detail = active_detail;
+      active.people_num = people_num;
+      active.fees = fees;
+      active.verify = verify;
+      active.cost = cost;
+      active.cover_url = cover_url;
+      active.save(function (err2, d) {
+        res.redirect('/active/' + active._id);
+      });
+
+  });
 };

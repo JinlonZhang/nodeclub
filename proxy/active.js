@@ -29,7 +29,7 @@ exports.newAndSave = function (o, authorId, callback) {
     active.end_time       = o.end_time;
     active.province = o.province;
     active.city = o.city;
-    active.adress = o.address;
+    active.adress = o.adress;
     active.sponsor = o.sponsor;
     active.active_detail = o.active_detail;
     active.people_num = o.people_num;
@@ -69,6 +69,5 @@ exports.getCountByQuery = function (query, callback) {
 };
 
 exports.getActiveById = function (id, callback) {
-  console.log('proxy=====id====' + id)
-  Active.find(id, callback);
+  Active.findById(id, callback);
 };
