@@ -309,7 +309,9 @@
     })();
 
     // 省市二级联动
+
     var arr = new  Array();
+    if($('#currentLanguage').val() == 'zh-CN') {
       arr[0 ]="合肥,芜湖,蚌埠,马鞍山,淮北,铜陵,安庆,黄山,滁州,宿州,池州,淮南,巢湖,阜阳,六安,宣城,亳州"
       arr[1 ]="东城,西城,崇文,宣武,朝阳,丰台,石景山,海淀,门头沟,房山,通州,顺义,昌平,大兴,平谷,怀柔,密云,延庆"
       arr[2 ]="万州,涪陵,渝中,大渡口,江北,沙坪坝,九龙坡,南岸,北碚,万盛,双挢,渝北,巴南,黔江,长寿,綦江,潼南,铜梁,大足,荣昌,壁山,梁平,城口,丰都,垫江,武隆,忠县,开县,云阳,奉节,巫山,巫溪,石柱,秀山,酉阳,彭水,江津,合川,永川,南川"
@@ -344,6 +346,43 @@
       arr[31 ]="乌鲁木齐,石河子,克拉玛依,伊犁,巴音郭勒,昌吉,克孜勒苏柯尔克孜,博 尔塔拉,吐鲁番,哈密,喀什,和田,阿克苏"
       arr[32 ]="昆明,大理,曲靖,玉溪,昭通,楚雄,红河,文山,思茅,西双版纳,保山,德宏,丽江,怒江,迪庆,临沧"
       arr[33 ]="杭州,宁波,温州,嘉兴,湖州,绍兴,金华,衢州,舟山,台州,丽水"
+    } else if ($('#currentLanguage').val() == 'en-US') {
+      arr[0 ]="Hefei, Wuhu, Bengbu, Ma'anshan, Huaibei, Tongling, Anqing, Mount Huangshan, Chuzhou, Suzhou, Chizhou, Huainan, Chaohu, Fuyang, Lu'an, Xuancheng, Bozhou"
+      arr[1 ]="Dongcheng District,Xicheng District,Chongwen District,Xuanwu, Chaoyang, Fengtai, Shijingshan District, Haidian District, Mentougou, Fangshan District, Tongzhou, Shunyi, Changping District, Daxing District, Pinggu, Huairou, Miyun District, Yanqing District"
+      arr[2 ]="Wanzhou, Fuling, Yuzhong District, Dadukou, Jiangbei, Shapingba, Jiulongpo District, south bank, Beibei, Wansheng, double bridge, Yubei, Banan, Qianjiang, longevity, Qijiang, Tongnan, Tongliang Dazu, Rongchang, mountain wall, Liangping, Chengkou, Fengdu, Dianjiang, Wulong, Zhongxian, county, Yunyang, Fengjie, Wushan, Wuxi, stelae, Xiushan, Youyang and Pengshui, Chongqing, Hechuan, Yongchuan, Nanchuan"
+      arr[3 ]="Fuzhou, Xiamen, Putian, Sanming, Quanzhou, Zhangzhou, Nanping, Longyan, Ningde"
+      arr[4 ]="Lanzhou, Jiayuguan, Jinchang, Tianshui, Jiuquan, Baiyin, Zhangye, Wuwei, Dingxi, Longnan, Pingliang, Qingyang, Linxia, Gannan"
+      arr[5 ]="Guangzhou, Shenzhen, Zhuhai, Shantou, Dongguan, Zhongshan, Foshan, Shaoguan, Jiangmen, Zhanjiang, Maoming, Zhaoqing, Huizhou, Meizhou, Shanwei, Heyuan, Yangjiang, Qingyuan, Chaozhou, Jieyang, Yunfu"
+      arr[6 ]="Nanning, Liuzhou, Guilin, Wuzhou, Beihai, Fangchenggang, Qinzhou, Guigang, Yulin, Nanning area, Liuzhou area, Hezhou, Baise, Hech"
+      arr[7 ]="Guiyang, Liupanshui, Zunyi, Anshun, Tongren, Southwest Guizhou, Bijie, Southeast, South Guizhou"
+      arr[8 ]="Haikou, Sanya"
+      arr[9 ]="Shijiazhuang, Handan, Xingtai, Baoding, Zhangjiakou, Chengde, Langfang, Tangshan, Qinhuangdao, Cangzhou, Hengshui"
+      arr[10 ]="Zhengzhou, Kaifeng, Luoyang, Pingdingshan, Anyang, Hebi, Xinxiang, Jiaozuo, Puyang, Xuchang, Luohe, Sanmenxia, Nanyang, Shangqiu, Xinyang, Zhoukou, Zhumadian, Jiyuan"
+      arr[11 ]="Harbin, Qiqihar, Mudanjiang, Jiamusi, Daqing, Suihua, Hegang, Jixi, Heihe, Shuangyashan, Yichun, Qitaihe, Mountains"
+      arr[12 ]="Hong Kong"
+      arr[13 ]="Wuhan, Yichang, Jingzhou, Xiangfan, Huangshi, Jingmen, Huanggang, Shiyan, Enshi, Qianjiang, Tianmen, Xiantao, Suizhou, Xianning, Xiaogan, Ezhou"
+      arr[14 ]="Changsha, Changde, Zhuzhou, Xiangtan, Hengyang, Yueyang, Shaoyang, Yiyang, Loudi, Huaihua, Chenzhou, Yongzhou, Hunan, Zhangjiajie"
+      arr[15 ]="Nanjing, Zhenjiang, Suzhou, Nantong, Yangzhou, Yancheng, Xuzhou, Lianyungang, Changzhou, Wuxi, Suqian and Taizhou, Huaian"
+      arr[16 ]="Nanchang, Jingdezhen, Jiujiang, Yingtan, Pingxiang, Xinyu, Ganzhou, Ji'an, Yichun, Fuzhou, Shangrao"
+      arr[17 ]="Changchun, Jilin, Siping, Liaoyuan, Tonghua, Baishan, Matsubara, Baicheng, Yanbian"
+      arr[18 ]="Shenyang, Dalian, Anshan, Fushun, Benxi, Dandong, Jinzhou, Yingkou, Fuxin, Liaoyang, Panjin, Tieling, Chaoyang, Huludao"
+      arr[19 ]="Macao"
+      arr[20 ]="Hohhot, Baotou, Wuhai, Chifeng, Hulunbeier, Alxa League, jirem League, Xing'an League, Wulanchabu, Xilin Gol League, Bayannaoer, Yikezhaomeng"
+      arr[21 ]="Yinchuan, Shizuishan, Wuzhong, Guyuan"
+      arr[22 ]="Xining, Haidong, Hainan, rambling, Huang Nan, Yushu, Golog, Haixi"
+      arr[23 ]="Jinan, Qingdao, Zibo, Zaozhuang, Dongying, Yantai, Weifang, Jining, Tai'an, Weihai, Rizhao, Laiwu, Linyi, Texas, Liaocheng, Binzhou, Heze"
+      arr[24 ]="Taiyuan, Datong, Yangquan, Changzhi, Jincheng, Shuozhou, Luliang, Xinzhou, Jinzhong, Linfen, Yuncheng"
+      arr[25 ]="Xi'an, Baoji, Xianyang, Tongchuan, Weinan, Yan'an, Yulin, Hanzhong, Ankang, Shangluo"
+      arr[26 ]="Huangpu District, Luwan District, Xuhui, Changning, Jing'an District, Putuo District, Zhabei District, Hongkou District, Yangpu District, Minhang District, Baoshan District, Jiading District, Pudong District, Jinshan District, Songjiang District, Qingpu District, Nanhui District Fengxian District, Chongming"
+      arr[27 ]="Chengdu, Mianyang, Deyang, Zigong, Panzhihua, Guangyuan, Neijiang, Leshan, Nanchong, Yibin, Guang'an, Dachuan, Ya'an, Meishan, Ganzi and Liangshan, Luzhou"
+      arr[28 ]="Taipei, Kaohsiung, Taichung, Tainan, Pingtung, Nantou, Yunlin, Hsinchu, Changhua, Miaoli, Chiayi, Hualien, Taoyuan, Ilan, Keelung and Taitung, Kinmen, Matsu, Penghu"
+      arr[29 ]="Heping District, Dongli District, Hedong District, Xiqing District, Hexi District, Jinnan District, Nankai District, Beichen District, Hebei District, Wuqing, red Jiao Area, Tanggu District, Hangu District, Dagang District, Ninghe, Jinghai , Baodi, Jixian"
+      arr[30 ]="Lhasa, Xigaze, Shannan, Nyingchi, Qamdo, Ali, Nagqu"
+      arr[31 ]="Urumqi, Shihezi, Karamay, Yili, bayinguole, Changji, Kirgiz, Bo Bo_ertala, Turpan, Hami, Kashi, and Tian, Aksu"
+      arr[32 ]="Kunming, Dali, Qujing, Yuxi, Zhaotong, Chuxiong, Honghe, Wenshan, Simao, Xishuangbanna, Baoshan, Dehong, Lijiang, Nu River, Diqing, Lincang"
+      arr[33 ]="Hangzhou, Ningbo, Wenzhou, Jiaxing, Huzhou, Shaoxing, Jinhua, Quzhou, Zhoushan, Taizhou, Lishui"
+    }
+
 
     function init()
     {
