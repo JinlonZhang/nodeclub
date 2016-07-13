@@ -19,7 +19,11 @@ var ActiveSchema = new Schema({
     fees: {type: Boolean, default: false},  //是否收费
     verify: {type: Boolean, default: false},  //是否审核
     cost: {type: Number, default: 0 },   //费用
-    cover_url: {type: String} //封面图片
+    cover_url: {type: String}, //封面图片
+    language_type: {type: String}, //活动语言选择
+    Recommend: {type: Boolean, default: false}, //推荐活动
+    create_at: { type: Date, default: Date.now },  //
+    update_at: { type: Date, default: Date.now }
 });
 
 mongoose.model('Active', ActiveSchema);

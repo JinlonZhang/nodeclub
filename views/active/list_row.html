@@ -4,7 +4,7 @@
     <dt><a href="/active/<%= active._id %>"><img src="<%= active.cover_url %>" alt=""></a></dt>
     <!-- <dt><a href="/active/<%= active._id %>"><img src="/public/images/meet02.jpg" alt=""></a></dt> -->
     <dd>
-        <h4><%= active.title %></h4>
+        <h4><a href="/active/<%= active._id %>"><%= active.title %></a></h4>
         <time><%= moment(active.start_time).format('YYYY-MM-DD') %></time>
         <address><%= active.city %></address>
     </dd>

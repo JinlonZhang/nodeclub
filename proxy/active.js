@@ -20,7 +20,8 @@ var o = {
     fees: 'fees',
     verify: 'verify',
     cost: 'cost',
-    cover_url: 'cover_url'
+    cover_url: 'cover_url',
+    language_type: 'language_type'
 }
 exports.newAndSave = function (o, authorId, callback) {
     var active       = new Active();
@@ -38,7 +39,8 @@ exports.newAndSave = function (o, authorId, callback) {
     active.author_id = authorId;
     active.cost = o.cost;
     active.cover_url = o.cover_url;
-
+    active.language_type = o.language_type;
+    
     active.save(callback);
 };
 
