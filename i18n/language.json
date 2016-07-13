@@ -268,8 +268,8 @@
 				"zh-CN": "此图片将作为此活动的封面，一张漂亮的封面图片可以提高浏览者视觉体验，同时可以宣传活动内容。"
 			},
 			"reminder_info_2": {
-				"en-US": "Recommended upload size.Png 400px*300px,.Jpg,.Gif pictures, picture is less than 1M",
-				"zh-CN": "建议上传尺寸 400px*300px 的.png、.jpg、.gif图片，图片小于1M"
+				"en-US": "Recommended upload size.Png 800px*500px,.Jpg,.Gif pictures, picture is less than 1M",
+				"zh-CN": "建议上传尺寸 800px*500px 的.png、.jpg、.gif图片，图片小于1M"
 			},
 			"title_words_more_than_10_words": {
 				"en-US": "Title words more than 10 words",
@@ -378,5 +378,9 @@
 			"select_language": {
 				"en-US": "Select Language",
 				"zh-CN": "选择语言"
+			},
+			"collection": {
+				"en-US": "Collection",
+				"zh-CN": "收藏"
 			}
 }
