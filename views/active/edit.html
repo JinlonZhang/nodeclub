@@ -19,7 +19,7 @@
           </div>
           <% } %>
           <% if (typeof(action) !== 'undefined' && action === 'edit') { %>
-            <form id="addActive" action='/topic/<%= active._id %>/edit' method="post">
+            <form id="addActive" action='/active/<%= active._id %>/edit' method="post">
           <% } else {%>
             <form id="addActive" action="/active/create" method="post">
           <% } %>
@@ -35,7 +35,7 @@
                           <% } else {%>
                             <img src="/public/images/cover_init.jpg" id='activeTitle' alt="">
                           <% } %>
-                          <input type="hidden" id='activeTitleValue' name="cover_url" />
+                          <input type="hidden" id='activeTitleValue' name="cover_url" value="<%= typeof(cover_url) !== 'undefined' && cover_url || '' %>" />
                       </div>
                       <div class="m-up">
                           <p>
@@ -69,7 +69,6 @@
                   <div class="m-inp">
                     <select class="m-prov" name="province" id="province" size="1" onchange="getCity()">
                       <%
-                        console.log('config.language====' + config.language)
                         if(config.language == 'zh-CN') {
                       %>
                       <option value= 0 >安徽</option>
