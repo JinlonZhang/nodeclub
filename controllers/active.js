@@ -186,8 +186,11 @@ exports.detail = function (req, res, next) {
   var proxy = new EventProxy();
   var id = {_id: req.params.aid}
   Active.getActiveById(id, proxy.done('detail', function (detail) {
+      detail.visit_count += 1;
+      detail.save();
       return detail;
   }));
+
 
   proxy.all('detail', function (detail) {
       res.render('active/detail', {

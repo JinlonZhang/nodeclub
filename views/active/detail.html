@@ -6,7 +6,7 @@
             <div class="m-art-head">
               <h2><%= detail.title %></h2>
               <div class="m-change">
-                发布与<%= detail.start_time%>
+                <%= detail.visit_count %>次浏览
               </div>
 
               <% if (current_user && current_user.is_admin) { %>
