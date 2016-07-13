@@ -283,12 +283,15 @@ exports.update = function (req, res, next) {
          title: title,
          start_time: start_time,
          end_time: end_time,
+         province:province,
+         active: city,
          adress: adress,
          sponsor: sponsor,
          active_detail: active_detail,
          people_num: people_num,
          fees: fees,
-         cost: cost
+         cost: cost,
+         cover_url : cover_url;
      });
   }
 
