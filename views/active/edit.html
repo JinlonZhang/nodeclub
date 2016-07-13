@@ -40,9 +40,9 @@
                   <div class="m-inp">
                       <div class="cover" id="activeTitleBox">
                           <%
-                            if (typeof(active) != 'undefined') {
+                            if (typeof(cover_url) != 'undefined') {
                           %>
-                            <img src="<%= active.cover_url %>" id='activeTitle' alt="">
+                            <img src="<%=cover_url %>" id='activeTitle' alt="">
                           <% } else {%>
                             <img src="/public/images/cover_init.jpg" id='activeTitle' alt="">
                           <% } %>

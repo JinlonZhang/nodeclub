@@ -55,6 +55,7 @@ exports.newAndSave = function (o, authorId, callback) {
  */
 
 exports.getActiveByQuery = function (query, opt, callback) {
+  query.deleted = false;
   Active.find(query, opt, callback);
 };
 
@@ -67,6 +68,7 @@ exports.getActiveByQuery = function (query, opt, callback) {
  * @param {Function} callback 回调函数
  */
 exports.getCountByQuery = function (query, callback) {
+  query.deleted = false;
   Active.count(query, callback);
 };
 

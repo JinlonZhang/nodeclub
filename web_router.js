@@ -113,9 +113,9 @@ router.get('/active', active.index);
 router.get('/active/create',auth.adminRequired, active.create);
 router.post('/active/create', auth.adminRequired, active.put);
 router.get('/active/:aid', active.detail);  // 显示某个活动
-router.get('/active/:did/edit', auth.adminRequired, active.showEdit);  // 编辑某活动
-router.post('/active/:did/edit', auth.adminRequired, active.update);  //修改
-
+router.get('/active/:aid/edit', auth.adminRequired, active.showEdit);  // 编辑某活动
+router.post('/active/:aid/edit', auth.adminRequired, active.update);  //修改
+router.post('/active/:aid/delete', auth.adminRequired, active.delete);
 //rss
 router.get('/rss', rss.index);
 

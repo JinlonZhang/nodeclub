@@ -65,7 +65,8 @@ exports.index = function(req, res, next) {
             res.render('active/index', {
                 active: active,
                 pages: pages,
-                current_page : page
+                current_page : page,
+                base : '/active'
             });
         });
 
@@ -127,12 +128,15 @@ exports.put = function (req, res, next) {
            title: title,
            start_time: start_time,
            end_time: end_time,
+           province: province,
+           city: city,
            adress: adress,
            sponsor: sponsor,
            active_detail: active_detail,
            people_num: people_num,
            fees: fees,
-           cost: cost
+           cost: cost,
+           cover_url: cover_url
        });
     }
     var o = {
@@ -182,7 +186,6 @@ exports.detail = function (req, res, next) {
   var proxy = new EventProxy();
   var id = {_id: req.params.aid}
   Active.getActiveById(id, proxy.done('detail', function (detail) {
-      console.log('detail===' + detail);
       return detail;
   }));
 
@@ -199,7 +202,7 @@ exports.detail = function (req, res, next) {
 */
 exports.showEdit = function (req, res, next) {
   var proxy = new EventProxy();
-  var active_id = req.params.did;
+  var active_id = req.params.aid;
 
   Active.getActiveById(active_id, proxy.done('active', function (active) {
       return active;
@@ -230,7 +233,7 @@ exports.showEdit = function (req, res, next) {
 
 exports.update = function (req, res, next) {
 
-  var active_id = req.params.did;
+  var active_id = req.params.aid;
   var title = req.body.title;
   var start_time = req.body.start_time;
   var end_time = req.body.end_time;
@@ -280,17 +283,19 @@ exports.update = function (req, res, next) {
          title: title,
          start_time: start_time,
          end_time: end_time,
+         province:province,
+         active: city,
          adress: adress,
          sponsor: sponsor,
          active_detail: active_detail,
          people_num: people_num,
          fees: fees,
-         cost: cost
+         cost: cost,
+         cover_url : cover_url;
      });
   }
 
   Active.getActiveById(active_id, function (err, active) {
-      console.log('==active==' + active);
       active.title = title;
       active.start_time = start_time;
       active.end_time = end_time;
@@ -306,10 +311,36 @@ exports.update = function (req, res, next) {
       active.cover_url = cover_url;
       active.language_type = language_type;
       active.updata_at = update_at;
-console.log('updat======' + update_at);
       active.save(function (err2, d) {
         res.redirect('/active/' + active._id);
       });
 
+  });
+};
+
+exports.delete = function (req, res, next) {
+
+  var active_id = req.params.aid;
+
+  Active.getActiveById(active_id, function (err, active) {
+    if (err) {
+      return res.send({ success: false, message: err.message });
+    }
+    if (!req.session.user.is_admin && !(active.author_id.equals(req.session.user._id))) {
+      res.status(403);
+      return res.send({success: false, message: '无权限'});
+    }
+    if (!active) {
+      res.status(422);
+      return res.send({ success: false, message: '此活动不存在或已被删除。' });
+    }
+
+    active.deleted = true;
+    active.save(function (err) {
+      if (err) {
+        return res.send({ success: false, message: err.message });
+      }
+      res.send({ success: true, message: '活动已被删除。' });
+    });
   });
 };
