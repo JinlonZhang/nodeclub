@@ -249,7 +249,6 @@ exports.update = function (req, res, next) {
   var cover_url = req.body.cover_url;
   var language_type = req.body.language_type;
   var update_at = Date();
-  console.log('date===' + Date());
 
   // 验证
   var editError;
@@ -291,7 +290,7 @@ exports.update = function (req, res, next) {
          people_num: people_num,
          fees: fees,
          cost: cost,
-         cover_url : cover_url;
+         cover_url : cover_url
      });
   }
 
