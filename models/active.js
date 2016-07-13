@@ -23,8 +23,8 @@ var ActiveSchema = new Schema({
     language_type: {type: String}, //活动语言选择
     Recommend: {type: Boolean, default: false}, //推荐活动
     create_at: { type: Date, default: Date.now },  //
-    update_at: { type: Date, default: Date.now }
-    deleted: {type: Boolean, default: false},
+    update_at: { type: Date, default: Date.now },
+    deleted: {type: Boolean, default: false}
 });
 
 mongoose.model('Active', ActiveSchema);
