@@ -58,7 +58,6 @@ exports.index = function(req, res, next) {
 
     Events.getActiveByQuery({language_type: config.language}, {}, proxy.done('active', function (active) {
 
-        console.log('active =======' + active);
         return active;
     }));
 

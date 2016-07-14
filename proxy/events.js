@@ -56,9 +56,7 @@ exports.newAndSave = function (o, authorId, callback) {
 
 exports.getActiveByQuery = function (query, opt, callback) {
 
-  // query.deleted = false;
-  console.log('proxy.query config.language=====' + query);
-
+  query.deleted = false;
   Events.find(query, opt, callback);
 };
 
