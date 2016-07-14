@@ -110,7 +110,7 @@ exports.setting = function (req, res, next) {
       signature: data.signature,
       weibo: data.weibo,
       accessToken: data.accessToken,
-      avatar: data.avatar,
+      avatar_url: data.avatar
     };
     if (isSuccess) {
       data2.success = msg;
@@ -163,6 +163,7 @@ exports.setting = function (req, res, next) {
             if (err) {
               return next(err);
             }
+
             return showMessage('密码已被修改。', user, true);
 
           });
