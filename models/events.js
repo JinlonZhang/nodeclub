@@ -26,7 +26,8 @@ var ActiveSchema = new Schema({
     update_at: { type: Date, default: Date.now },
     deleted: {type: Boolean, default: false},
     visit_count: { type: Number, default: 0 }, //访问次数
-    sign_up_count: {type: Number, default: 0 }
+    sign_up_count: {type: Number, default: 0 },
+    events_type: { type: String}
 });
 
 mongoose.model('Active', ActiveSchema);

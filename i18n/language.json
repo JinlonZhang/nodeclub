@@ -382,5 +382,17 @@
 			"collection": {
 				"en-US": "Collection",
 				"zh-CN": "收藏"
+			},
+			"events_type": {
+				"en-US": "Events Type",
+				"zh-CN": "活动类型"
+			},
+			"post_events": {
+				"en-US": "Post Events",
+				"zh-CN": "发布活动"
+			},
+			"past_events": {
+				"en-US": "Past Events",
+				"zh-CN": "活动回顾"
 			}
 }

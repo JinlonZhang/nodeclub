@@ -21,7 +21,8 @@ var o = {
     verify: 'verify',
     cost: 'cost',
     cover_url: 'cover_url',
-    language_type: 'language_type'
+    language_type: 'language_type',
+    events_type: 'events_type'
 }
 exports.newAndSave = function (o, authorId, callback) {
     var events       = new Events();
@@ -40,6 +41,7 @@ exports.newAndSave = function (o, authorId, callback) {
     events.cost = o.cost;
     events.cover_url = o.cover_url;
     events.language_type = o.language_type;
+    events.events_type = o.events_type;
 
     events.save(callback);
 };
