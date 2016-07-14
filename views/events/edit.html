@@ -19,9 +19,9 @@
           </div>
           <% } %>
           <% if (typeof(action) !== 'undefined' && action === 'edit') { %>
-            <form id="addActive" action='/active/<%= active._id %>/edit' method="post">
+            <form id="addActive" action='/events/<%= active._id %>/edit' method="post">
           <% } else {%>
-            <form id="addActive" action="/active/create" method="post">
+            <form id="addActive" action="/events/create" method="post">
           <% } %>
               <h4><%=language.getMessage('activity_information')%></h4>
 

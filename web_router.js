@@ -20,7 +20,7 @@ var passport = require('passport');
 var configMiddleware = require('./middlewares/conf');
 var config = require('./config');
 var blog = require('./controllers/blog');
-var active = require('./controllers/active');
+var events = require('./controllers/events');
 
 var router = express.Router();
 
@@ -108,14 +108,14 @@ router.get('/api', staticController.api);
 // talk
 router.get('/talk', site.talk);
 
-// active
-router.get('/active', active.index);
-router.get('/active/create',auth.adminRequired, active.create);
-router.post('/active/create', auth.adminRequired, active.put);
-router.get('/active/:aid', active.detail);  // 显示某个活动
-router.get('/active/:aid/edit', auth.adminRequired, active.showEdit);  // 编辑某活动
-router.post('/active/:aid/edit', auth.adminRequired, active.update);  //修改
-router.post('/active/:aid/delete', auth.adminRequired, active.delete);
+// events
+router.get('/events', events.index);
+router.get('/events/create',auth.adminRequired, events.create);
+router.post('/events/create', auth.adminRequired, events.put);
+router.get('/events/:aid', events.detail);  // 显示某个活动
+router.get('/events/:aid/edit', auth.adminRequired, events.showEdit);  // 编辑某活动
+router.post('/events/:aid/edit', auth.adminRequired, events.update);  //修改
+router.post('/events/:aid/delete', auth.adminRequired, events.delete);
 //rss
 router.get('/rss', rss.index);
 

@@ -14,7 +14,7 @@ var validator = require('validator');
 var at           = require('../common/at');
 var User         = require('../proxy').User;
 var Topic        = require('../proxy').Topic;
-var Active       = require('../proxy').Active;
+var Events       = require('../proxy').Events;
 var TopicCollect = require('../proxy').TopicCollect;
 var EventProxy   = require('eventproxy');
 var tools        = require('../common/tools');
@@ -22,10 +22,10 @@ var store        = require('../common/store');
 var config       = require('../config');
 var _            = require('lodash');
 var cache        = require('../common/cache');
-var logger = require('../common/logger')
+var logger       = require('../common/logger')
 var renderHelper = require('../common/render_helper');
-var moment = require('moment');
-var config = require('../config');
+var moment       = require('moment');
+var config       = require('../config');
 
 
 exports.index = function(req, res, next) {
@@ -47,7 +47,7 @@ exports.index = function(req, res, next) {
         if (pages) {
             proxy.emit('pages', pages);
         } else {
-            Active.getCountByQuery(query, proxy.done(function (all_actives_count) {
+            Events.getCountByQuery(query, proxy.done(function (all_actives_count) {
                 var pages = Math.ceil(all_actives_count / limit);
                 cache.set(pagesCacheKey, pages, 60 * 1);
                 proxy.emit('pages', pages);
@@ -56,17 +56,19 @@ exports.index = function(req, res, next) {
     }));
     // END 取分页数据
 
-    Active.getActiveByQuery({language_type: config.language}, {}, proxy.done('active', function (active) {
+    Events.getActiveByQuery({language_type: config.language}, {}, proxy.done('active', function (active) {
+
+        console.log('active =======' + active);
         return active;
     }));
 
     proxy.all('pages','active',
         function (pages, active) {
-            res.render('active/index', {
+            res.render('events/index', {
                 active: active,
                 pages: pages,
                 current_page : page,
-                base : '/active'
+                base : '/events'
             });
         });
 
@@ -74,7 +76,7 @@ exports.index = function(req, res, next) {
 
 exports.create = function (req, res, next) {
 
-    res.render('active/edit', {
+    res.render('events/edit', {
         tabs: config.tabs
     });
 };
@@ -123,7 +125,7 @@ exports.put = function (req, res, next) {
     //
     if (editError) {
        res.status(422);
-       return res.render('active/edit', {
+       return res.render('events/edit', {
            edit_error: editError,
            title: title,
            start_time: start_time,
@@ -156,7 +158,7 @@ exports.put = function (req, res, next) {
         language_type: language_type
     }
 
-    Active.newAndSave(o, req.session.user._id, function (err, topic) {
+    Events.newAndSave(o, req.session.user._id, function (err, topic) {
         if (err) {
             return next(err);
         }
@@ -164,7 +166,7 @@ exports.put = function (req, res, next) {
         var proxy = new EventProxy();
 
         proxy.all('score_saved', function () {
-            res.redirect('/active');
+            res.redirect('/events');
         });
         proxy.fail(next);
         User.getUserById(req.session.user._id, proxy.done(function (user) {
@@ -185,7 +187,7 @@ exports.put = function (req, res, next) {
 exports.detail = function (req, res, next) {
   var proxy = new EventProxy();
   var id = {_id: req.params.aid}
-  Active.getActiveById(id, proxy.done('detail', function (detail) {
+  Events.getActiveById(id, proxy.done('detail', function (detail) {
       detail.visit_count += 1;
       detail.save();
       return detail;
@@ -193,7 +195,7 @@ exports.detail = function (req, res, next) {
 
 
   proxy.all('detail', function (detail) {
-      res.render('active/detail', {
+      res.render('events/detail', {
         detail: detail
       });
   });
@@ -207,12 +209,12 @@ exports.showEdit = function (req, res, next) {
   var proxy = new EventProxy();
   var active_id = req.params.aid;
 
-  Active.getActiveById(active_id, proxy.done('active', function (active) {
+  Events.getActiveById(active_id, proxy.done('active', function (active) {
       return active;
   }));
 
   proxy.all('active', function (active) {
-      res.render('active/edit', {
+      res.render('events/edit', {
         action: 'edit',
         active: active,
         title: active.title,
@@ -280,7 +282,7 @@ exports.update = function (req, res, next) {
   //
   if (editError) {
      res.status(422);
-     return res.render('active/edit', {
+     return res.render('events/edit', {
          edit_error: editError,
          title: title,
          start_time: start_time,
@@ -297,24 +299,24 @@ exports.update = function (req, res, next) {
      });
   }
 
-  Active.getActiveById(active_id, function (err, active) {
-      active.title = title;
-      active.start_time = start_time;
-      active.end_time = end_time;
-      active.province = province;
-      active.city = city;
-      active.adress = adress;
-      active.sponsor = sponsor;
-      active.active_detail = active_detail;
-      active.people_num = people_num;
-      active.fees = fees;
-      active.verify = verify;
-      active.cost = cost;
-      active.cover_url = cover_url;
-      active.language_type = language_type;
-      active.updata_at = update_at;
-      active.save(function (err2, d) {
-        res.redirect('/active/' + active._id);
+  Events.getActiveById(active_id, function (err, events) {
+      events.title = title;
+      events.start_time = start_time;
+      events.end_time = end_time;
+      events.province = province;
+      events.city = city;
+      events.adress = adress;
+      events.sponsor = sponsor;
+      events.active_detail = active_detail;
+      events.people_num = people_num;
+      events.fees = fees;
+      events.verify = verify;
+      events.cost = cost;
+      events.cover_url = cover_url;
+      events.language_type = language_type;
+      events.updata_at = update_at;
+      events.save(function (err2, d) {
+        res.redirect('/events/' + events._id);
       });
 
   });
@@ -324,21 +326,21 @@ exports.delete = function (req, res, next) {
 
   var active_id = req.params.aid;
 
-  Active.getActiveById(active_id, function (err, active) {
+  Events.getActiveById(active_id, function (err, events) {
     if (err) {
       return res.send({ success: false, message: err.message });
     }
-    if (!req.session.user.is_admin && !(active.author_id.equals(req.session.user._id))) {
+    if (!req.session.user.is_admin && !(events.author_id.equals(req.session.user._id))) {
       res.status(403);
       return res.send({success: false, message: '无权限'});
     }
-    if (!active) {
+    if (!events) {
       res.status(422);
       return res.send({ success: false, message: '此活动不存在或已被删除。' });
     }
 
-    active.deleted = true;
-    active.save(function (err) {
+    events.deleted = true;
+    events.save(function (err) {
       if (err) {
         return res.send({ success: false, message: err.message });
       }
