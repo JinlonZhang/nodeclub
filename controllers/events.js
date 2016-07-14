@@ -96,6 +96,7 @@ exports.put = function (req, res, next) {
     var cost           = validator.trim(req.body.cost);
     var cover_url      = validator.trim(req.body.cover_url);
     var language_type  = validator.trim(req.body.language_type);
+    var events_type    = validator.trim(req.body.events_type);
 
     // 验证
     var editError;
@@ -154,7 +155,8 @@ exports.put = function (req, res, next) {
         verify: verify,
         cost: cost,
         cover_url: cover_url,
-        language_type: language_type
+        language_type: language_type,
+        events_type: events_type
     }
 
     Events.newAndSave(o, req.session.user._id, function (err, topic) {
@@ -229,7 +231,8 @@ exports.showEdit = function (req, res, next) {
         verify: active.verify,
         cost: active.cost,
         cover_url: active.cover_url,
-        language_type: active.language_type
+        language_type: active.language_type,
+        events_type: active.events_type
       });
   });
 
@@ -253,6 +256,7 @@ exports.update = function (req, res, next) {
   var cover_url = req.body.cover_url;
   var language_type = req.body.language_type;
   var update_at = Date();
+  var events_type = req.body.events_type;
 
   // 验证
   var editError;
@@ -314,6 +318,7 @@ exports.update = function (req, res, next) {
       events.cover_url = cover_url;
       events.language_type = language_type;
       events.updata_at = update_at;
+      events.events_type = events_type;
       events.save(function (err2, d) {
         res.redirect('/events/' + events._id);
       });

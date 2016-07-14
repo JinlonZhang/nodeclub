@@ -36,6 +36,16 @@
               </div>
 
               <div class="group">
+                  <div class="m-label"><%=language.getMessage('events_type')%><strong>*</strong></div>
+                  <div class="m-inp">
+                    <select name="events_type" id="events_type">
+                        <option value="post"><%=language.getMessage('post_events')%></option>
+                        <option value="past"><%=language.getMessage('past_events')%></option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="group">
                   <div class="m-label"><%=language.getMessage('activity_covers')%><strong>*</strong></div>
                   <div class="m-inp">
                       <div class="cover" id="activeTitleBox">
