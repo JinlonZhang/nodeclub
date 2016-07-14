@@ -39,7 +39,7 @@ exports.index = function (req, res, next) {
 
   var topic_id = req.params.tid;
   var currentUser = req.session.user;
-  var collection = language.getMessage('collection');
+  var collection = Language.getMessage('collection');
 
   if (topic_id.length !== 24) {
     return res.render404('此话题不存在或已被删除。');

@@ -44,9 +44,12 @@
         <div class='control-group'>
           <label class='control-label' for=''><%=language.getMessage('upload_image')%></label>
           <div class="m-set-imgurl" >
-              <!-- <img id="user_img" src="https://dn-caicloudui.qbox.me/kubcon/user/img/user_img.png" alt=""> -->
-              <img id="user_img" src="<%= avatar %>" alt="">
-              <input type="hidden" id='up_user_value' name="avatar_url" />
+            <% if (avatar_url != 'undefined') {%>
+              <img id="user_img" src="<%= avatar_url %>" alt="">
+            <%} else {%>
+              <img id="user_img" src="https://dn-caicloudui.qbox.me/kubcon/user/img/user_img.png" alt="">
+            <%}%>
+              <input type="hidden" id='up_user_value' name="avatar_url"  value="<%= avatar_url%>"/>
           </div>
         </div>
 
@@ -71,7 +74,7 @@
 
           <div class='controls'>
             <input class='input-xlarge' id='weibo' name='weibo' size='30' type='text' value="<%= typeof(weibo) !== 'undefined' ? weibo : '' %>"
-                   placeholder="e.g. http://weibo.com/cnodejs"/>
+                   placeholder="e.g. http://weibo.com/xxxx"/>
           </div>
         </div>
         <div class='control-group'>
