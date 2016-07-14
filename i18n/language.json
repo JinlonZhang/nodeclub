@@ -4,7 +4,7 @@
 			 "zh-CN": "首页"
 		 },
 		 "events" : {
-			 "en-US": "Activties",
+			 "en-US": "Events",
 			 "zh-CN": "活动"
 		 },
 		 "topic" : {
@@ -144,7 +144,7 @@
 				"zh-CN": "是否审核"
 			},
 			"active_detail": {
-				"en-US": "Active Detail",
+				"en-US": "Events Detail",
 				"zh-CN": "活动详情"
 			},
 			"sponsor": {

@@ -1,7 +1,7 @@
 var EventProxy = require('eventproxy');
 var models     = require('../models');
 //var Topic      = models.Topic;
-var Active     = models.Active;
+var Events     = models.Events;
 var User       = require('./user');
 var Reply      = require('./reply');
 var tools      = require('../common/tools');
@@ -24,24 +24,24 @@ var o = {
     language_type: 'language_type'
 }
 exports.newAndSave = function (o, authorId, callback) {
-    var active       = new Active();
-    active.title     = o.title;
-    active.start_time   = o.start_time;
-    active.end_time       = o.end_time;
-    active.province = o.province;
-    active.city = o.city;
-    active.adress = o.adress;
-    active.sponsor = o.sponsor;
-    active.active_detail = o.active_detail;
-    active.people_num = o.people_num;
-    active.fees = o.fees;
-    active.verify = o.verify;
-    active.author_id = authorId;
-    active.cost = o.cost;
-    active.cover_url = o.cover_url;
-    active.language_type = o.language_type;
-    
-    active.save(callback);
+    var events       = new Events();
+    events.title     = o.title;
+    events.start_time   = o.start_time;
+    events.end_time       = o.end_time;
+    events.province = o.province;
+    events.city = o.city;
+    events.adress = o.adress;
+    events.sponsor = o.sponsor;
+    events.active_detail = o.active_detail;
+    events.people_num = o.people_num;
+    events.fees = o.fees;
+    events.verify = o.verify;
+    events.author_id = authorId;
+    events.cost = o.cost;
+    events.cover_url = o.cover_url;
+    events.language_type = o.language_type;
+
+    events.save(callback);
 };
 
 /**
@@ -55,8 +55,9 @@ exports.newAndSave = function (o, authorId, callback) {
  */
 
 exports.getActiveByQuery = function (query, opt, callback) {
+
   query.deleted = false;
-  Active.find(query, opt, callback);
+  Events.find(query, opt, callback);
 };
 
 /**
@@ -69,9 +70,9 @@ exports.getActiveByQuery = function (query, opt, callback) {
  */
 exports.getCountByQuery = function (query, callback) {
   query.deleted = false;
-  Active.count(query, callback);
+  Events.count(query, callback);
 };
 
 exports.getActiveById = function (id, callback) {
-  Active.findById(id, callback);
+  Events.findById(id, callback);
 };
