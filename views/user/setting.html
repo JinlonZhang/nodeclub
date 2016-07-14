@@ -44,12 +44,14 @@
         <div class='control-group'>
           <label class='control-label' for=''><%=language.getMessage('upload_image')%></label>
           <div class="m-set-imgurl" >
-            <% if (avatar_url != 'undefined') {%>
+            <% if (typeof(avatar_url) !== 'undefined') {%>
               <img id="user_img" src="<%= avatar_url %>" alt="">
+                <input type="hidden" id='up_user_value' name="avatar_url"  value="<%= avatar_url%>"/>
             <%} else {%>
               <img id="user_img" src="https://dn-caicloudui.qbox.me/kubcon/user/img/user_img.png" alt="">
+                <input type="hidden" id='up_user_value' name="avatar_url"/>
             <%}%>
-              <input type="hidden" id='up_user_value' name="avatar_url"  value="<%= avatar_url%>"/>
+
           </div>
         </div>
 
