@@ -50,9 +50,6 @@ var staticDir = path.join(__dirname, 'public');
 var assets = {};
 var global = {};
 var env = process.env.NODE_ENV;
-var langPathname = '/'
-console.log(env);
-console.log('langPathname==' + langPathname);
 
 //根据环境变量切换
 if (env){
