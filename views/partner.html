@@ -1,7 +1,7 @@
 <% if (typeof( partners ) !== 'undefined') { %>
 <div class='panel'>
   <div class='header'>
-    <span class='col_fade'>友情社区</span>
+    <span class='col_fade'><%=language.getMessage('Friendship link')%></span>
   </div>
   <div class='inner'>
     <% if (partners.length > 0) { %>
@@ -15,7 +15,7 @@
       <% }) %>
     </ol>
     <% } else { %>
-    <p>无</p>
+    <p><%=language.getMessage('empty')%></p>
     <% } %>
   </div>
 </div>

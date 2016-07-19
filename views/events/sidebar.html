@@ -34,7 +34,7 @@
                 <%- partial('topic/small', { collection: no_reply_topics, as: 'topic' }) %>
             </ul>
             <% } else { %>
-            <p>无</p>
+            <p><%=language.getMessage('empty')%></p>
             <% } %>
         </div>
     </div>

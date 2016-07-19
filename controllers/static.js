@@ -47,5 +47,6 @@ exports.api = function (req, res, next) {
 
 exports.language = function (req, res, next) {
   config.language = req.params.type;
-  res.redirect('/');
+  var langPathname = req.query.ref;
+  res.redirect(langPathname);
 }
