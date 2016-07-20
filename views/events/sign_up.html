@@ -1,0 +1,86 @@
+<div id='sidebar'>
+
+    <div class='panel'>
+        <div class='header'>
+            <span class='col_fade'>活动信息</span>
+        </div>
+        <div class='inner'>
+            <img src="<%= events.cover_url %>" alt="">
+            <h4><%= events.title %></h4>
+            <time><%= moment(events.start_time).format('YYYY-MM-DD') %></time>
+            <address><%= events.city %></address>
+        </div>
+    </div>
+
+</div>
+
+<div id='content'>
+    <div class='panel'>
+        <div class='header'>
+            <ol class='breadcrumb'>
+                <li><a href='/'><%=language.getMessage('events')%></a><span class='divider'>/</span></li>
+                <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
+                <li class='active'><%=language.getMessage('edit_activity')%></li>
+                <% }else{ %>
+                <li class='active'><%=language.getMessage('event_registration')%></li>
+                <% } %>
+            </ol>
+        </div>
+
+        <div class="inner post">
+            <% if(typeof(edit_error) !== 'undefined' && edit_error){ %>
+            <div class="alert alert-error">
+                <a class="close" data-dismiss="alert" href="#">&times;</a>
+                <strong><%= edit_error %></strong>
+            </div>
+            <% } %>
+                <form id="event_sign_up_form" action="/events/sign_up" method="post">
+                    <!--<h4><%=language.getMessage('activity_information')%></h4>-->
+
+                    <dl>
+                        <dt>姓名:<strong>*</strong></dt>
+                        <!--<dt><%=language.getMessage('participants')%><strong>*</strong></dt>-->
+                        <dd>
+                            <input type="text" name="name" value="<%= typeof(name) !== 'undefined' && name || '' %>">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>手机号:<strong>*</strong></dt>
+                        <dd>
+                            <input type="text" name="mobile" value="<%= typeof(mobile) !== 'undefined' && mobile || '' %>">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>邮箱:<strong>*</strong></dt>
+                        <dd>
+                            <input type="text" name="email" value="<%= typeof(email) !== 'undefined' && email || '' %>">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>公司/单位:<strong>*</strong></dt>
+                        <dd>
+                            <input type="text" name="company" value="<%= typeof(company) !== 'undefined' && company || '' %>">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>职位:<strong>*</strong></dt>
+                        <dd>
+                            <input type="text" name="position" value="<%= typeof(position) !== 'undefined' && position || '' %>">
+                        </dd>
+                    </dl>
+
+                    <!--<h4>报名表单设置</h4>-->
+                    <button class="m-act-btn" type="submit">
+                        <% if (typeof(language) !== 'undefined') { %>
+                        <%=language.getMessage('submit')%>
+                        <% } %>
+                    </button>
+                    <input type='hidden' name='_csrf' value='<%= csrf %>'>
+                </form>
+        </div>
+    </div>
+</div>

@@ -1309,6 +1309,13 @@ textarea.editor {
     box-sizing: border-box;
     padding: 0 10px;
 
+    dt {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
     dd {
       border: 1px solid #d1d1d1;
       box-sizing: border-box;
@@ -1317,12 +1324,9 @@ textarea.editor {
       padding-bottom: 10px;
       span {
         display: inline-block;
-        font-size: 12px;
-        background-color: @kube_blue;
-        color: #fff;
+        font-size: 14px;
+        color: @kube_blue;
         padding: 2px 5px;
-        border-radius: 4px;
-        margin-right: 10px;
       }
       h4 {
         height: 60px;
@@ -1335,24 +1339,37 @@ textarea.editor {
           color: inherit;
         }
       }
-      time {
-        margin-left: 10px;
-        display: inline-block;
-        background-image: url('../images/time.svg');
-      }
 
-      address {
+      .btn-eve {
         float: right;
-        margin-right: 10px;
-        background-image: url('../images/adress.svg');
+        padding: 5px 10px;
+        background-color: #c8161d;
+        color: #fff;
+        border-radius: 4px;
+        margin: 10px 10px 0 0;
       }
 
-      time,address {
-        padding-left: 22px;
-        background-repeat: no-repeat;
-        background-position: 0 center;
-        color: #808080;
-        font-size: 14px;
+      .m-eve-info {
+        width: 120px;
+        time {
+          margin-left: 10px;
+          display: inline-block;
+          background-image: url('../images/time.svg');
+        }
+
+        address {
+          //float: right;
+          margin: 10px 0 0 10px;
+          background-image: url('../images/adress.svg');
+        }
+
+        time,address {
+          padding-left: 22px;
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          color: #808080;
+          font-size: 14px;
+        }
       }
     }
 
@@ -1489,7 +1506,45 @@ textarea.editor {
     margin: 30px auto;
     width: 120px;
     height: 42px;
-    border: normal;
+    border: none;
+    background-color: @kube_blue;
+    color: #fff;
+    font-size: 16px;
+    display: block;
+  }
+}
+
+/*
+活动报名表
+*/
+#event_sign_up_form {
+  dl {
+    dt {
+      color: @kube_blue;
+      margin-bottom: 5px;
+      strong {
+        color: red;
+      }
+    }
+
+    dd {
+      input {
+        height: 42px;
+        border-radius: 4px;
+        line-height: 42px;
+        font-size: 14px;
+        box-sizing: border-box;
+        margin-left: -10px;
+        width: 100%;
+      }
+    }
+  }
+
+  .m-act-btn {
+    margin: 30px auto;
+    width: 120px;
+    height: 42px;
+    border: none;
     background-color: @kube_blue;
     color: #fff;
     font-size: 16px;

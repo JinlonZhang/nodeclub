@@ -29,6 +29,7 @@ var config       = require('../config');
 
 
 exports.index = function(req, res, next) {
+    console.log('events index');
 
     var page = parseInt(req.query.page, 10) || 1;
     page = page > 0 ? page : 1;
@@ -69,7 +70,8 @@ exports.index = function(req, res, next) {
                 current_page : page,
                 base : '/events'
             });
-        });
+        }
+    );
 
 };
 
@@ -352,3 +354,30 @@ exports.delete = function (req, res, next) {
     });
   });
 };
+
+exports.sign_up = function (req, res, next) {
+    //console.log(req);
+    //var events_id = req.query.ref;
+    var events_id = req.params.eid;
+
+    var proxy = new EventProxy();
+    console.log('events_id===' + events_id);
+
+    Events.getActiveById(events_id, proxy.done('events', function (events) {
+        console.log('events_id====' + events);
+        return events;
+    }));
+
+    proxy.all('events',
+        function (events) {
+            res.render('events/sign_up', {
+                events: events,
+                base : '/events'
+            });
+        }
+    );
+
+    //res.render('events/sign_up', {
+    //    title: 'sign up'
+    //});
+}

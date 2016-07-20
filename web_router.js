@@ -21,6 +21,7 @@ var configMiddleware = require('./middlewares/conf');
 var config = require('./config');
 var blog = require('./controllers/blog');
 var events = require('./controllers/events');
+var sign_up = require('./controllers/sign_up');
 
 var router = express.Router();
 
@@ -112,10 +113,13 @@ router.get('/talk', site.talk);
 router.get('/events', events.index);
 router.get('/events/create',auth.adminRequired, events.create);
 router.post('/events/create', auth.adminRequired, events.put);
+router.get('/events/sign_up/:eid', auth.userRequired, events.sign_up); //活动报名
+router.post('/events/sign_up', auth.userRequired, sign_up.put);
 router.get('/events/:aid', events.detail);  // 显示某个活动
 router.get('/events/:aid/edit', auth.adminRequired, events.showEdit);  // 编辑某活动
 router.post('/events/:aid/edit', auth.adminRequired, events.update);  //修改
 router.post('/events/:aid/delete', auth.adminRequired, events.delete);
+
 //rss
 router.get('/rss', rss.index);
 
