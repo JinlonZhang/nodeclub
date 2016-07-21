@@ -17,7 +17,6 @@ var o = {
 }
 
 exports.newAndSave = function (o, authorId, callback) {
-    console.log('pro-sign=====authorId======' + authorId);
     var sign_up      = new SignUp();
     sign_up.name     = o.name;
     sign_up.mobile   = o.mobile;

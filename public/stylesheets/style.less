@@ -3,6 +3,7 @@
 @node_green: #80bd01;
 @node_black: #444444;
 @kube_blue: #4c9be0;
+@kube_action: #3974a8;
 
 /* base */
 body {
@@ -810,12 +811,12 @@ textarea#title {
 .navbar .brand {
   padding: 4px 0px 0px 20px;
   width: 120px;
-  padding: 3px 20px;
+  padding: 7px 20px;
   height: 28px;
 }
 
 .navbar .navbar-search {
-  margin-top: 6px;
+  margin-top: 11px;
 }
 
 .navbar .search-query {
@@ -1589,10 +1590,82 @@ textarea.editor {
   border-color: #b2c9dc;
 }
 
-
-//活动列表页
-
 //活动详情
 .m-center {
   margin:0 auto;
+}
+
+
+//主导航高亮显示
+.navbar .nav>li:hover {
+  background-color: @kube_action;
+}
+
+.navbar .nav>li>a {
+  height: 52px;
+  box-sizing: border-box;
+  line-height: 30px;
+}
+
+.navbar .nav>li>.action {
+  background-color: #3974a8;
+  box-sizing: border-box;
+}
+
+.navbar .nav>.nav-user {
+  position: relative;
+}
+
+.navbar .nav>.nav-user:hover .user-info{
+  display: block;
+  background-color: @kube_action;
+}
+
+.navbar .nav>.nav-user>a {
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #fff;
+  box-sizing: border-box;
+  padding-top: 11px;
+  span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid @kube_action;
+    background-color: #fff;
+    margin-right: 5px;
+    box-sizing: border-box;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.navbar .nav>.nav-user>.user-info {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  list-style: none;
+  box-sizing: border-box;
+  display: none;
+  li {
+    padding: 8px 10px;
+    border-bottom: 1px solid @kube_blue;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  li:hover {
+    background-color: @kube_blue;
+  }
+}
+
+.navbar-inner {
+  padding: 0;
 }

@@ -29,7 +29,6 @@ var config       = require('../config');
 
 
 exports.index = function(req, res, next) {
-    console.log('events index');
 
     var page = parseInt(req.query.page, 10) || 1;
     page = page > 0 ? page : 1;

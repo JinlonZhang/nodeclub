@@ -3,6 +3,7 @@ var validator = require('validator');
 var at           = require('../common/at');
 var User         = require('../proxy').User;
 var SignUP       = require('../proxy').SignUp;
+var Events       = require('../proxy').Events;
 var TopicCollect = require('../proxy').TopicCollect;
 var EventProxy   = require('eventproxy');
 var tools        = require('../common/tools');
@@ -25,48 +26,33 @@ exports.put = function (req, res, next) {
     var events_id      = validator.trim(req.body.events_id);
 
     // 验证
-    //var editError;
-    //if (title === '') {
-    //    editError = '标题不能是空的。';
-    //} else if (title.length < 5 || title.length > 100) {
-    //    editError = '标题字数在5~100';
-    //} else if (start_time === '') {
-    //    editError = '时间必填'
-    //} else if (end_time === '') {
-    //    editError = '结束时间必填';
-    //} else if (adress === '') {
-    //    editError = '详细地址必填';
-    //} else if (sponsor === '') {
-    //    editError = '主办方必填';
-    //} else if (active_detail === '') {
-    //    editError = '活动详情必填';
-    //} else if (people_num === '') {
-    //    editError = '活动人数必填';
-    //} else if (fees === 'true') {
-    //    if (cost === '') {
-    //        editError = '费用必填';
-    //    }
-    //}
-    //// END 验证
-    //
-    //if (editError) {
-    //    res.status(422);
-    //    return res.render('events/edit', {
-    //        edit_error: editError,
-    //        title: title,
-    //        start_time: start_time,
-    //        end_time: end_time,
-    //        province: province,
-    //        city: city,
-    //        adress: adress,
-    //        sponsor: sponsor,
-    //        active_detail: active_detail,
-    //        people_num: people_num,
-    //        fees: fees,
-    //        cost: cost,
-    //        cover_url: cover_url
-    //    });
-    //}
+    var editError;
+    if (name === '') {
+        editError = '姓名不能是空的。';
+    } else if (mobile.length == 11 && typeof(mobile) == 'number') {
+        editError = '手机号码';
+    } else if (email === '') {
+        editError = '邮箱必填'
+    } else if (company === '') {
+        editError = '公司名称必填';
+    } else if (position === '') {
+        editError = '职位必填';
+    }
+    // END 验证
+
+    if (editError) {
+        res.status(422);
+        return res.render('events/sign_up/' + events_id, {
+            events: events,
+            edit_error: editError,
+            name: name,
+            mobile: mobile,
+            email: email,
+            company: company,
+            position: position
+        });
+    }
+
     var o = {
         name: name,
         mobile: mobile,
@@ -76,9 +62,7 @@ exports.put = function (req, res, next) {
         events_id: events_id
     }
 
-
     SignUP.newAndSave(o, req.session.user._id, function (err, SignUp) {
-            console.log('con-sign-user._id======' + req.session.user._id);
             if (err) {
                 return next(err);
             }
