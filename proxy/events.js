@@ -76,7 +76,5 @@ exports.getCountByQuery = function (query, callback) {
 };
 
 exports.getActiveById = function (id, callback) {
-    console.log('pro-eve-id===' + id);
-    console.log('pro-eve-id===' + JSON.stringify(id));
   Events.findById(id, callback);
 };

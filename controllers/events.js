@@ -356,15 +356,11 @@ exports.delete = function (req, res, next) {
 };
 
 exports.sign_up = function (req, res, next) {
-    //console.log(req);
-    //var events_id = req.query.ref;
     var events_id = req.params.eid;
 
     var proxy = new EventProxy();
-    console.log('events_id===' + events_id);
 
     Events.getActiveById(events_id, proxy.done('events', function (events) {
-        console.log('events_id====' + events);
         return events;
     }));
 
@@ -377,7 +373,4 @@ exports.sign_up = function (req, res, next) {
         }
     );
 
-    //res.render('events/sign_up', {
-    //    title: 'sign up'
-    //});
 }

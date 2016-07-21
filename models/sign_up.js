@@ -12,7 +12,9 @@ var config   = require('../config');
 var _        = require('lodash');
 
 var SignUpSchema = new Schema({
+    user_id: { type: ObjectId },
     events_id: { type: ObjectId },
+    time: { type: Date, default: Date.now}, //报名时间
     name: { type: String },   //姓名
     mobile: { type: Number },  //手机号码
     email: { type: String },   //邮箱

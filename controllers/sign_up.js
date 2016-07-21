@@ -22,6 +22,7 @@ exports.put = function (req, res, next) {
     var email          = validator.trim(req.body.email);
     var company        = validator.trim(req.body.company);
     var position       = validator.trim(req.body.position);
+    var events_id      = validator.trim(req.body.events_id);
 
     // 验证
     //var editError;
@@ -71,10 +72,13 @@ exports.put = function (req, res, next) {
         mobile: mobile,
         email: email,
         company: company,
-        position: position
+        position: position,
+        events_id: events_id
     }
 
+
     SignUP.newAndSave(o, req.session.user._id, function (err, SignUp) {
+            console.log('con-sign-user._id======' + req.session.user._id);
             if (err) {
                 return next(err);
             }

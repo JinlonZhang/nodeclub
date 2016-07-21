@@ -6,11 +6,23 @@
     <!-- <dt><a href="/active/<%= active._id %>"><img src="/public/images/meet02.jpg" alt=""></a></dt> -->
       <dd>
           <% if (active.title.length > 25) { %>
-            <h4><span>[ <%= active.events_type %> ]</span><%= active.title.substring(0, 25) + '...' %></h4>
+            <h4><%= active.title.substring(0, 25) + '...' %></h4>
+            <!--<h4><span>[ <%= active.events_type %> ]</span><%= active.title.substring(0, 25) + '...' %></h4>-->
           <% } else {%>
-            <h4><span>[ <%= active.events_type %> ]</span><%= active.title %></h4>
+            <h4><%= active.title %></h4>
+            <!--<h4><span>[ <%= active.events_type %> ]</span><%= active.title %></h4>-->
           <% } %>
-          <a class="btn-eve" href="/events/sign_up/<%= active._id %>">立即报名</a>
+          <% if( active.events_type == '活动' || active.events_type == 'Post Events') { %>
+              <%
+                if ( active.start_time > new Date()) {
+              %>
+                <a class="btn-eve btn-start" href="/events/sign_up/<%= active._id %>">立即报名</a>
+              <% } else { %>
+                <a class="btn-eve btn-end">活动已结束</a>
+              <% } %>
+          <% } else {%>
+              <a class="btn-eve btn-return">精彩回顾</a>
+          <% } %>
           <div class="m-eve-info">
               <time><%= moment(active.start_time).format('YYYY-MM-DD') %></time>
               <address><%= active.city %></address>
