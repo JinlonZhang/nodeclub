@@ -50,7 +50,6 @@ var staticDir = path.join(__dirname, 'public');
 var assets = {};
 var global = {};
 var env = process.env.NODE_ENV;
-console.log(env);
 
 //根据环境变量切换
 if (env){
@@ -161,6 +160,7 @@ app.use(errorPageMiddleware.errorPage);
 _.extend(app.locals, require('./common/render_helper'));
 app.use(function (req, res, next) {
   res.locals.csrf = req.csrfToken ? req.csrfToken() : '';
+  res.locals.req = req;
   next();
 });
 

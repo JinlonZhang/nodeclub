@@ -22,7 +22,7 @@
         <%- partial('../topic/small', { collection: author_other_topics, as: 'topic' }) %>
       </ul>
       <% } else { %>
-      <p>无</p>
+      <p><%=language.getMessage('empty')%></p>
       <% } %>
     </div>
   </div>
@@ -37,7 +37,7 @@
         <%- partial('../topic/small', { collection: no_reply_topics, as: 'topic' }) %>
       </ul>
       <% } else { %>
-      <p>无</p>
+      <p><%=language.getMessage('empty')%></p>
       <% } %>
     </div>
   </div>
@@ -72,7 +72,11 @@
         <%}%>
 
         <% if (current_user) { %>
-          <input class="span-common <%= is_collect ? '' : 'span-success' %> pull-right collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
+          <% if  ( config.language == 'zh-CN') {%>
+            <input class="span-common <%= is_collect ? '' : 'span-success' %> pull-right collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
+          <% } else if ( config.language == 'en-US') {%>
+            <input class="span-common <%= is_collect ? '' : 'span-success' %> pull-right collect_btn" type="submit" value="<%= is_collect ? 'Cancel Store' : 'Store' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
+        <% } %>
         <%}%>
 
       </div>
