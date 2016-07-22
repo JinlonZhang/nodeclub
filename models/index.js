@@ -19,6 +19,7 @@ require('./topic_collect');
 require('./message');
 require('./partner');
 require('./events');
+require('./sign_up');
 
 exports.User         = mongoose.model('User');
 exports.Topic        = mongoose.model('Topic');
@@ -27,3 +28,4 @@ exports.TopicCollect = mongoose.model('TopicCollect');
 exports.Message      = mongoose.model('Message');
 exports.Partner      = mongoose.model('Partner');
 exports.Events       = mongoose.model('Active');
+exports.SignUp       = mongoose.model('SignUp');

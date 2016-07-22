@@ -69,7 +69,8 @@ exports.index = function(req, res, next) {
                 current_page : page,
                 base : '/events'
             });
-        });
+        }
+    );
 
 };
 
@@ -352,3 +353,23 @@ exports.delete = function (req, res, next) {
     });
   });
 };
+
+exports.sign_up = function (req, res, next) {
+    var events_id = req.params.eid;
+
+    var proxy = new EventProxy();
+
+    Events.getActiveById(events_id, proxy.done('events', function (events) {
+        return events;
+    }));
+
+    proxy.all('events',
+        function (events) {
+            res.render('events/sign_up', {
+                events: events,
+                base : '/events'
+            });
+        }
+    );
+
+}

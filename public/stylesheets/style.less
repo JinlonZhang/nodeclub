@@ -3,6 +3,7 @@
 @node_green: #80bd01;
 @node_black: #444444;
 @kube_blue: #4c9be0;
+@kube_action: #3974a8;
 
 /* base */
 body {
@@ -810,12 +811,12 @@ textarea#title {
 .navbar .brand {
   padding: 4px 0px 0px 20px;
   width: 120px;
-  padding: 3px 20px;
+  padding: 7px 20px;
   height: 28px;
 }
 
 .navbar .navbar-search {
-  margin-top: 6px;
+  margin-top: 11px;
 }
 
 .navbar .search-query {
@@ -1309,6 +1310,13 @@ textarea.editor {
     box-sizing: border-box;
     padding: 0 10px;
 
+    dt {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
     dd {
       border: 1px solid #d1d1d1;
       box-sizing: border-box;
@@ -1317,12 +1325,9 @@ textarea.editor {
       padding-bottom: 10px;
       span {
         display: inline-block;
-        font-size: 12px;
-        background-color: @kube_blue;
-        color: #fff;
+        font-size: 14px;
+        color: @kube_blue;
         padding: 2px 5px;
-        border-radius: 4px;
-        margin-right: 10px;
       }
       h4 {
         height: 60px;
@@ -1335,24 +1340,48 @@ textarea.editor {
           color: inherit;
         }
       }
-      time {
-        margin-left: 10px;
-        display: inline-block;
-        background-image: url('../images/time.svg');
-      }
 
-      address {
+      .btn-eve {
         float: right;
-        margin-right: 10px;
-        background-image: url('../images/adress.svg');
+        padding: 5px 10px;
+        color: #fff;
+        border-radius: 4px;
+        margin: 10px 10px 0 0;
       }
 
-      time,address {
-        padding-left: 22px;
-        background-repeat: no-repeat;
-        background-position: 0 center;
-        color: #808080;
-        font-size: 14px;
+      .btn-start {
+        background-color: #c8161d;
+      }
+
+      .btn-end {
+        background-color: #c1c1c1;
+      }
+
+      .btn-return {
+        background-color: @kube_blue;
+      }
+
+      .m-eve-info {
+        width: 120px;
+        time {
+          margin-left: 10px;
+          display: inline-block;
+          background-image: url('../images/time.svg');
+        }
+
+        address {
+          //float: right;
+          margin: 10px 0 0 10px;
+          background-image: url('../images/adress.svg');
+        }
+
+        time,address {
+          padding-left: 22px;
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          color: #808080;
+          font-size: 14px;
+        }
       }
     }
 
@@ -1489,7 +1518,45 @@ textarea.editor {
     margin: 30px auto;
     width: 120px;
     height: 42px;
-    border: normal;
+    border: none;
+    background-color: @kube_blue;
+    color: #fff;
+    font-size: 16px;
+    display: block;
+  }
+}
+
+/*
+活动报名表
+*/
+#event_sign_up_form {
+  dl {
+    dt {
+      color: @kube_blue;
+      margin-bottom: 5px;
+      strong {
+        color: red;
+      }
+    }
+
+    dd {
+      input {
+        height: 42px;
+        border-radius: 4px;
+        line-height: 42px;
+        font-size: 14px;
+        box-sizing: border-box;
+        margin-left: -10px;
+        width: 100%;
+      }
+    }
+  }
+
+  .m-act-btn {
+    margin: 30px auto;
+    width: 120px;
+    height: 42px;
+    border: none;
     background-color: @kube_blue;
     color: #fff;
     font-size: 16px;
@@ -1523,10 +1590,82 @@ textarea.editor {
   border-color: #b2c9dc;
 }
 
-
-//活动列表页
-
 //活动详情
 .m-center {
   margin:0 auto;
+}
+
+
+//主导航高亮显示
+.navbar .nav>li:hover {
+  background-color: @kube_action;
+}
+
+.navbar .nav>li>a {
+  height: 52px;
+  box-sizing: border-box;
+  line-height: 30px;
+}
+
+.navbar .nav>li>.action {
+  background-color: #3974a8;
+  box-sizing: border-box;
+}
+
+.navbar .nav>.nav-user {
+  position: relative;
+}
+
+.navbar .nav>.nav-user:hover .user-info{
+  display: block;
+  background-color: @kube_action;
+}
+
+.navbar .nav>.nav-user>a {
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #fff;
+  box-sizing: border-box;
+  padding-top: 11px;
+  span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid @kube_action;
+    background-color: #fff;
+    margin-right: 5px;
+    box-sizing: border-box;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.navbar .nav>.nav-user>.user-info {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  list-style: none;
+  box-sizing: border-box;
+  display: none;
+  li {
+    padding: 8px 10px;
+    border-bottom: 1px solid @kube_blue;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  li:hover {
+    background-color: @kube_blue;
+  }
+}
+
+.navbar-inner {
+  padding: 0;
 }

@@ -89,24 +89,35 @@
       </form>
       <ul class='nav pull-right'>
         <% if (typeof(language) !== 'undefined') { %>
-        <li><a href='/'> <%=language.getMessage('topic')%> </a></li>
-        <li><a href='/events'> <%=language.getMessage('events')%> </a></li>
-        <!-- <li><a href="/about"><%=language.getMessage('about')%></a></li> -->
+        <li><a href='/' class="<%= req.url == '/' ? 'action' : ''%>"> <%=language.getMessage('topic')%> </a></li>
+        <li><a href='/events' class="<%= req.url == '/events' ? 'action' : ''%>"> <%=language.getMessage('events')%> </a></li>
         <% } %>
-        <% if (current_user) { %>
-        <li><a href='/setting'><%=language.getMessage('setting')%></a></li>
-        <li>
-          <a href='/signout' data-method="post" rel="nofollow"><%=language.getMessage('log_out')%></a>
-        </li>
-        <% } else { %>
+        <% if (!current_user) { %>
         <li><a href='/signup'><%=language.getMessage('sign_up')%></a></li>
         <li><a href='/signin'><%=language.getMessage('sign_in')%></a></li>
         <% } %>
         <% if (config.language == 'zh-CN') {%>
           <li><a href='/en-US?ref=<%= req.url %>'>English</a></li>
-      <% } else { %>
-        <li><a href='/zh-CN?ref=<%= req.url %>'>中文</a></li>
-      <% } %>
+        <% } else { %>
+          <li><a href='/zh-CN?ref=<%= req.url %>'>中文</a></li>
+        <% } %>
+        <% if (current_user) {%>
+          <li class="nav-user" >
+            <a href="/user/<%= current_user.name %>">
+              <span>
+                <img src="<%= current_user.avatar%>" alt="">
+              </span>
+              <%= current_user.name%>
+            </a>
+            <ul class="user-info">
+              <li><a href="/user/<%= current_user.name %>">我的主页</a></li>
+              <li><a href="/topic/create">发布话题</a></li>
+              <li><a href='/setting'><%=language.getMessage('setting')%></a></li>
+              <li><a href='/signout' data-method="post" rel="nofollow"><%=language.getMessage('log_out')%></a></li>
+            </ul>
+          </li>
+        <% } else {%>
+        <% } %>
       </ul>
       <a class="btn btn-navbar" id="responsive-sidebar-trigger">
         <span class="icon-bar"></span>

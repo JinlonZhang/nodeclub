@@ -1,6 +1,5 @@
 var EventProxy = require('eventproxy');
 var models     = require('../models');
-//var Topic      = models.Topic;
 var Events     = models.Events;
 var User       = require('./user');
 var Reply      = require('./reply');
@@ -24,6 +23,7 @@ var o = {
     language_type: 'language_type',
     events_type: 'events_type'
 }
+
 exports.newAndSave = function (o, authorId, callback) {
     var events       = new Events();
     events.title     = o.title;

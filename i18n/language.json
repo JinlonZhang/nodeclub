@@ -179,6 +179,10 @@
 				"en-US": "Post Activity",
 				"zh-CN": "发布活动"
 			},
+			"event_registration": {
+				"en-US": "Event Registration",
+				"zh-CN": "活动报名"
+			},
 			"edit_topic": {
 				"en-US": "Edit Topic",
 				"zh-CN": "编辑话题"
