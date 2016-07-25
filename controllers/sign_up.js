@@ -18,39 +18,16 @@ var config       = require('../config');
 
 
 exports.put = function (req, res, next) {
-    var name           = validator.trim(req.body.name);
-    var mobile         = validator.trim(req.body.mobile);
-    var email          = validator.trim(req.body.email);
-    var company        = validator.trim(req.body.company);
-    var position       = validator.trim(req.body.position);
-    var events_id      = validator.trim(req.body.events_id);
+    var name           = req.body.name;
+    var mobile         = req.body.mobile;
+    var email          = req.body.email;
+    var company        = req.body.company;
+    var position       = req.body.position;
+    var events_id      = req.body.events_id;
 
-    // 验证
-    var editError;
-    if (name === '') {
-        editError = '姓名不能是空的。';
-    } else if (mobile.length == 11 && typeof(mobile) == 'number') {
-        editError = '手机号码';
-    } else if (email === '') {
-        editError = '邮箱必填'
-    } else if (company === '') {
-        editError = '公司名称必填';
-    } else if (position === '') {
-        editError = '职位必填';
-    }
-    // END 验证
-
-    if (editError) {
-        res.status(422);
-        return res.render('events/sign_up/' + events_id, {
-            events: events,
-            edit_error: editError,
-            name: name,
-            mobile: mobile,
-            email: email,
-            company: company,
-            position: position
-        });
+    if(mobile.length < 11){
+        res.json({code: -1, msg: '不是手机号'});
+        return;
     }
 
     var o = {
@@ -63,23 +40,14 @@ exports.put = function (req, res, next) {
     }
 
     SignUP.newAndSave(o, req.session.user._id, function (err, SignUp) {
-            if (err) {
-                return next(err);
-            }
 
-            var proxy = new EventProxy();
-
-            proxy.all('score_saved', function () {
+        User.getUserById(req.session.user._id, function (err2, user) {
+            user.score += 5;
+            user.topic_count += 1;
+            req.session.user = user;
+            user.save(function(err3){
                 res.redirect('/events');
             });
-            proxy.fail(next);
-            User.getUserById(req.session.user._id, proxy.done(function (user) {
-                user.score += 5;
-                user.topic_count += 1;
-                user.save();
-                req.session.user = user;
-                proxy.emit('score_saved');
-            }));
-
+        });
     });
 };

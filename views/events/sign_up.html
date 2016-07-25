@@ -28,60 +28,116 @@
         </div>
 
         <div class="inner post">
-            <% if(typeof(edit_error) !== 'undefined' && edit_error){ %>
-            <div class="alert alert-error">
-                <a class="close" data-dismiss="alert" href="#">&times;</a>
-                <strong><%= edit_error %></strong>
+            <div>
+                <span class="result"></span>
             </div>
-            <% } %>
-                <form id="event_sign_up_form" action="/events/sign_up" method="post">
+                <form id="event_sign_up_form" action="">
                     <!--<h4><%=language.getMessage('activity_information')%></h4>-->
 
                     <dl>
                         <dt>姓名:<strong>*</strong></dt>
                         <!--<dt><%=language.getMessage('participants')%><strong>*</strong></dt>-->
                         <dd>
-                            <input type="text" name="name" value="<%= typeof(name) !== 'undefined' && name || '' %>">
+                            <input type="text" name="name" id="name" value="<%= typeof(name) !== 'undefined' && name || '' %>">
                         </dd>
                     </dl>
 
                     <dl>
                         <dt>手机号:<strong>*</strong></dt>
                         <dd>
-                            <input type="text" name="mobile" value="<%= typeof(mobile) !== 'undefined' && mobile || '' %>">
+                            <input type="text" name="mobile" id="mobile" value="<%= typeof(mobile) !== 'undefined' && mobile || '' %>">
                         </dd>
                     </dl>
 
                     <dl>
                         <dt>邮箱:<strong>*</strong></dt>
                         <dd>
-                            <input type="text" name="email" value="<%= typeof(email) !== 'undefined' && email || '' %>">
+                            <input type="text" name="email" id="email" value="<%= typeof(email) !== 'undefined' && email || '' %>">
                         </dd>
                     </dl>
 
                     <dl>
                         <dt>公司/单位:<strong>*</strong></dt>
                         <dd>
-                            <input type="text" name="company" value="<%= typeof(company) !== 'undefined' && company || '' %>">
+                            <input type="text" name="company" id="company" value="<%= typeof(company) !== 'undefined' && company || '' %>">
                         </dd>
                     </dl>
 
                     <dl>
                         <dt>职位:<strong>*</strong></dt>
                         <dd>
-                            <input type="text" name="position" value="<%= typeof(position) !== 'undefined' && position || '' %>">
+                            <input type="text" name="position" id="position" value="<%= typeof(position) !== 'undefined' && position || '' %>">
                         </dd>
                     </dl>
-                    <input type="hidden" name="events_id" value="<%= events._id%>">
+                    <input type="hidden" name="events_id" id="events_id" value="<%= events._id%>">
 
                     <!--<h4>报名表单设置</h4>-->
-                    <button class="m-act-btn" type="submit">
-                        <% if (typeof(language) !== 'undefined') { %>
-                        <%=language.getMessage('submit')%>
-                        <% } %>
-                    </button>
+                    <!--<button class="m-act-btn" type="submit">-->
+                        <!--<% if (typeof(language) !== 'undefined') { %>-->
+                        <!--<%=language.getMessage('submit')%>-->
+                        <!--<% } %>-->
+                    <!--</button>-->
+                    <input type="button" value="提交" id="submit">
                     <input type='hidden' name='_csrf' value='<%= csrf %>'>
                 </form>
         </div>
     </div>
 </div>
+<script>
+
+    $(document).ready(function() {
+        $("#msg").hide();
+        $("#submit").click(function() {
+            var name = $("#name").val();
+            var mobile = $("#mobile").val();
+            var email = $("#email").val();
+            var company = $("#company").val();
+            var position = $("#positon").val();
+            var events_id = $("#events_id").val();
+            if (name === '') {
+                $("#msg").css({"display":"block"})
+                $(".result").text('姓名不能为空');
+                return;
+            } else if ( mobile === '' ) {
+                $("#msg").show();
+                $(".result").text('手机号码不能为空');
+                return;
+            } else if ( email === '') {
+                $("#msg").show();
+                $(".result").text('email不能为空');
+                return;
+            } else if ( company === '') {
+                $("#msg").show();
+                $(".result").text('公司/单位不能为空');
+                return;
+            } else if ( position === '') {
+                $("#msg").show();
+                $(".result").text('职位不能为空');
+                return;
+            }
+            console.log('name====' + name);
+            var data = {
+                name: name,
+                mobile: mobile,
+                email: email,
+                company: company,
+                position: position,
+                events_id: events_id
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/events/sign_up",
+                dataType: 'json',
+                data: data,
+                success: function(html) {
+                    console.log('html==' + html);
+                    console.log('html==' + JSON.stringify(html));
+                    $(".result").show();
+                    $(".result").text(html.msg);
+                }
+            });
+        });
+    });
+
+</script>
