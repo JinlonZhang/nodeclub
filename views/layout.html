@@ -89,8 +89,8 @@
       </form>
       <ul class='nav pull-right'>
         <% if (typeof(language) !== 'undefined') { %>
-        <li><a href='/' class="<%= req.url == '/' ? 'action' : ''%>"> <%=language.getMessage('topic')%> </a></li>
-        <li><a href='/events' class="<%= req.url == '/events' ? 'action' : ''%>"> <%=language.getMessage('events')%> </a></li>
+        <li><a href='/' class="<%= req.url == '/' ? 'action' : ''%>"> <%=language.getMessage('events')%> </a></li>
+        <li><a href='/topic' class="<%= req.url == '/topic' ? 'action' : ''%>"> <%=language.getMessage('topic')%> </a></li>
         <% } %>
         <% if (!current_user) { %>
         <li><a href='/signup'><%=language.getMessage('sign_up')%></a></li>

@@ -26,7 +26,7 @@ var sign_up = require('./controllers/sign_up');
 var router = express.Router();
 
 // home page
-router.get('/', site.index);
+
 // sitemap
 router.get('/sitemap.xml', site.sitemap);
 // mobile app download
@@ -71,7 +71,7 @@ router.get('/my/messages', auth.userRequired, message.index); // 用户个人的
 // 新建文章界面
 router.get('/topic/create', auth.userRequired, topic.create);
 
-router.get('/topic/:tid', topic.index);  // 显示某个话题
+router.get('/topic/:tid', topic.detail);  // 显示某个话题
 router.post('/topic/:tid/top', auth.adminRequired, topic.top);  // 将某话题置顶
 router.post('/topic/:tid/good', auth.adminRequired, topic.good); // 将某话题加精
 router.get('/topic/:tid/edit', auth.userRequired, topic.showEdit);  // 编辑某话题
@@ -79,9 +79,9 @@ router.post('/topic/:tid/lock', auth.adminRequired, topic.lock); // 锁定主题
 
 router.post('/topic/:tid/delete', auth.userRequired, topic.delete);
 
-// 保存新建的文章
-router.post('/topic/create', auth.userRequired, limit.peruserperday('create_topic', config.create_post_per_day, false), topic.put);
-
+//topic
+router.get('/topic', site.topic);
+router.post('/topic/create', auth.userRequired, limit.peruserperday('create_topic', config.create_post_per_day, false), topic.put);  // 保存新建的文章
 router.post('/topic/:tid/edit', auth.userRequired, topic.update);
 router.post('/topic/collect', auth.userRequired, topic.collect); // 关注某话题
 router.post('/topic/de_collect', auth.userRequired, topic.de_collect); // 取消关注某话题
@@ -110,7 +110,7 @@ router.get('/api', staticController.api);
 router.get('/talk', site.talk);
 
 // events
-router.get('/events', events.index);
+router.get('/', events.index);
 router.get('/events/create',auth.adminRequired, events.create);
 router.post('/events/create', auth.adminRequired, events.put);
 router.get('/events/sign_up/:eid', auth.userRequired, events.sign_up); //活动报名

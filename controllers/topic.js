@@ -29,7 +29,7 @@ var logger = require('../common/logger');
  * @param  {HttpResponse} res
  * @param  {Function} next
  */
-exports.index = function (req, res, next) {
+exports.detail = function (req, res, next) {
   function isUped(user, reply) {
     if (!reply.ups) {
       return false;
@@ -47,7 +47,7 @@ exports.index = function (req, res, next) {
   var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect', 'partners'];
   var ep = EventProxy.create(events,
     function (topic, other_topics, no_reply_topics, is_collect, partners) {
-    res.render('topic/index', {
+    res.render('topic/detail', {
       topic: topic,
       author_other_topics: other_topics,
       no_reply_topics: no_reply_topics,
